@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/juan/code/web-projects/AscendedGuild/AscendedGuild.csproj": {}
+    "/home/juan/code/web-projects/AscendedGuild/src/AscendedGuild.csproj": {}
   },
   "projects": {
-    "/home/juan/code/web-projects/AscendedGuild/AscendedGuild.csproj": {
+    "/home/juan/code/web-projects/AscendedGuild/src/AscendedGuild.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/juan/code/web-projects/AscendedGuild/AscendedGuild.csproj",
+        "projectUniqueName": "/home/juan/code/web-projects/AscendedGuild/src/AscendedGuild.csproj",
         "projectName": "AscendedGuild",
-        "projectPath": "/home/juan/code/web-projects/AscendedGuild/AscendedGuild.csproj",
+        "projectPath": "/home/juan/code/web-projects/AscendedGuild/src/AscendedGuild.csproj",
         "packagesPath": "/home/juan/.nuget/packages/",
-        "outputPath": "/home/juan/code/web-projects/AscendedGuild/obj/",
+        "outputPath": "/home/juan/code/web-projects/AscendedGuild/src/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/juan/.nuget/NuGet/NuGet.Config"
@@ -45,6 +45,16 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.linux-x64",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -54,6 +64,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/opt/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
         }
       }
     }
