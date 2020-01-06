@@ -1,0 +1,20 @@
+/* Link styles */
+main a:link {
+	color: var(--bg-accent-color);
+	text-decoration: none;
+}
+
+main a:visited {
+	color: var(--bg-accent-color);
+}
+
+main a:hover {
+	transition: color 0.9s;
+	color: var(--accent-color);
+	text-decoration: none;
+}
+
+main a:active {
+	color: var(--bg-color);
+	text-decoration: none;
+}
