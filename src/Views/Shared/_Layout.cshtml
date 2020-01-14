@@ -3,8 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>@ViewData["Title"] - AscendedGuild</title>
-    <link rel="stylesheet" href="~/css/site.css" />
+
+		<environment include="Development">
+			@RenderSection("Style", required: true)
+		</environment>
+
+		<link rel="icon" type="img/svg+xml" href="~/images/favicon.svg">
 </head>
 <body>
 	<header>
@@ -24,21 +30,13 @@
 					<a class="nav-link" href="https://www.youtube.com/user/Absolutioncb/featured">YouTube</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" asp-area="" asp-controller="Apply" asp-action="Index">Apply</a>
+					<a class="nav-link" asp-area="" asp-controller="Recruitment" asp-action="Index">Recruitment</a>
 				</li>
 			</ul>
 		</nav>
 	</header>
-
-	<main role="main">
-		@RenderBody()
+	<main>
+		@RenderBody()		
 	</main>
-
-	<footer>
-		&copy; 2020 - AscendedGuild - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-	</footer>
-
-	<script src="~/js/site.js" asp-append-version="true"></script>
-	@RenderSection("Scripts", required: false)
 </body>
 </html>

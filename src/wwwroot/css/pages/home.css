@@ -1,0 +1,9 @@
+/* Splash style */
+.splash {
+	display: grid;
+	place-content: center;
+}
+
+.bg-image {
+
+}
