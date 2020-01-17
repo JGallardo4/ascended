@@ -1,1 +1,12 @@
-/* Layout */
+.splash {	
+	background-image: 
+		url(/images/logo.png),
+		url(/images/bg.jpg);		
+	background-size:
+		55vw,
+		cover;
+	background-position: 
+		center,
+		68% 50%;		
+	background-repeat: no-repeat;
+}
