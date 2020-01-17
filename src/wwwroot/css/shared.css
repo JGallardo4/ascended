@@ -29,7 +29,7 @@ header {
 	padding: 20px 0;
 	grid-row: 1;
 	display: grid;
-	grid-template-columns: auto 1fr 1fr;
+	grid-template-columns: auto 1fr minmax(max-content, 1fr);
 }
 
 main {
