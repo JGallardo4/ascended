@@ -1,17 +1,1 @@
 /* Layout */
-main {
-	display: grid;
-	justify-items: stretch;
-	align-items: center;
-}
-
-/* Splash style */
-.splash {
-	height: inherit;
-	display: grid;
-	justify-items: stretch;
-	align-items: center;
-}
-
-.bg-image {
-}
