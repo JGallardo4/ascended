@@ -1,13 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AscendedGuild.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace AscendedGuild
 {
@@ -23,6 +22,19 @@ namespace AscendedGuild
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			
+			services.AddDbContextPool<AppDbContext>(x => x
+        .UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+          mySqlOptions => 
+          {
+            mySqlOptions
+              .ServerVersion(new Version(10, 4, 11), ServerType.MariaDb);
+          })
+      );
+
+			services.AddScoped<IPlayerClassRepository, PlayerClassRepository>();
+			
+			services.AddHttpContextAccessor();
 			services.AddControllersWithViews();
 		}
 
@@ -33,17 +45,11 @@ namespace AscendedGuild
 			{
 				app.UseDeveloperExceptionPage();
 			}
-			else
-			{
-				app.UseExceptionHandler("/Home/Error");
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
-			}
+
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
 			app.UseRouting();
-
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>

@@ -4,7 +4,7 @@ namespace AscendedGuild.Models
 {
 	public class PlayerClass
 	{
-		public int ClassId { get; set; }
+		public int PlayerClassId { get; set; }
 		public string ImageUrl { get; set; }
 		public string Name { get; set; }
 

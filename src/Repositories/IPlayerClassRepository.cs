@@ -1,4 +1,4 @@
-namespace src.Repositories
+namespace AscendedGuild.Models
 {
 	public interface IPlayerClassRepository
 	{
