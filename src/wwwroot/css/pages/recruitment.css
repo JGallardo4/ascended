@@ -1,0 +1,89 @@
+#class-grid {
+	border: solid;
+	border-width: 2px;
+	border-color: white;
+}
+
+.player-class {
+	border: solid;
+	border-width: 2px;
+	border-color: yellow;
+}
+
+/* class-grid style */
+	.class-grid {
+		padding: 20px;
+		width: auto;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+		grid-gap: 2vmax;
+		align-items: center;
+	}
+
+	.player-class {
+		padding: 20px;
+	}
+/* End of class-grid style */
+
+/* Player class colors */
+
+	/* Death Knight */
+	#class1 {
+		color: #C41F3B;
+	}
+
+	/* Mage */
+	#class2 {
+		color: #40C7EB;
+	}
+
+	/* Rogue */
+	#class3 {
+		color: #FFF569;
+	}
+
+	/* Demon Hunter */
+	#class4 {
+		color: #A330C9;
+	}
+
+	/* Monk */
+	#class5 {
+		color: #00FF96;
+	}
+
+	/* Shaman */
+	#class6 {
+		color: #0070DE;
+	}
+
+	/* Druid */
+	#class7 {
+		color: #FF7D0A;
+	}
+
+	/* Paladin */
+	#class8 {
+		color: #F58CBA;
+	}
+
+	/* Warlock */
+	#class9 {
+		color: #8787ED;
+	}
+
+	/* Hunter */
+	#class10 {
+		color: #A9D271;
+	}
+
+	/* Priest */
+	#class11 {
+		color: #FFFFFF;
+	}
+
+	/* Warrior */
+	#class12 {
+		color: #C79C6E;
+	}
+/* End Player class colors */

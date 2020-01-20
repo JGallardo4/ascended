@@ -1,12 +1,27 @@
+using AscendedGuild.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace src.Controllers
+namespace AscendedGuild.Controllers
 {
 	public class RecruitmentController : Controller
 	{
+		private readonly IPlayerClassRepository _playerClassRepository;
+
+		public RecruitmentController(IPlayerClassRepository playerClassRepository)
+		{
+			_playerClassRepository = playerClassRepository;
+		}
+
 		public IActionResult Index()
 		{
-			return View();
+			var playerClasses = _playerClassRepository.AllPlayerClasses;
+
+			return View(
+				new RecruitmentViewModel
+				{
+					PlayerClasses = playerClasses
+				}
+			);
 		}
 	}
 }

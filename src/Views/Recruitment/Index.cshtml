@@ -1,6 +1,40 @@
+@model RecruitmentViewModel
+
 @section Style {
 	<link rel="stylesheet"
 		href="/css/shared.css" />
 	<link rel="stylesheet"
 		href="/css/pages/recruitment.css" />
 }
+
+<section id="class-grid">
+	@foreach (var playerClass in Model.PlayerClasses)
+	{
+		<article class="player-class">
+			<img 
+			src=@playerClass.ImageUrl 
+			alt="Icon representation of the player class." />
+
+			<h2 class="name" id=@("class" + playerClass.PlayerClassId)>
+				@playerClass.Name
+			</h2>
+
+			<ul class="specializations">
+				@foreach (var spec in playerClass.Specs)
+				{
+					<li>
+						<img 
+						src=@spec.ImageUrl 
+						alt="Icon representation of the specialization." />
+
+						<h2>
+							@spec.Name
+						</h2>
+
+						<partial name="_DemandPartial" model="spec.Demand" />
+					</li>
+				}
+			</ul>
+		</article>
+	}
+</section>

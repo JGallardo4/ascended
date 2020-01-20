@@ -1,0 +1,22 @@
+@model Demand
+
+@switch (Model)
+{
+	case Demand.Closed:
+		<h2>
+			Closed
+		</h2>
+		break;
+	
+	case Demand.Low:
+		<h2>
+			Low
+		</h2>
+		break;
+	
+	case Demand.High:
+		<h2>
+			High
+		</h2>
+		break;
+}

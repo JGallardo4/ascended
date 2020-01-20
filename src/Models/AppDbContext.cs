@@ -20,7 +20,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 1,
-				ImageUrl = "/images/dk.png",
+				ImageUrl = "/images/class-icons/dk.png",
 				Name = "Death Knight",
 				Specs = new List<Spec>(),
 			});
@@ -28,7 +28,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 2,
-				ImageUrl = "/images/mage.png",
+				ImageUrl = "/images/class-icons/mage.png",
 				Name = "Mage",
 				Specs = new List<Spec>(),
 			});
@@ -36,7 +36,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 3,
-				ImageUrl = "/images/rogue.png",
+				ImageUrl = "/images/class-icons/rogue.png",
 				Name = "Rogue",
 				Specs = new List<Spec>(),
 			});
@@ -44,7 +44,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 4,
-				ImageUrl = "/images/dh.png",
+				ImageUrl = "/images/class-icons/dh.png",
 				Name = "Demon Hunter",
 				Specs = new List<Spec>(),
 			});
@@ -52,7 +52,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 5,
-				ImageUrl = "/images/monk.png",
+				ImageUrl = "/images/class-icons/monk.png",
 				Name = "Monk",
 				Specs = new List<Spec>(),
 			});
@@ -60,7 +60,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 6,
-				ImageUrl = "/images/shaman.png",
+				ImageUrl = "/images/class-icons/shaman.png",
 				Name = "Shaman",
 				Specs = new List<Spec>(),
 			});
@@ -68,7 +68,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 7,
-				ImageUrl = "/images/druid.png",
+				ImageUrl = "/images/class-icons/druid.png",
 				Name = "Druid",
 				Specs = new List<Spec>(),
 			});
@@ -76,7 +76,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 8,
-				ImageUrl = "/images/paladin.png",
+				ImageUrl = "/images/class-icons/paladin.png",
 				Name = "Paladin",
 				Specs = new List<Spec>(),
 			});
@@ -84,7 +84,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 9,
-				ImageUrl = "/images/warlock.png",
+				ImageUrl = "/images/class-icons/warlock.png",
 				Name = "Warlock",
 				Specs = new List<Spec>(),
 			});
@@ -92,7 +92,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 10,
-				ImageUrl = "/images/hunter.png",
+				ImageUrl = "/images/class-icons/hunter.png",
 				Name = "Hunter",
 				Specs = new List<Spec>(),
 			});
@@ -100,7 +100,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 11,
-				ImageUrl = "/images/priest.png",
+				ImageUrl = "/images/class-icons/priest.png",
 				Name = "Priest",
 				Specs = new List<Spec>(),
 			});
@@ -108,7 +108,7 @@ namespace AscendedGuild.Models
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 12,
-				ImageUrl = "/images/warrior.png",
+				ImageUrl = "/images/class-icons/warrior.png",
 				Name = "Warrior",
 				Specs = new List<Spec>(),
 			});
@@ -118,7 +118,7 @@ namespace AscendedGuild.Models
 				new {
 				PlayerClassId = 1,
 				SpecId = Guid.NewGuid(),
-				ImageUrl = "/images/dk-blood.jpg",
+				ImageUrl = "/images/class-icons/dk-blood.jpg",
 				Demand = Demand.Closed,
 				Name = "Blood"
 				},
@@ -126,7 +126,7 @@ namespace AscendedGuild.Models
 				new {
 				PlayerClassId = 1,
 				SpecId = Guid.NewGuid(),
-				ImageUrl = "/images/dk-frost.jpg",
+				ImageUrl = "/images/class-icons/dk-frost.jpg",
 				Demand = Demand.Closed,
 				Name = "Frost"
 				},
@@ -135,7 +135,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 1,
 					SpecId = Guid.NewGuid(),					
-					ImageUrl = "/images/dk-unholy.jpg",
+					ImageUrl = "/images/class-icons/dk-unholy.jpg",
 					Demand = Demand.Closed,
 					Name = "Unholy"
 				},
@@ -144,7 +144,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 2,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/mage-arcane.jpg",
+					ImageUrl = "/images/class-icons/mage-arcane.jpg",
 					Demand = Demand.Closed,
 					Name = "Arcane"
 				},
@@ -153,7 +153,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 2,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/mage-fire.jpg",
+					ImageUrl = "/images/class-icons/mage-fire.jpg",
 					Demand = Demand.Closed,
 					Name = "Fire"
 				},
@@ -162,7 +162,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 2,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/mage-frost.jpg",
+					ImageUrl = "/images/class-icons/mage-frost.jpg",
 					Demand = Demand.Closed,
 					Name = "Frost"
 				},
@@ -171,7 +171,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 3,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/rogue-assassination.jpg",
+					ImageUrl = "/images/class-icons/rogue-assassination.jpg",
 					Demand = Demand.Closed,
 					Name = "Assassination"
 				},
@@ -180,7 +180,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 3,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/rogue-outlaw.jpg",
+					ImageUrl = "/images/class-icons/rogue-outlaw.jpg",
 					Demand = Demand.Closed,
 					Name = "Outlaw"
 				},
@@ -189,7 +189,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 3,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/rogue-subtlety.jpg",
+					ImageUrl = "/images/class-icons/rogue-subtlety.jpg",
 					Demand = Demand.Closed,
 					Name = "Subtlety"
 				},
@@ -198,7 +198,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 4,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/dh-havoc.jpg",
+					ImageUrl = "/images/class-icons/dh-havoc.jpg",
 					Demand = Demand.Closed,
 					Name = "Havoc"
 				},
@@ -207,7 +207,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 4,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/dh-vengeance.jpg",
+					ImageUrl = "/images/class-icons/dh-vengeance.jpg",
 					Demand = Demand.Closed,
 					Name = "Vengeance"
 				},
@@ -216,7 +216,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 5,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/monk-brewmaster.jpg",
+					ImageUrl = "/images/class-icons/monk-brewmaster.jpg",
 					Demand = Demand.Closed,
 					Name = "Brewmaster"
 				},
@@ -225,7 +225,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 5,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/monk-mistweaver.jpg",
+					ImageUrl = "/images/class-icons/monk-mistweaver.jpg",
 					Demand = Demand.Closed,
 					Name = "Mistweaver"
 				},
@@ -234,7 +234,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 5,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/monk-windwalker.jpg",
+					ImageUrl = "/images/class-icons/monk-windwalker.jpg",
 					Demand = Demand.Closed,
 					Name = "Windwalker"
 				},
@@ -243,7 +243,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 6,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/shaman-elemental.jpg",
+					ImageUrl = "/images/class-icons/shaman-elemental.jpg",
 					Demand = Demand.Closed,
 					Name = "Elemental"
 				},
@@ -252,7 +252,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 6,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/shaman-enhancement.jpg",
+					ImageUrl = "/images/class-icons/shaman-enhancement.jpg",
 					Demand = Demand.Closed,
 					Name = "Enhancement"
 				},
@@ -261,7 +261,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 6,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/shaman-restoration.jpg",
+					ImageUrl = "/images/class-icons/shaman-restoration.jpg",
 					Demand = Demand.Closed,
 					Name = "Restoration"
 				},
@@ -270,7 +270,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 7,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/druid-balance.jpg",
+					ImageUrl = "/images/class-icons/druid-balance.jpg",
 					Demand = Demand.Closed,
 					Name = "Balance"
 				},
@@ -279,7 +279,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 7,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/druid-feral.jpg",
+					ImageUrl = "/images/class-icons/druid-feral.jpg",
 					Demand = Demand.Closed,
 					Name = "Feral"
 				},
@@ -288,7 +288,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 7,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/druid-guardian.jpg",
+					ImageUrl = "/images/class-icons/druid-guardian.jpg",
 					Demand = Demand.Closed,
 					Name = "Guardian"
 				},
@@ -297,7 +297,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 7,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/druid-restoration.jpg",
+					ImageUrl = "/images/class-icons/druid-restoration.jpg",
 					Demand = Demand.Closed,
 					Name = "Restoration"
 				},
@@ -306,7 +306,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 8,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/paladin-holy.jpg",
+					ImageUrl = "/images/class-icons/paladin-holy.jpg",
 					Demand = Demand.Closed,
 					Name = "Holy"
 				},
@@ -315,7 +315,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 8,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/paladin-protection.jpg",
+					ImageUrl = "/images/class-icons/paladin-protection.jpg",
 					Demand = Demand.Closed,
 					Name = "Protection"
 				},
@@ -324,7 +324,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 8,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/paladin-retribution.jpg",
+					ImageUrl = "/images/class-icons/paladin-retribution.jpg",
 					Demand = Demand.Closed,
 					Name = "Retribution"
 				},
@@ -333,7 +333,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 9,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/warlock-affliction.jpg",
+					ImageUrl = "/images/class-icons/warlock-affliction.jpg",
 					Demand = Demand.Closed,
 					Name = "Affliction"
 				},
@@ -342,7 +342,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 9,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/warlock-demonology.jpg",
+					ImageUrl = "/images/class-icons/warlock-demonology.jpg",
 					Demand = Demand.Closed,
 					Name = "Demonology"
 				},
@@ -351,7 +351,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 9,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/warlock-destruction.jpg",
+					ImageUrl = "/images/class-icons/warlock-destruction.jpg",
 					Demand = Demand.Closed,
 					Name = "Destruction"
 				},
@@ -360,7 +360,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 10,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/hunter-bm.jpg",
+					ImageUrl = "/images/class-icons/hunter-bm.jpg",
 					Demand = Demand.Closed,
 					Name = "Beast Mastery"
 				},
@@ -369,7 +369,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 10,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/hunter-marksmanship.jpg",
+					ImageUrl = "/images/class-icons/hunter-marksmanship.jpg",
 					Demand = Demand.Closed,
 					Name = "Marksmanship"
 				},
@@ -378,7 +378,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 10,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/hunter-survival.jpg",
+					ImageUrl = "/images/class-icons/hunter-survival.jpg",
 					Demand = Demand.Closed,
 					Name = "Survival"
 				},
@@ -387,7 +387,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 11,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/priest-discipline.jpg",
+					ImageUrl = "/images/class-icons/priest-discipline.jpg",
 					Demand = Demand.Closed,
 					Name = "Discipline"
 				},
@@ -396,7 +396,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 11,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/priest-holy.jpg",
+					ImageUrl = "/images/class-icons/priest-holy.jpg",
 					Demand = Demand.Closed,
 					Name = "Holy"
 				},
@@ -405,7 +405,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 11,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/priest-shadow.jpg",
+					ImageUrl = "/images/class-icons/priest-shadow.jpg",
 					Demand = Demand.Closed,
 					Name = "Shadow"
 				},
@@ -414,7 +414,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 12,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/warrior-arms.jpg",
+					ImageUrl = "/images/class-icons/warrior-arms.jpg",
 					Demand = Demand.Closed,
 					Name = "Arms"
 				},
@@ -423,7 +423,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 12,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/warrior-fury.jpg",
+					ImageUrl = "/images/class-icons/warrior-fury.jpg",
 					Demand = Demand.Closed,
 					Name = "Fury"
 				},
@@ -432,7 +432,7 @@ namespace AscendedGuild.Models
 				{
 					PlayerClassId = 12,
 					SpecId = Guid.NewGuid(),
-					ImageUrl = "/images/warrior-protection.jpg",
+					ImageUrl = "/images/class-icons/warrior-protection.jpg",
 					Demand = Demand.Closed,
 					Name = "Protection"
 				}
