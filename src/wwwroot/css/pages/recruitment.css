@@ -1,29 +1,74 @@
 #class-grid {
-	border: solid;
-	border-width: 2px;
-	border-color: white;
+	text-transform: uppercase;
 }
 
-.player-class {
+.class-card {
 	border: solid;
 	border-width: 2px;
-	border-color: yellow;
+	border-color: var(--purple);
 }
 
 /* class-grid style */
-	.class-grid {
-		padding: 20px;
+	#class-grid {
 		width: auto;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr));
 		grid-gap: 2vmax;
-		align-items: center;
+		align-items: stretch;
 	}
 
-	.player-class {
-		padding: 20px;
+	.class-card {
+		padding: 20px;		
+	}
+
+	.card-title {
+		display: flex;
+		align-items: center;
+		font-size: 2rem;
+	}
+
+	.class-name {
+		flex-grow: 1;
+	}
+
+	.spec-name {
+		color: white;
+		flex-grow: 1;
+	}
+
+	.class-icon {
+		transform: scale(1.2);
+	}
+
+	.spec-icon {
+		transform: scale(0.8);
+		border-radius: 4px;
+	}
+
+	.specializations {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.spec {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
 	}
 /* End of class-grid style */
+
+/* Demand colors */
+	#demand--high {
+		color: green;
+	}
+
+	#demand--low {
+		color: yellow;
+	}
+
+	#demand--closed {
+		color: black;
+	}
 
 /* Player class colors */
 

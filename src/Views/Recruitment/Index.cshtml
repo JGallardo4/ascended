@@ -10,25 +10,29 @@
 <section id="class-grid">
 	@foreach (var playerClass in Model.PlayerClasses)
 	{
-		<article class="player-class">
-			<img 
-			src=@playerClass.ImageUrl 
-			alt="Icon representation of the player class." />
-
-			<h2 class="name" id=@("class" + playerClass.PlayerClassId)>
-				@playerClass.Name
-			</h2>
+		<article class="class-card">
+			<div class="card-title">
+				<h2 class="class-name" id=@("class" + playerClass.PlayerClassId)>
+					@playerClass.Name
+				</h2>
+				
+				<img
+				class="class-icon"
+				src=@playerClass.ImageUrl 
+				alt="Icon representation of the player class." />			
+			</div>
 
 			<ul class="specializations">
 				@foreach (var spec in playerClass.Specs)
 				{
-					<li>
-						<img 
+					<li class="spec">
+						<img
+						class="spec-icon"
 						src=@spec.ImageUrl 
 						alt="Icon representation of the specialization." />
 
-						<h2>
-							@spec.Name
+						<h2 class="spec-name">
+							@(spec.Name + ":")
 						</h2>
 
 						<partial name="_DemandPartial" model="spec.Demand" />
