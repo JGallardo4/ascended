@@ -33,9 +33,7 @@ header {
 
 main {
 	grid-row: 2;
-	height: 100%;
-	display: grid;
-	
+	display: grid;	
 }
 
 .icon-container {
@@ -99,7 +97,7 @@ main {
  * and draw menu vertically
  * on the right of the page
  */
-@media (max-width: 880px) {
+@media (max-width: 975px) {
 	body {
 		padding: 0 5vw;
 	}
@@ -131,7 +129,7 @@ main {
  * Add padding all around each element except
  * at the far right edge
  */
-@media (min-width: 881px) {
+@media (min-width: 975px) {
 	.navbar li {
 		padding: 1rem 0 1rem 1rem;
 	}
