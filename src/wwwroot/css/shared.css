@@ -20,9 +20,8 @@ body {
 /* Layout */
 body {
 	padding: 0 10vw;
-	height: 100vh;	
 	display: grid;
-	grid-template-rows: auto 1fr 5vh;
+	grid-template-rows: auto 1fr 100px;
 }
 
 header {
@@ -34,7 +33,9 @@ header {
 
 main {
 	grid-row: 2;
+	height: 100%;
 	display: grid;
+	
 }
 
 .icon-container {
@@ -45,7 +46,7 @@ main {
 	grid-column: 3;	
 }
 
-/* Logo */
+/* Logo size */
 .icon-container {
 	width: auto;
 	height: 10vh;
@@ -56,7 +57,9 @@ main {
 	height: inherit;
 }
 
-/* Nav */
+/* For desktop:
+ * Draw menu horizontally
+ */
 .navbar {
 	display: flex;
 	text-transform: uppercase;
@@ -91,7 +94,11 @@ main {
   left: 0; 
 }
 
-/* For mobile */
+/* For mobile:
+ * Make icon bigger
+ * and draw menu vertically
+ * on the right of the page
+ */
 @media (max-width: 880px) {
 	body {
 		padding: 0 5vw;
@@ -124,7 +131,6 @@ main {
  * Add padding all around each element except
  * at the far right edge
  */
-
 @media (min-width: 881px) {
 	.navbar li {
 		padding: 1rem 0 1rem 1rem;
