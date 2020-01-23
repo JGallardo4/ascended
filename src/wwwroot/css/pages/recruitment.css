@@ -21,48 +21,58 @@
 		transform: scale(1.2);
 	}
 
-	.spec-icon {
-		transform: scale(0.8);
-		border-radius: 4px;
+/* class-grid layout */
+	main {
+		place-self: stretch;
 	}
 
-/* class-grid layout */
 	#class-grid {
-		width: auto;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		grid-gap: 2vmax;
-		align-items: stretch;
+		grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+		grid-template-rows: auto;
+		grid-gap: 20px;
+		place-items: stretch;
 	}
 
 	.class-card {
 		padding: 20px;
 		display: grid;
-		grid-template-columns: 1;
-		grid-template-rows: 96px 1fr;		
+		grid-template-rows: auto auto;		
 	}
 
 	.card-title {
 		grid-row: 1;
 		display: grid;
-		grid-template-columns: 1fr 96px;
+		grid-template-columns: 1fr 96px;		
 		place-items: center;
 	}
 
 	.specs {
 		grid-row: 2;
 		display: grid;
-		grid-template-columns: auto 1fr 96px;
-		grid-template-rows: repeat(auto-fit, auto);
+		grid-template-columns: 60px 1fr 96px;
+		grid-template-rows: 60px;
+		grid-auto-rows: 60px;
+		grid-auto-flow: row;
 		place-items: center;
 	}
 
 	.spec-icon {
 		grid-column: 1;
+		justify-self: start;
+		border-radius: 5px;
+		width: 50px;
+		height: auto;
 	}
 
 	.spec-name {
 		grid-column: 2;
+		justify-self: start;
+	}
+
+	.class-name {
+		display: inline-block;
+		justify-self: start;
 	}
 
 	.demand {
