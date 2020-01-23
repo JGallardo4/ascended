@@ -19,7 +19,7 @@ body {
 
 /* Layout */
 body {
-	padding: 0 10vw;
+	padding: 0 9vw;
 	display: grid;
 	grid-template-rows: auto 1fr 100px;
 }

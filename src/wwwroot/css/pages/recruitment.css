@@ -1,39 +1,20 @@
-#class-grid {
-	text-transform: uppercase;
-}
-
-.class-card {
-	border: solid;
-	border-width: 2px;
-	border-color: var(--purple);
-}
-
 /* class-grid style */
 	#class-grid {
-		width: auto;
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		grid-gap: 2vmax;
-		align-items: stretch;
+		text-transform: uppercase;
 	}
 
 	.class-card {
-		padding: 20px;		
-	}
-
-	.card-title {
-		display: flex;
-		align-items: center;
-		font-size: 2rem;
+		border: solid;
+		border-width: 2px;
+		border-color: var(--purple);
 	}
 
 	.class-name {
-		flex-grow: 1;
+		font-size: 2rem;
 	}
 
 	.spec-name {
 		color: white;
-		flex-grow: 1;
 	}
 
 	.class-icon {
@@ -45,17 +26,49 @@
 		border-radius: 4px;
 	}
 
-	.specializations {
-		display: flex;
-		flex-direction: column;
+/* class-grid layout */
+	#class-grid {
+		width: auto;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		grid-gap: 2vmax;
+		align-items: stretch;
 	}
 
-	.spec {
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
+	.class-card {
+		padding: 20px;
+		display: grid;
+		grid-template-columns: 1;
+		grid-template-rows: auto 1fr;		
 	}
-/* End of class-grid style */
+
+	.card-title {
+		grid-row: 1;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		place-items: center;
+	}
+
+	.specs {
+		grid-row: 2;
+		display: grid;
+		grid-template-columns: auto 1fr 96px;
+		grid-template-rows: repeat(auto-fit, auto);
+		place-items: center;
+	}
+
+	.spec-icon {
+		grid-column: 1;
+	}
+
+	.spec-name {
+		grid-column: 2;
+	}
+
+	.demand {
+		grid-column: 3;
+	}
+/* End of class-grid layout */
 
 /* Demand colors */
 	#demand--high {
@@ -71,7 +84,6 @@
 	}
 
 /* Player class colors */
-
 	/* Death Knight */
 	#class1 {
 		color: #C41F3B;

@@ -22,23 +22,21 @@
 				alt="Icon representation of the player class." />			
 			</div>
 
-			<ul class="specializations">
+			<div class="specs">
 				@foreach (var spec in playerClass.Specs)
 				{
-					<li class="spec">
-						<img
-						class="spec-icon"
-						src=@spec.ImageUrl 
-						alt="Icon representation of the specialization." />
+					<img
+					class="spec-icon"
+					src=@spec.ImageUrl 
+					alt="Icon representation of the specialization." />
 
-						<h2 class="spec-name">
-							@(spec.Name + ":")
-						</h2>
+					<h2 class="spec-name">
+						@(spec.Name + ":")
+					</h2>
 
-						<partial name="_DemandPartial" model="spec.Demand" />
-					</li>
+					<partial name="_DemandPartial" model="spec.Demand" />
 				}
-			</ul>
+			</div>
 		</article>
 	}
 </section>
