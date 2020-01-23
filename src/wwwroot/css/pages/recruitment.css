@@ -39,13 +39,13 @@
 		padding: 20px;
 		display: grid;
 		grid-template-columns: 1;
-		grid-template-rows: auto 1fr;		
+		grid-template-rows: 96px 1fr;		
 	}
 
 	.card-title {
 		grid-row: 1;
 		display: grid;
-		grid-template-columns: 1fr auto;
+		grid-template-columns: 1fr 96px;
 		place-items: center;
 	}
 
