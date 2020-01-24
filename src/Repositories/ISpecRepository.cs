@@ -7,6 +7,6 @@ namespace AscendedGuild.Models
 	{
 		IEnumerable<Spec> AllSpecs { get; }
 
-		void UpdateSpec(Guid specId, DemandEnum newDemand);
+		void UpdateSpec(int specId, DemandEnum newDemand);
 	}
 }

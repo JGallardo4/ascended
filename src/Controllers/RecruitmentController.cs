@@ -35,7 +35,7 @@ namespace AscendedGuild.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				_specRepository.UpdateSpec(model);
+				//_specRepository.UpdateSpec(model);
 				return RedirectToAction("Index");
 			}
 
