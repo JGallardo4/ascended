@@ -17,7 +17,7 @@ namespace AscendedGuild.Models
 
 		public void UpdateSpec(int specId, DemandEnum newDemand)
 		{
-			var spec = _appDbContext.Specs.SingleOrDefault(s => s.SpecId == specId);
+			var spec = _appDbContext.Specs.SingleOrDefault(s => s.Id == specId);
 
 			if (spec != null && spec.Demand != newDemand)
 			{

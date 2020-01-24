@@ -6,7 +6,7 @@ namespace AscendedGuild.Models
 	[Owned]
 	public class Spec
 	{
-		public int SpecId { get; set; }
+		public int Id { get; set; }
 		public string ImageUrl { get; set; }
 		public string Name { get; set; }		
 		public DemandEnum Demand { get; set; }
