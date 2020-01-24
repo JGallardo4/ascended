@@ -1,77 +1,99 @@
-#class-grid {
-	text-transform: uppercase;
-}
-
-.class-card {
-	border: solid;
-	border-width: 2px;
-	border-color: var(--purple);
-}
-
 /* class-grid style */
 	#class-grid {
-		width: auto;
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr));
-		grid-gap: 2vmax;
-		align-items: stretch;
+		text-transform: uppercase;
 	}
 
 	.class-card {
-		padding: 20px;		
-	}
-
-	.card-title {
-		display: flex;
-		align-items: center;
-		font-size: 2rem;
+		border: solid;
+		border-width: 2px;
+		border-color: var(--purple);
 	}
 
 	.class-name {
-		flex-grow: 1;
+		font-size: 2rem;
 	}
 
 	.spec-name {
 		color: white;
-		flex-grow: 1;
 	}
 
 	.class-icon {
 		transform: scale(1.2);
 	}
 
+/* class-grid layout */
+	main {
+		place-self: stretch;
+	}
+
+	#class-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+		grid-template-rows: auto;
+		grid-gap: 20px;
+		place-items: stretch;
+	}
+
+	.class-card {
+		padding: 20px;
+		display: grid;
+		grid-template-rows: auto auto;		
+	}
+
+	.card-title {
+		grid-row: 1;
+		display: grid;
+		grid-template-columns: 1fr 96px;		
+		place-items: center;
+	}
+
+	.specs {
+		grid-row: 2;
+		display: grid;
+		grid-template-columns: 60px 1fr 96px;
+		grid-template-rows: 60px;
+		grid-auto-rows: 60px;
+		grid-auto-flow: row;
+		place-items: center;
+	}
+
 	.spec-icon {
-		transform: scale(0.8);
-		border-radius: 4px;
+		grid-column: 1;
+		justify-self: start;
+		border-radius: 5px;
+		width: 50px;
+		height: auto;
 	}
 
-	.specializations {
-		display: flex;
-		flex-direction: column;
+	.spec-name {
+		grid-column: 2;
+		justify-self: start;
 	}
 
-	.spec {
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
+	.class-name {
+		display: inline-block;
+		justify-self: start;
 	}
-/* End of class-grid style */
+
+	.demand {
+		grid-column: 3;
+	}
+/* End of class-grid layout */
 
 /* Demand colors */
-	#demand--high {
+	#demand--High {
 		color: green;
 	}
 
-	#demand--low {
+	#demand--Low {
 		color: yellow;
 	}
 
-	#demand--closed {
+	#demand--Closed {
 		color: gray;
 	}
 
 /* Player class colors */
-
 	/* Death Knight */
 	#class1 {
 		color: #C41F3B;

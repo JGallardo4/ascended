@@ -351,3 +351,6 @@ MigrationBackup/
 
 # Personal project planning files
 project-planning/
+
+# Migrations
+src/Migrations/

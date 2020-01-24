@@ -1,6 +1,6 @@
 namespace AscendedGuild.Models
 {
-	public enum Demand
+	public enum DemandEnum
 	{
 		Closed,
 		Low,

@@ -20,9 +20,9 @@ namespace AscendedGuild.Models
 			get
 			{
 				return Specs.Exists(s => 
-					s.Demand == Demand.Low 
+					s.Demand == DemandEnum.Low 
 					|| 
-					s.Demand == Demand.High);
+					s.Demand == DemandEnum.High);
 			}
 		}
 	}
