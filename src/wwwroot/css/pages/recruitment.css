@@ -20,18 +20,34 @@
 	.class-icon {
 		transform: scale(1.2);
 	}
+/* End class-grid style */
+
+/* apply style */
+.apply {
+	padding: 20px;
+	color: white;
+	font-size: large;
+	text-align: center;
+}
 
 /* class-grid layout */
 	main {
+		display: grid;
+		grid-auto-rows: auto auto;
 		place-self: stretch;
 	}
 
 	#class-grid {
+		grid-row: 1;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
 		grid-template-rows: auto;
 		grid-gap: 20px;
 		place-items: stretch;
+	}
+
+	.apply {
+		grid-row: 2;
 	}
 
 	.class-card {
