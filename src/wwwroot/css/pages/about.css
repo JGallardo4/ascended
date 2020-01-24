@@ -1,0 +1,31 @@
+.about-us {
+  color: white;
+  font-size: 18pt;
+  line-height: 180%;
+}
+
+.about-us p, ul {
+  padding-bottom: 20px;
+}
+
+.about-us p {
+  text-indent: 4em;
+}
+
+.about-us h2 {
+  font-size: 20pt;
+}
+
+.about-us__logo {
+  float: left;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.edit-about-us {
+  width: 100%;
+}
+
+.nicEdit-main, .nicEdit-panelContain {
+  width: 100%;
+}
