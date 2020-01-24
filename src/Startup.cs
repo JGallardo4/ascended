@@ -36,6 +36,7 @@ namespace AscendedGuild
 			services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
 
 			services.AddScoped<IPlayerClassRepository, PlayerClassRepository>();
+			services.AddScoped<ISpecRepository, SpecRepository>();
 			
 			services.AddHttpContextAccessor();
 			services.AddControllersWithViews();
