@@ -9,7 +9,7 @@ namespace AscendedGuild.Models
 			Specs = new List<Spec>();
 		}
 
-		public int PlayerClassId { get; set; }
+		public int Id { get; set; }
 		public string ImageUrl { get; set; }
 		public string Name { get; set; }
 

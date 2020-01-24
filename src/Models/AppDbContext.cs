@@ -22,84 +22,84 @@ namespace AscendedGuild.Models
 			// Seed Player Classes
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 1,
+				Id = 1,
 				ImageUrl = "/images/class-icons/dk.png",
 				Name = "Death Knight"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 2,
+				Id = 2,
 				ImageUrl = "/images/class-icons/mage.png",
 				Name = "Mage"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 3,
+				Id = 3,
 				ImageUrl = "/images/class-icons/rogue.png",
 				Name = "Rogue"		
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 4,
+				Id = 4,
 				ImageUrl = "/images/class-icons/dh.png",
 				Name = "Demon Hunter"				
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 5,
+				Id = 5,
 				ImageUrl = "/images/class-icons/monk.png",
 				Name = "Monk"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 6,
+				Id = 6,
 				ImageUrl = "/images/class-icons/shaman.png",
 				Name = "Shaman"				
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 7,
+				Id = 7,
 				ImageUrl = "/images/class-icons/druid.png",
 				Name = "Druid"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 8,
+				Id = 8,
 				ImageUrl = "/images/class-icons/paladin.png",
 				Name = "Paladin"
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 9,
+				Id = 9,
 				ImageUrl = "/images/class-icons/warlock.png",
 				Name = "Warlock"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 10,
+				Id = 10,
 				ImageUrl = "/images/class-icons/hunter.png",
 				Name = "Hunter"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 11,
+				Id = 11,
 				ImageUrl = "/images/class-icons/priest.png",
 				Name = "Priest"		
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				PlayerClassId = 12,
+				Id = 12,
 				ImageUrl = "/images/class-icons/warrior.png",
 				Name = "Warrior"			
 			});
