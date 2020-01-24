@@ -1,4 +1,8 @@
+@using Microsoft.AspNetCore.Identity
+
 @model RecruitmentViewModel
+
+@inject SignInManager<IdentityUser> SignInManager
 
 @section Style {
 	<link rel="stylesheet"
@@ -34,7 +38,24 @@
 						@(spec.Name + ":")
 					</h2>
 
-					<partial name="_DemandPartial" model="spec.Demand" />
+					<h2 class="demand" id=@("demand--" + spec.Demand.ToString("F"))>
+						@spec.Demand.ToString("F")
+					</h2>			
+
+					<form asp-controller="Recruitment" asp-action="Index" method="post" class="demand">
+						<input type="hidden" asp-for="@spec.SpecId" />
+
+						<select
+						asp-for="@spec.Demand"
+						asp-items="Html.GetEnumSelectList<DemandEnum>()">
+						</select>
+
+						<button type="submit">Save</button>
+					</form>
+
+					@if (SignInManager.IsSignedIn(User))
+					{
+					}				
 				}
 			</div>
 		</article>
