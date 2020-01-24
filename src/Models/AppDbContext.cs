@@ -24,96 +24,84 @@ namespace AscendedGuild.Models
 			{
 				PlayerClassId = 1,
 				ImageUrl = "/images/class-icons/dk.png",
-				Name = "Death Knight",
-				Specs = new List<Spec>(),
+				Name = "Death Knight"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 2,
 				ImageUrl = "/images/class-icons/mage.png",
-				Name = "Mage",
-				Specs = new List<Spec>(),
+				Name = "Mage"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 3,
 				ImageUrl = "/images/class-icons/rogue.png",
-				Name = "Rogue",
-				Specs = new List<Spec>(),
+				Name = "Rogue"		
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 4,
 				ImageUrl = "/images/class-icons/dh.png",
-				Name = "Demon Hunter",
-				Specs = new List<Spec>(),
+				Name = "Demon Hunter"				
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 5,
 				ImageUrl = "/images/class-icons/monk.png",
-				Name = "Monk",
-				Specs = new List<Spec>(),
+				Name = "Monk"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 6,
 				ImageUrl = "/images/class-icons/shaman.png",
-				Name = "Shaman",
-				Specs = new List<Spec>(),
+				Name = "Shaman"				
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 7,
 				ImageUrl = "/images/class-icons/druid.png",
-				Name = "Druid",
-				Specs = new List<Spec>(),
+				Name = "Druid"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 8,
 				ImageUrl = "/images/class-icons/paladin.png",
-				Name = "Paladin",
-				Specs = new List<Spec>(),
+				Name = "Paladin"
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 9,
 				ImageUrl = "/images/class-icons/warlock.png",
-				Name = "Warlock",
-				Specs = new List<Spec>(),
+				Name = "Warlock"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 10,
 				ImageUrl = "/images/class-icons/hunter.png",
-				Name = "Hunter",
-				Specs = new List<Spec>(),
+				Name = "Hunter"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 11,
 				ImageUrl = "/images/class-icons/priest.png",
-				Name = "Priest",
-				Specs = new List<Spec>(),
+				Name = "Priest"		
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
 				PlayerClassId = 12,
 				ImageUrl = "/images/class-icons/warrior.png",
-				Name = "Warrior",
-				Specs = new List<Spec>(),
+				Name = "Warrior"			
 			});
 
 			// Seed Specializations

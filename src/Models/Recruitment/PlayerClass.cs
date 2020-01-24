@@ -4,6 +4,11 @@ namespace AscendedGuild.Models
 {
 	public class PlayerClass
 	{
+		public PlayerClass()
+		{
+			Specs = new List<Spec>();
+		}
+
 		public int PlayerClassId { get; set; }
 		public string ImageUrl { get; set; }
 		public string Name { get; set; }
