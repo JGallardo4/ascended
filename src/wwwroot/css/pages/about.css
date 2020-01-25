@@ -8,6 +8,10 @@
   padding-bottom: 20px;
 }
 
+.about-us li {
+	text-indent: 8em;
+}
+
 .about-us p {
   text-indent: 4em;
 }
@@ -17,7 +21,7 @@
 }
 
 .about-us__logo {
-  float: left;
+  float: right;
   padding-right: 20px;
   padding-bottom: 20px;
 }
