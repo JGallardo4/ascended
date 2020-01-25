@@ -24,10 +24,22 @@
 
 /* apply style */
 .apply {
-	padding: 20px;
+	padding-bottom: 30px;
 	color: white;
-	font-size: large;
+	font-size: 2rem;
 	text-align: center;
+}
+
+.apply a {
+	padding-bottom: 2px;
+}
+
+.apply a:hover {
+	/* Trick to add underline with custom offset */
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+
+	cursor: pointer;
 }
 
 /* class-grid layout */
@@ -36,19 +48,19 @@
 		grid-auto-rows: auto auto;
 		place-self: stretch;
 	}
+	
+	.apply {
+		grid-row: 1;
+	}
 
 	#class-grid {
-		grid-row: 1;
+		grid-row: 2;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
 		grid-template-rows: auto;
 		grid-gap: 20px;
 		place-items: stretch;
-	}
-
-	.apply {
-		grid-row: 2;
-	}
+	}	
 
 	.class-card {
 		padding: 20px;
