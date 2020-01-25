@@ -2,7 +2,9 @@ body {
 	height: 100vh;
 }
 
-.splash {	
+.splash {
+	height: 100%;
+
 	background-image: 
 		url(/images/logo.png),
 		url(/images/bg.jpg);		
