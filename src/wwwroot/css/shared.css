@@ -15,6 +15,13 @@ body {
 /* Fonts */
 body {
 	font-family: Myriad;
+	letter-spacing: 0.15em;
+	line-height: 180%;
+}
+
+.navbar {
+	text-transform: uppercase;
+	font-size: 1rem;
 }
 
 /* Layout */
@@ -58,16 +65,13 @@ main {
  * Draw menu horizontally
  */
 .navbar {
-	display: flex;
-	text-transform: uppercase;
+	display: flex;	
 	align-items: center;
 	justify-content: flex-end;
 }
 
 /* Animated underline for navbar */
 .navbar a { 
-  text-decoration: none;
-  letter-spacing: 0.15em;  
   display: inline-block;
 	position: relative;
 	padding: 0.5rem 0;
