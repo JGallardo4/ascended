@@ -25,10 +25,7 @@
   padding-bottom: 20px;
 }
 
-.edit-about-us {
-  width: 100%;
-}
-
-.nicEdit-main, .nicEdit-panelContain {
-  width: 100%;
+.edit-about-us textarea {
+	width: 100%;
+	height: 50vh;
 }
