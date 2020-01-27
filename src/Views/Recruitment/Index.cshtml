@@ -42,6 +42,7 @@
 						@spec.Demand.ToString("F")
 					</h2>			
 
+					<!-- Add conditional if logged in -->
 					<form asp-controller="Recruitment" asp-action="Index" method="post" class="demand">
 						<input type="hidden" asp-for="@spec.Id" />
 
