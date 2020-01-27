@@ -22,8 +22,7 @@ namespace AscendedGuild
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
-		{
-			
+		{			
 			services.AddDbContextPool<AppDbContext>(x => x
         .UseMySql(Configuration.GetConnectionString("DefaultConnection"),
           mySqlOptions => 
@@ -32,15 +31,23 @@ namespace AscendedGuild
               .ServerVersion(new Version(10, 4, 11), ServerType.MariaDb);
           })
       );
-
-			services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
-
+			
 			services.AddScoped<IPlayerClassRepository, PlayerClassRepository>();
 			services.AddScoped<ISpecRepository, SpecRepository>();
-			
+
+			services.AddDefaultIdentity<IdentityUser>()
+				.AddRoles<IdentityRole>()
+				.AddEntityFrameworkStores<AppDbContext>();
+
 			services.AddHttpContextAccessor();
 			services.AddControllersWithViews();
 			services.AddRazorPages();
+
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy("RequireAdministratorRole",
+					policy => policy.RequireRole("Administrator"));
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
