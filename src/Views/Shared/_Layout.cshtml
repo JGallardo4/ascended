@@ -72,6 +72,17 @@
 			@if (User.IsInRole("Administrator"))
 			{
 				<li>Admin mode: on</li>
+
+				<li class="nav-item">
+					<form 
+					asp-area="Identity" 
+					asp-page="/Account/Logout" 
+					asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+						<button id="logout" type="submit">
+							Logout
+						</button>
+					</form>
+				</li>
 			}
 		</ul>
 	</header>
