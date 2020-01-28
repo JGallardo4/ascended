@@ -68,6 +68,11 @@
 					Recruitment
 				</a>
 			</li>
+
+			@if (User.IsInRole("Administrator"))
+			{
+				<li>Admin mode: on</li>
+			}
 		</ul>
 	</header>
 	<main>
