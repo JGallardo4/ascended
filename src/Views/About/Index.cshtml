@@ -63,4 +63,7 @@
 	</ul>
 </article>
 
-<partial name="_AboutUsPartial">
+@if (User.IsInRole("Administrator"))
+{
+	<textarea name="about-us-input" id="about-us-input"></textarea>
+}
