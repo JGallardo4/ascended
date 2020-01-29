@@ -4,21 +4,28 @@ label {
 }
 
 /* Layout */
+body {
+	height: 100vh;
+}
+
 main {
 	display: grid;
 	place-items: center;
 }
 
 #login {
-	width: 230px;
+	width: 230px;	
 }
 
 .form-control {
 	width: 100%;
 }
 
-#submit {
-	padding: 10px;
+.form-group {
+	padding: 20px;
+}
+
+#submit {	
 	display: flex;
 	justify-content: center;
 }

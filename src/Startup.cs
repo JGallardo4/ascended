@@ -34,6 +34,7 @@ namespace AscendedGuild
 			
 			services.AddScoped<IPlayerClassRepository, PlayerClassRepository>();
 			services.AddScoped<ISpecRepository, SpecRepository>();
+			services.AddScoped<ITwitchStreamerRepository, TwitchStreamerRepository>();
 
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppDbContext>();

@@ -16,12 +16,14 @@ namespace AscendedGuild.Models
 
 		public void AddTwitchStreamer(TwitchStreamer streamer)
 		{
-			throw new System.NotImplementedException();
+			_appDbContext.TwitchStreamers.Add(streamer);
+			_appDbContext.SaveChanges();
 		}
 
 		public void RemoveTwitchStreamer(TwitchStreamer streamer)
 		{
-			throw new System.NotImplementedException();
+			_appDbContext.TwitchStreamers.Remove(streamer);
+			_appDbContext.SaveChanges();
 		}
 	}
 }

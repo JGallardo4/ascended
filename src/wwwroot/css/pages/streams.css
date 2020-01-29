@@ -1,0 +1,18 @@
+/* Colors */
+h2 {
+	color: white;
+}
+
+label {
+	color: white;
+}
+
+/* Layout */
+body {
+	height: 100vh;
+}
+
+main {
+	display: grid;
+	grid-template-rows: repeat(auto);
+}
