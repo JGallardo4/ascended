@@ -6,21 +6,12 @@ namespace AscendedGuild.Models
 	public class PlayerClass
 	{
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int Id { get; set; }
+		public int PlayerClassId { get; set; }
 
 		public string ImageUrl { get; set; }
-
 		public string Name { get; set; }
 
-		// Specializations of the class
-		// that may each be in a number
-		// of states of demand.	
-		public List<Spec> Specs { get; set; }
-
-		public PlayerClass()
-		{
-			Specs = new List<Spec>();
-		}
+		public virtual List<Spec> Specs { get; set; }
 
 		// Returns true if any of the class'
 		// specs are in any demand.

@@ -17,410 +17,429 @@ namespace AscendedGuild.Models
 		{
 			base.OnModelCreating(modelBuilder);
 
+			modelBuilder.Entity<PlayerClass>()
+				.HasMany(p => p.Specs)
+				.WithOne(c => c.PlayerClass)
+				.HasForeignKey(c => c.PlayerClassId);
+
+			modelBuilder.Entity<Spec>()
+				.HasOne(s => s.PlayerClass)
+				.WithMany(p => p.Specs)
+				.HasForeignKey(c => c.PlayerClassId);
+
+			modelBuilder.Entity<TwitchStreamer>()
+				.HasOne(t => t.ClassAndSpec);
+
+			modelBuilder.Entity<ClassAndSpec>()
+				.HasOne(c => c.PlayerClass);
+
+			modelBuilder.Entity<ClassAndSpec>()
+				.HasOne(c => c.Spec);
+
 			// Seed Player Classes
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 1,
+				PlayerClassId = 1,
 				ImageUrl = "/images/class-icons/dk.png",
 				Name = "Death Knight"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 2,
+				PlayerClassId = 2,
 				ImageUrl = "/images/class-icons/mage.png",
 				Name = "Mage"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 3,
+				PlayerClassId = 3,
 				ImageUrl = "/images/class-icons/rogue.png",
 				Name = "Rogue"		
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 4,
+				PlayerClassId = 4,
 				ImageUrl = "/images/class-icons/dh.png",
 				Name = "Demon Hunter"				
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 5,
+				PlayerClassId = 5,
 				ImageUrl = "/images/class-icons/monk.png",
 				Name = "Monk"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 6,
+				PlayerClassId = 6,
 				ImageUrl = "/images/class-icons/shaman.png",
 				Name = "Shaman"				
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 7,
+				PlayerClassId = 7,
 				ImageUrl = "/images/class-icons/druid.png",
 				Name = "Druid"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 8,
+				PlayerClassId = 8,
 				ImageUrl = "/images/class-icons/paladin.png",
 				Name = "Paladin"
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 9,
+				PlayerClassId = 9,
 				ImageUrl = "/images/class-icons/warlock.png",
 				Name = "Warlock"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 10,
+				PlayerClassId = 10,
 				ImageUrl = "/images/class-icons/hunter.png",
 				Name = "Hunter"			
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 11,
+				PlayerClassId = 11,
 				ImageUrl = "/images/class-icons/priest.png",
 				Name = "Priest"		
 			});
 
 			modelBuilder.Entity<PlayerClass>().HasData(new PlayerClass
 			{
-				Id = 12,
+				PlayerClassId = 12,
 				ImageUrl = "/images/class-icons/warrior.png",
 				Name = "Warrior"			
 			});
 
 			// Seed Specializations
-			modelBuilder.Entity<PlayerClass>().OwnsMany(c => c.Specs).HasData(
-				new {
+			modelBuilder.Entity<Spec>().HasData(
+				new Spec() {
 				PlayerClassId = 1,
-				Id = 1,
+				SpecId = 1,
 				ImageUrl = "/images/class-icons/dk-blood.jpg",
 				Demand = DemandEnum.Closed,
 				Name = "Blood"
 				},
 
-				new {
+				new Spec() {
 				PlayerClassId = 1,
-				Id = 2,
+				SpecId = 2,
 				ImageUrl = "/images/class-icons/dk-frost.jpg",
 				Demand = DemandEnum.Closed,
 				Name = "Frost"
 				},
 				
-				new
+				new Spec()
 				{
 					PlayerClassId = 1,
-					Id = 3,					
+					SpecId = 3,					
 					ImageUrl = "/images/class-icons/dk-unholy.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Unholy"
 				},
 				
-				new
+				new Spec()
 				{
 					PlayerClassId = 2,
-					Id = 4,
+					SpecId = 4,
 					ImageUrl = "/images/class-icons/mage-arcane.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Arcane"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 2,
-					Id = 5,
+					SpecId = 5,
 					ImageUrl = "/images/class-icons/mage-fire.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Fire"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 2,
-					Id = 6,
+					SpecId = 6,
 					ImageUrl = "/images/class-icons/mage-frost.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Frost"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 3,
-					Id = 7,
+					SpecId = 7,
 					ImageUrl = "/images/class-icons/rogue-assassination.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Assassination"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 3,
-					Id = 8,
+					SpecId = 8,
 					ImageUrl = "/images/class-icons/rogue-outlaw.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Outlaw"
 				},
 				
-				new
+				new Spec()
 				{
 					PlayerClassId = 3,
-					Id = 9,
+					SpecId = 9,
 					ImageUrl = "/images/class-icons/rogue-subtlety.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Subtlety"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 4,
-					Id = 10,
+					SpecId = 10,
 					ImageUrl = "/images/class-icons/dh-havoc.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Havoc"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 4,
-					Id = 11,
+					SpecId = 11,
 					ImageUrl = "/images/class-icons/dh-vengeance.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Vengeance"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 5,
-					Id = 12,
+					SpecId = 12,
 					ImageUrl = "/images/class-icons/monk-brewmaster.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Brewmaster"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 5,
-					Id = 13,
+					SpecId = 13,
 					ImageUrl = "/images/class-icons/monk-mistweaver.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Mistweaver"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 5,
-					Id = 14,
+					SpecId = 14,
 					ImageUrl = "/images/class-icons/monk-windwalker.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Windwalker"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 6,
-					Id = 15,
+					SpecId = 15,
 					ImageUrl = "/images/class-icons/shaman-elemental.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Elemental"
 				},
 				
-				new
+				new Spec()
 				{
 					PlayerClassId = 6,
-					Id = 16,
+					SpecId = 16,
 					ImageUrl = "/images/class-icons/shaman-enhancement.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Enhancement"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 6,
-					Id = 17,
+					SpecId = 17,
 					ImageUrl = "/images/class-icons/shaman-restoration.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Restoration"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 7,
-					Id = 18,
+					SpecId = 18,
 					ImageUrl = "/images/class-icons/druid-balance.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Balance"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 7,
-					Id = 19,
+					SpecId = 19,
 					ImageUrl = "/images/class-icons/druid-feral.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Feral"
 				},
 				
-				new
+				new Spec()
 				{
 					PlayerClassId = 7,
-					Id = 20,
+					SpecId = 20,
 					ImageUrl = "/images/class-icons/druid-guardian.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Guardian"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 7,
-					Id = 21,
+					SpecId = 21,
 					ImageUrl = "/images/class-icons/druid-restoration.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Restoration"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 8,
-					Id = 22,
+					SpecId = 22,
 					ImageUrl = "/images/class-icons/paladin-holy.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Holy"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 8,
-					Id = 23,
+					SpecId = 23,
 					ImageUrl = "/images/class-icons/paladin-protection.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Protection"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 8,
-					Id = 24,
+					SpecId = 24,
 					ImageUrl = "/images/class-icons/paladin-retribution.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Retribution"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 9,
-					Id = 25,
+					SpecId = 25,
 					ImageUrl = "/images/class-icons/warlock-affliction.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Affliction"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 9,
-					Id = 26,
+					SpecId = 26,
 					ImageUrl = "/images/class-icons/warlock-demonology.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Demonology"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 9,
-					Id = 27,
+					SpecId = 27,
 					ImageUrl = "/images/class-icons/warlock-destruction.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Destruction"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 10,
-					Id = 28,
+					SpecId = 28,
 					ImageUrl = "/images/class-icons/hunter-bm.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Beast Mastery"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 10,
-					Id = 29,
+					SpecId = 29,
 					ImageUrl = "/images/class-icons/hunter-marksmanship.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Marksmanship"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 10,
-					Id = 30,
+					SpecId = 30,
 					ImageUrl = "/images/class-icons/hunter-survival.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Survival"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 11,
-					Id = 31,
+					SpecId = 31,
 					ImageUrl = "/images/class-icons/priest-discipline.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Discipline"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 11,
-					Id = 32,
+					SpecId = 32,
 					ImageUrl = "/images/class-icons/priest-holy.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Holy"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 11,
-					Id = 33,
+					SpecId = 33,
 					ImageUrl = "/images/class-icons/priest-shadow.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Shadow"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 12,
-					Id = 34,
+					SpecId = 34,
 					ImageUrl = "/images/class-icons/warrior-arms.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Arms"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 12,
-					Id = 35,
+					SpecId = 35,
 					ImageUrl = "/images/class-icons/warrior-fury.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Fury"
 				},
 
-				new
+				new Spec()
 				{
 					PlayerClassId = 12,
-					Id = 36,
+					SpecId = 36,
 					ImageUrl = "/images/class-icons/warrior-protection.jpg",
 					Demand = DemandEnum.Closed,
 					Name = "Protection"

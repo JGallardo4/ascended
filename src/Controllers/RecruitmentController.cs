@@ -5,19 +5,17 @@ namespace AscendedGuild.Controllers
 {
 	public class RecruitmentController : Controller
 	{
-		private readonly IPlayerClassRepository _playerClassRepository;
-		private readonly ISpecRepository _specRepository;
+		private readonly AppDbContext _appDbContext;
 
-		public RecruitmentController(IPlayerClassRepository playerClassRepository, ISpecRepository specRepository)
+		public RecruitmentController(AppDbContext appDbContext)
 		{
-			_playerClassRepository = playerClassRepository;
-			_specRepository = specRepository;
+			_appDbContext = appDbContext;
 		}
 
 		public IActionResult Index()
 		{
-			var playerClasses = _playerClassRepository.AllPlayerClasses;
-			var allSpecs = _specRepository.AllSpecs;
+			var playerClasses = _appDbContext.PlayerClasses;
+			var allSpecs = _appDbContext.Specs;
 
 			return View(
 				new RecruitmentViewModel

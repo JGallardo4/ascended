@@ -6,20 +6,16 @@ namespace AscendedGuild.Controllers
 {
 	public class StreamsController : Controller
 	{
-		private readonly ITwitchStreamerRepository _twitchStreamerRepository;
 		private readonly AppDbContext _appDbContext;
 
-		public StreamsController(
-			ITwitchStreamerRepository twitchStreamerRepository,
-			AppDbContext appDbContext)
+		public StreamsController(AppDbContext appDbContext)
 		{
-			_twitchStreamerRepository = twitchStreamerRepository;
 			_appDbContext = appDbContext;
 		}
 		
 		public IActionResult Index()
 		{
-			var allStreamers = _twitchStreamerRepository.AllTwitchStreamers;
+			var allStreamers = _appDbContext.TwitchStreamers;
 		
 			return View(
 				new StreamsViewModel()
@@ -55,7 +51,8 @@ namespace AscendedGuild.Controllers
 						}		
 				};
 			
-			_twitchStreamerRepository.AddTwitchStreamer(newStreamer);
+			_appDbContext.TwitchStreamers.Add(newStreamer);
+			_appDbContext.SaveChanges();
 
 			return View();
 		}

@@ -5,12 +5,12 @@ namespace AscendedGuild.Models
 	public class ClassAndSpec
 	{
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int Id { get; set; }
+		public int ClassAndSpecId { get; set; }
 
-		[NotMapped]
+		public int PlayerClassId { get; set; }		
 		public PlayerClass PlayerClass { get; set; }
-
-		[NotMapped]
+		
+		public int SpecId { get; set; }		
 		public Spec Spec { get; set; }
 	}
 }

@@ -17,7 +17,7 @@
 	{
 		<article class="class-card">
 			<div class="card-title">
-				<h2 class="class-name" id=@("class" + playerClass.Id)>
+				<h2 class="class-name" id=@("class" + playerClass.PlayerClassId)>
 					@playerClass.Name
 				</h2>
 				
@@ -47,7 +47,7 @@
 					@if (User.IsInRole("Administrator"))
 					{
 						<form asp-controller="Recruitment" asp-action="Index" method="post" class="demand">
-							<input type="hidden" asp-for="@spec.Id" />
+							<input type="hidden" asp-for="@spec.SpecId" />
 
 							<select
 							asp-for="@spec.Demand"

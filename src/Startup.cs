@@ -31,10 +31,6 @@ namespace AscendedGuild
               .ServerVersion(new Version(10, 4, 11), ServerType.MariaDb);
           })
       );
-			
-			services.AddScoped<IPlayerClassRepository, PlayerClassRepository>();
-			services.AddScoped<ISpecRepository, SpecRepository>();
-			services.AddScoped<ITwitchStreamerRepository, TwitchStreamerRepository>();
 
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppDbContext>();
