@@ -1,27 +1,24 @@
-main {
-	padding-top: 20px;
-	display: flex;
-	justify-content: center;
-}
-
-.form-group {
-	padding: 10px 0;
-	display: flex;
-	justify-content: space-between;
-}
-
-.form-control {
-	width: 300px;
-}
-
-#login {
-	width: 500px;
-}
-
+/* Color */
 label {
 	color: white;
 }
 
+/* Layout */
+main {
+	display: grid;
+	place-items: center;
+}
+
+#login {
+	width: 230px;
+}
+
+.form-control {
+	width: 100%;
+}
+
 #submit {
+	padding: 10px;
+	display: flex;
 	justify-content: center;
 }
