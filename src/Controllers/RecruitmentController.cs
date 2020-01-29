@@ -1,4 +1,3 @@
-using System.Linq;
 using AscendedGuild.Models;
 using Microsoft.AspNetCore.Mvc;
 

@@ -71,9 +71,9 @@
 
 			@if (User.IsInRole("Administrator"))
 			{
-				<li>Admin mode: on</li>
-
 				<li class="nav-item">
+					<p>Admin mode: on<p>
+				
 					<form 
 					asp-area="Identity" 
 					asp-page="/Account/Logout" 
