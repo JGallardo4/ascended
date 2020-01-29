@@ -12,6 +12,7 @@ namespace AscendedGuild.Models
 
 		public DbSet<PlayerClass> PlayerClasses { get; set; }
 		public DbSet<Spec> Specs { get; set; }
+		public DbSet<TwitchStreamer> TwitchStreamers { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
