@@ -75,9 +75,10 @@
 					<p>Admin mode: on<p>
 				
 					<form 
-					asp-area="Identity" 
-					asp-page="/Account/Logout" 
-					asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+					asp-area=""
+					asp-controller="Account"
+					asp-action="Logout"
+					method="post">
 						<button id="logout" type="submit">
 							Logout
 						</button>
