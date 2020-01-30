@@ -38,12 +38,6 @@ body {
 	margin-bottom: 20px;
 }
 
-.create-streamer-link {
-	display: block;
-	width: 100%;
-	text-align: center;
-}
-
 .twitch-card__title {
 	display: flex;
 	align-items: center;
@@ -108,17 +102,19 @@ body {
 /* End reactive iframe */
 
 /* Add a streamer style */
-.create-streamer-link {
-	padding-bottom: 30px;
-	font-size: 2rem;
-	text-align: center;
+.create {
+	height: 45px;
+	display: grid;
+	place-items: center;
+	font-size: 2rem;	
 }
 
-.create-streamer-link a {
+.create-link {
+	text-align: center;
 	padding-bottom: 2px;
 }
 
-.create-streamer-link:hover {
+.create-link:hover {
 	/* Trick to add underline with custom offset */
 	border-bottom-width: 2px;
 	border-bottom-style: solid;

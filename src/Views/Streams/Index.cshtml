@@ -18,11 +18,11 @@
 <!-- Link to create new streamer only available to admin -->
 @if (User.IsInRole("Administrator"))
 {	
-	<div>
+	<div class="create">
 		<a 
 		asp-controller="Streams" 
 		asp-action="Create"
-		class="create-streamer-link">
+		class="create-link">
 			Add a new Streamer
 		</a>	
 	</div>		
