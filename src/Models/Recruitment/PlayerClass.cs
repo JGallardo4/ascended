@@ -11,7 +11,7 @@ namespace AscendedGuild.Models
 		public string ImageUrl { get; set; }
 		public string Name { get; set; }
 
-		public virtual List<Spec> Specs { get; set; }
+		public List<Spec> Specs { get; set; }
 
 		// Returns true if any of the class'
 		// specs are in any demand.

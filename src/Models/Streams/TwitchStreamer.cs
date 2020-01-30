@@ -11,9 +11,12 @@ namespace AscendedGuild.Models
 		
 		public string GuildRank { get; set; }
 		
-		public string CharacterName { get; set; }	
+		public string CharacterName { get; set; }
 
-		public int ClassAndSpecId { get; set; }
-		public ClassAndSpec ClassAndSpec { get; set; }
+		public int PlayerClassId { get; set; }
+		public PlayerClass PlayerClass { get; set; }
+
+		public int SpecId { get; set; }
+		public Spec Spec { get; set; }
 	}
 }

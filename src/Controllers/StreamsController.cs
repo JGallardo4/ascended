@@ -48,20 +48,16 @@ namespace AscendedGuild.Controllers
 					{
 						Channel = model.Channel,
 						GuildRank = model.GuildRank,
-						CharacterName = model.CharacterName,
-						ClassAndSpec = 
-							new ClassAndSpec()
-							{
-								PlayerClass = playerClass,
-								Spec = spec
-							}		
+						CharacterName = model.CharacterName,						
+						PlayerClass = playerClass,
+						Spec = spec						
 					};
 				
 				_appDbContext.TwitchStreamers.Add(newStreamer);
 				_appDbContext.SaveChanges();
 			}
 
-			return RedirectToAction("streams", "index");
+			return RedirectToAction("Index", "Streams");
 		}
 	}
 }
