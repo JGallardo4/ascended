@@ -1,5 +1,6 @@
 using AscendedGuild.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AscendedGuild.Controllers
 {
@@ -13,17 +14,16 @@ namespace AscendedGuild.Controllers
 		}
 
 		public IActionResult Index()
-		{
-			var playerClasses = _appDbContext.PlayerClasses;
-			var allSpecs = _appDbContext.Specs;
-
-			return View(
+		{		
+			var model = 
 				new RecruitmentViewModel
 				{
-					PlayerClasses = playerClasses,
-					AllSpecs = allSpecs
-				}
-			);
+					PlayerClasses = 
+						_appDbContext.PlayerClasses
+							.Include(p => p.Specs)
+				};
+
+			return View(model);
 		}
 
 		[HttpPost]
