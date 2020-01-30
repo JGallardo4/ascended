@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using AscendedGuild.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace AscendedGuild.Controllers
 {
@@ -18,7 +19,9 @@ namespace AscendedGuild.Controllers
 			var model = 
 				new StreamsViewModel()
 				{
-					AllTwitchStreamers = _appDbContext.TwitchStreamers					
+					AllTwitchStreamers = _appDbContext.TwitchStreamers
+						.Include(t => t.PlayerClass)
+						.Include(t => t.Spec)
 				};
 
 			return View(model);
