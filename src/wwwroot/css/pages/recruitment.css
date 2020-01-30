@@ -41,6 +41,17 @@
 	cursor: pointer;
 }
 
+/* Submit style */
+.submit {
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.submit button {
+	height: 2rem;	
+}
+
 /* class-grid layout */
 	main {
 		display: grid;

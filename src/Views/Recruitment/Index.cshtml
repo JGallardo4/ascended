@@ -12,15 +12,27 @@
 		href="/css/pages/recruitment.css" />
 }
 
-<section class="apply">
-	<a
-	target="_blank" 
-	rel="noopener noreferrer"
-	class="apply__button"
-	href="https://forms.gle/7ZDWePMVqoagR7Sy8">
-		>APPLY HERE<
-	</a>
-</section>
+<!-- Show apply link to regular visitors -->
+@if (!User.IsInRole("Administrator"))
+{
+	<section class="apply">
+		<a
+		target="_blank" 
+		rel="noopener noreferrer"
+		class="apply__button"
+		href="https://forms.gle/7ZDWePMVqoagR7Sy8">
+			&lt;APPLY HERE&gt;
+		</a>
+	</section>
+}
+
+<!-- The Administrator user can submit the changes made -->
+@if (User.IsInRole("Administrator"))
+{
+	<div class="submit">
+		<button type="submit">Save</button>
+	</div>
+}
 
 <section id="class-grid">
 	@foreach (var playerClass in Model.PlayerClasses)
@@ -62,9 +74,7 @@
 							<select
 							asp-for="@spec.Demand"
 							asp-items="Html.GetEnumSelectList<DemandEnum>()">
-							</select>
-
-							<button type="submit">Save</button>
+							</select>							
 						</form>
 					}			
 				}
