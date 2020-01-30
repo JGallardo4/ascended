@@ -1,10 +1,25 @@
 /* Colors */
-h2 {
-	color: white;
+.twitch-card {
+	border: solid;
+	border-width: 2px;
+	border-color: var(--pink);
 }
 
-label {
-	color: white;
+/* Font */
+.character-and-guildrank {
+	font-size: 20pt;
+}
+
+b {
+	font-weight: bold;
+}
+
+i {
+	font-style: italic;
+}
+
+h2 span {
+	font-size: 16pt;
 }
 
 /* Layout */
@@ -12,7 +27,101 @@ body {
 	height: 100vh;
 }
 
-main {
+.twitch-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.twitch-card {
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.create-streamer-link {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+.twitch-card__title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.character-and-guildrank {
+	flex-grow: 2;
+}
+
+.class-and-spec {
+	text-align: right;
+}
+
+/* Icons */
+.class-icon {
+	transform: scale(1.4);
+}
+
+.class-icon-container {
+	width: 70px;
+	height: 70px;
+	padding: 10px;
+	padding-left: 0;
 	display: grid;
-	grid-template-rows: repeat(auto);
+	place-items: center;
+}
+
+.spec-icon {
+	transform: scale(0.8);
+	transform-origin: center;	
+	border-radius: 5px;
+}
+
+.spec-icon-container {
+	width: 60px;
+	height: 60px;
+	display: grid;
+	place-items: center;
+}
+
+.class-icon, .spec-icon {	
+	width: 50px;
+	height: auto;
+}
+
+/* Reactive Iframe. Aspect ratio is 427 : 240 */
+	.twitch-embed {
+		overflow: hidden;
+		padding-top: 56.21%;
+		position: relative;
+	}
+
+	.twitch-embed iframe {
+		margin: 0;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;	
+	}
+/* End reactive iframe */
+
+/* Add a streamer style */
+.create-streamer-link {
+	padding-bottom: 30px;
+	font-size: 2rem;
+	text-align: center;
+}
+
+.create-streamer-link a {
+	padding-bottom: 2px;
+}
+
+.create-streamer-link:hover {
+	/* Trick to add underline with custom offset */
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+
+	cursor: pointer;
 }

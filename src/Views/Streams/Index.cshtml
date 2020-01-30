@@ -11,19 +11,51 @@
 }
 
 <!-- Load the Twitch embed script -->
-<script src="https://embed.twitch.tv/embed/v1.js"></script>
+<script 
+	src="https://embed.twitch.tv/embed/v1.js">
+</script>
+
+<!-- Link to create new streamer only available to admin -->
+@if (User.IsInRole("Administrator"))
+{	
+	<div>
+		<a 
+		asp-controller="Streams" 
+		asp-action="Create"
+		class="create-streamer-link">
+			Add a new Streamer
+		</a>	
+	</div>		
+}
 
 <section class="twitch-list">
-	<h2>@Model.AllTwitchStreamers.Any()</h2>
 	@foreach (var streamer in Model.AllTwitchStreamers)
 	{
 		<article class="twitch-card">
 			<div class="twitch-card__title">
-				<h2 class="character-name">@streamer.CharacterName</h2>
-				<h2 class="guild-rank">@streamer.GuildRank</h2>
-				<h2 class="player-class">@streamer.PlayerClass.Name</h2>
-				<h2 class="player-spec">@streamer.Spec.Name</h2>
+				<h2 class="character-and-guildrank">
+					<b>@streamer.CharacterName</b>, <span><i>@streamer.GuildRank of</i> &lt;Ascended&gt;</span>						
+				</h2>
+
+				<h2 class="class-and-spec">
+					@(streamer.Spec.Name + " " + streamer.PlayerClass.Name)
+				</h2>
+
+				<div class="spec-icon-container">
+					<img
+					class="spec-icon"
+					src="@streamer.Spec.ImageUrl"
+					alt="Icon representation of the specialization." />
+				</div>
+
+				<div class="class-icon-container">
+					<img
+					class="class-icon"
+					src="@streamer.PlayerClass.ImageUrl" 
+					alt="Icon representation of the player class." />
+				</div>						
 			</div>
+
 			<div class="twitch-embed" id="@streamer.Channel"></div>
 		</article>
 		
@@ -31,20 +63,8 @@
 			within the "twitch-embed" root element. -->
 		<script type="text/javascript">
 			new Twitch.Embed("@streamer.Channel", {
-				width: 854,
-				height: 480,
 				channel: "@streamer.Channel"
 			});
 		</script>
 	}
 </section>
-
-<!-- Link to create new streamer only available to admin -->
-@if (User.IsInRole("Administrator"))
-{	
-	<a 
-	asp-controller="Streams" 
-	asp-action="Create">
-		Add a new Streamer
-	</a>			
-}
