@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AscendedGuild.Models
@@ -12,5 +13,7 @@ namespace AscendedGuild.Models
 		
 		public int SpecId { get; set; }		
 		public Spec Spec { get; set; }
+
+		public ICollection<TwitchStreamer> Streamers { get; set; }
 	}
 }

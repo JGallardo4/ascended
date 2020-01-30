@@ -13,94 +13,38 @@
 <!-- Load the Twitch embed script -->
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-@if (
-	Model.AllTwitchStreamers != null 
-	&& 
-	!Model.AllTwitchStreamers.Any())
-{
-	<section class="twitch-list">
-		@foreach (var streamer in Model.AllTwitchStreamers)
-		{
-			<article class="twitch-card">
-				<div class="twitch-card__title">
-					<h2 class="character-name">@streamer.CharacterName</h2>
-					<h2 class="guild-rank">@streamer.GuildRank</h2>
-					<h2 class="player-class">@streamer.ClassAndSpec.PlayerClass</h2>
-					<h2 class="player-spec">@streamer.ClassAndSpec.Spec</h2>
-				</div>
-				<div class="twitch-embed" id="@streamer.Channel"></div>
-			</article>
-			
-			<!-- Create a Twitch.Embed object that will render 
-				within the "twitch-embed" root element. -->
-			<script type="text/javascript">
-				new Twitch.Embed("@streamer.Channel", {
-					width: 854,
-					height: 480,
-					channel: "@streamer.Channel"
-				});
-			</script>
-		}
-	</section>
-}	
+<section class="twitch-list">
+	<h2>@Model.AllTwitchStreamers.Any()</h2>
+	@foreach (var streamer in Model.AllTwitchStreamers)
+	{
+		<article class="twitch-card">
+			<div class="twitch-card__title">
+				<h2 class="character-name">@streamer.CharacterName</h2>
+				<h2 class="guild-rank">@streamer.GuildRank</h2>
+				<h2 class="player-class">@streamer.ClassAndSpec.PlayerClass.Name</h2>
+				<h2 class="player-spec">@streamer.ClassAndSpec.Spec.Name</h2>
+			</div>
+			<div class="twitch-embed" id="@streamer.Channel"></div>
+		</article>
+		
+		<!-- Create a Twitch.Embed object that will render 
+			within the "twitch-embed" root element. -->
+		<script type="text/javascript">
+			new Twitch.Embed("@streamer.Channel", {
+				width: 854,
+				height: 480,
+				channel: "@streamer.Channel"
+			});
+		</script>
+	}
+</section>
 
-<!-- The Administrator user can add and remove streamers -->
+<!-- Link to create new streamer only available to admin -->
 @if (User.IsInRole("Administrator"))
-{
-	<section class="admin">
-		<h2>Add a new streamer</h2>
-
-		<form 
-			id="new-streamer-form" 
-			method="post">
-			<div class="form-group">
-				<label asp-for="NewStreamer.Channel">
-					Channel name
-				</label>
-				<input 
-					asp-for="NewStreamer.Channel" 
-					class="form-control" />
-			</div>
-
-			<div class="form-group">
-				<label asp-for="NewStreamer.CharacterName">
-					Character name
-				</label>
-				<input 
-					asp-for="NewStreamer.CharacterName" 
-					class="form-control" />
-			</div>
-
-			<div class="form-group">
-				<label asp-for="NewStreamer.GuildRank">
-					Guild rank
-				</label>
-				<input 
-					asp-for="NewStreamer.GuildRank" 
-					class="form-control" />
-			</div>
-
-			<div class="form-group">
-				<label asp-for="NewStreamer.PlayerClass">
-					Class
-				</label>
-				<input 
-					asp-for="NewStreamer.PlayerClass" 
-					class="form-control" />
-			</div>
-
-			<div class="form-group">
-				<label asp-for="NewStreamer.Spec">
-					Specialization
-				</label>
-				<input 
-					asp-for="NewStreamer.Spec" 
-					class="form-control" />
-			</div>
-
-			<div class="form-group" id="submit">
-				<button type="submit">Save</button>
-			</div>
-		</form>
-	</section>
+{	
+	<a 
+	asp-controller="Streams" 
+	asp-action="Create">
+		Add a new Streamer
+	</a>			
 }

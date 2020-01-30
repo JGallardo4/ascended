@@ -12,6 +12,7 @@ namespace AscendedGuild.Models
 		public DbSet<PlayerClass> PlayerClasses { get; set; }
 		public DbSet<Spec> Specs { get; set; }
 		public DbSet<TwitchStreamer> TwitchStreamers { get; set; }
+		public DbSet<ClassAndSpec> ClassAndSpecs { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -28,7 +29,9 @@ namespace AscendedGuild.Models
 				.HasForeignKey(c => c.PlayerClassId);
 
 			modelBuilder.Entity<TwitchStreamer>()
-				.HasOne(t => t.ClassAndSpec);
+				.HasOne(t => t.ClassAndSpec)
+				.WithMany(c => c.Streamers)
+				.HasForeignKey(t => t.ClassAndSpecId);
 
 			modelBuilder.Entity<ClassAndSpec>()
 				.HasOne(c => c.PlayerClass);

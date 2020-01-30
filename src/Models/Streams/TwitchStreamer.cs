@@ -13,6 +13,7 @@ namespace AscendedGuild.Models
 		
 		public string CharacterName { get; set; }	
 
+		public int ClassAndSpecId { get; set; }
 		public ClassAndSpec ClassAndSpec { get; set; }
 	}
 }

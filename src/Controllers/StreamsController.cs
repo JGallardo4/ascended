@@ -14,47 +14,54 @@ namespace AscendedGuild.Controllers
 		}
 		
 		public IActionResult Index()
-		{
-			var allStreamers = _appDbContext.TwitchStreamers;
-		
-			return View(
+		{		
+			var model = 
 				new StreamsViewModel()
 				{
-					AllTwitchStreamers = allStreamers,
-					NewStreamer = new NewStreamerData()
-				}
-			);
+					AllTwitchStreamers = _appDbContext.TwitchStreamers					
+				};
+
+			return View(model);
+		}
+
+		[HttpGet]
+		public IActionResult Create()
+		{
+			return View();
 		}
 
 		[HttpPost]
-		public IActionResult Index(StreamsViewModel model)
+		public IActionResult Create(AddStreamerViewModel model)
 		{
-			var playerClass = 
-				_appDbContext.PlayerClasses.SingleOrDefault(c => 
-					c.Name == model.NewStreamer.PlayerClass);
-                      
-			var spec = 
-				_appDbContext.Specs.SingleOrDefault(s => 
-					s.Name == model.NewStreamer.Spec);
-			
-			var newStreamer = 
-				new TwitchStreamer()
-				{
-					Channel = model.NewStreamer.Channel,
-					GuildRank = model.NewStreamer.GuildRank,
-					CharacterName = model.NewStreamer.CharacterName,
-					ClassAndSpec = 
-						new ClassAndSpec()
-						{
-							PlayerClass = playerClass,
-							Spec = spec
-						}		
-				};
-			
-			_appDbContext.TwitchStreamers.Add(newStreamer);
-			_appDbContext.SaveChanges();
+			if (ModelState.IsValid)
+			{
+				var playerClass = 
+					_appDbContext.PlayerClasses.SingleOrDefault(c => 
+						c.Name == model.PlayerClass);
+												
+				var spec = 
+					_appDbContext.Specs.SingleOrDefault(s => 
+						s.Name == model.Spec);
+				
+				var newStreamer = 
+					new TwitchStreamer()
+					{
+						Channel = model.Channel,
+						GuildRank = model.GuildRank,
+						CharacterName = model.CharacterName,
+						ClassAndSpec = 
+							new ClassAndSpec()
+							{
+								PlayerClass = playerClass,
+								Spec = spec
+							}		
+					};
+				
+				_appDbContext.TwitchStreamers.Add(newStreamer);
+				_appDbContext.SaveChanges();
+			}
 
-			return View();
+			return RedirectToAction("streams", "index");
 		}
 	}
 }
