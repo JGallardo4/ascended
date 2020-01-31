@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AscendedGuild.Models;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Threading.Tasks;
 
 namespace AscendedGuild.Controllers
@@ -18,13 +16,10 @@ namespace AscendedGuild.Controllers
 		
 		public IActionResult Index()
 		{		
-			var model = 
-				new StreamsViewModel()
-				{
-					AllTwitchStreamers = _appDbContext.TwitchStreamers
-						.Include(t => t.PlayerClass)
-						.Include(t => t.Spec)
-				};
+			var model = _appDbContext
+				.TwitchStreamers
+				.Include(t => t.PlayerClass)
+				.Include(t => t.Spec);
 
 			return View(model);
 		}
@@ -43,23 +38,25 @@ namespace AscendedGuild.Controllers
 			return RedirectToAction("Index", "Streams");
 		}
 
-		[HttpGet]
 		public IActionResult Create()
 		{
-			return View();
+			var model = new AddStreamerViewModel();
+
+			return View(model);
 		}
 
 		[HttpPost]
-		public IActionResult Create(AddStreamerViewModel model)
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Create(AddStreamerViewModel model)
 		{
 			if (ModelState.IsValid)
 			{
-				var playerClass = 
-					_appDbContext.PlayerClasses.SingleOrDefault(c => 
+				var playerClass = await
+					_appDbContext.PlayerClasses.SingleOrDefaultAsync(c => 
 						c.Name == model.PlayerClass);
 												
-				var spec = 
-					_appDbContext.Specs.SingleOrDefault(s => 
+				var spec = await
+					_appDbContext.Specs.SingleOrDefaultAsync(s => 
 						s.Name == model.Spec);
 				
 				var newStreamer = 
@@ -73,7 +70,7 @@ namespace AscendedGuild.Controllers
 					};
 				
 				_appDbContext.TwitchStreamers.Add(newStreamer);
-				_appDbContext.SaveChanges();
+				await _appDbContext.SaveChangesAsync();
 			}
 
 			return RedirectToAction("Index", "Streams");

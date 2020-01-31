@@ -1,4 +1,4 @@
-@model StreamsViewModel
+@model IEnumerable<TwitchStreamer>
 
 @using AscendedGuild.Models
 
@@ -35,7 +35,7 @@ crossorigin="anonymous">
 }
 
 <section class="twitch-list">
-	@foreach (var streamer in Model.AllTwitchStreamers)
+	@foreach (var streamer in Model)
 	{
 		<article class="twitch-card">
 			<div class="twitch-card__title">

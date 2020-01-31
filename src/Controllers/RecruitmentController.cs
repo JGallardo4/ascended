@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using AscendedGuild.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,29 +18,24 @@ namespace AscendedGuild.Controllers
 
 		public IActionResult Index()
 		{		
-			var model = 
-				new RecruitmentViewModel
-				{
-					PlayerClasses = 
-						_appDbContext.PlayerClasses
-							.Include(p => p.Specs)
-				};
+			var allClasses = _appDbContext
+				.PlayerClasses
+				.Include(p => p.Specs);
 
-			return View(model);
+			return View(allClasses);
 		}
 
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public IActionResult Index(RecruitmentViewModel model)
+		public async Task<IActionResult> Update(IEnumerable<PlayerClass> allClasses)
 		{
 			if (ModelState.IsValid)
 			{
-				//_appDbContext.Update();
-				return RedirectToAction("Index");
-			}
+				var allSpecs = allClasses.SelectMany(p => p.Specs);
 
-			// If we got this far, something failed; redisplay form.
-			return View(model);
+				_appDbContext.UpdateRange(allSpecs);
+
+				await _appDbContext.SaveChangesAsync();		
+			}
+			return RedirectToAction("Index", "Recruitment");
 		}
 	}
 }

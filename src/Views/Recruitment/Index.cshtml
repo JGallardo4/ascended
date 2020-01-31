@@ -1,6 +1,6 @@
 @using Microsoft.AspNetCore.Identity
 
-@model RecruitmentViewModel
+@model IEnumerable<PlayerClass>
 
 @inject SignInManager<IdentityUser> SignInManager
 
@@ -26,20 +26,26 @@
 	</section>
 }
 
-<!-- The Administrator user can submit the changes made -->
+<!-- The Administrator user can submit the changes made 
 @if (User.IsInRole("Administrator"))
 {
-	<div class="submit">
-		<button type="submit">Save</button>
-	</div>
-}
+	<form 
+		asp-controller="Recruitment" 
+		asp-action="Update" 
+		method="post" 
+		class="submit">
+			<button type="submit">Save</button>		
+	</form>
+}-->
 
 <section id="class-grid">
-	@foreach (var playerClass in Model.PlayerClasses)
+	@foreach (var playerClass in Model)
 	{
 		<article class="class-card">
 			<div class="card-title">
-				<h2 class="class-name" id=@("class" + playerClass.PlayerClassId)>
+				<h2 
+				class="class-name" 
+				id=@("class" + playerClass.PlayerClassId)>
 					@playerClass.Name
 				</h2>
 				
@@ -68,13 +74,17 @@
 					<!-- The Administrator user can edit the demand for each specification -->
 					@if (User.IsInRole("Administrator"))
 					{
-						<form asp-controller="Recruitment" asp-action="Index" method="post" class="demand">
-							<input type="hidden" asp-for="@spec.SpecId" />
-
+						<form 
+						asp-controller="Recruitment" 
+						asp-action="Update" 
+						method="post" 
+						class="demand">
 							<select
 							asp-for="@spec.Demand"
 							asp-items="Html.GetEnumSelectList<DemandEnum>()">
-							</select>							
+							</select>	
+
+							<button type="submit">Save</button>
 						</form>
 					}			
 				}
