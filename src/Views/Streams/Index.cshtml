@@ -15,6 +15,12 @@
 	src="https://embed.twitch.tv/embed/v1.js">
 </script>
 
+<!-- Load the Font Awesome embed script -->
+<script 
+src="https://kit.fontawesome.com/df3d0cc377.js"
+crossorigin="anonymous">
+</script>
+
 <!-- Link to create new streamer only available to admin -->
 @if (User.IsInRole("Administrator"))
 {	
@@ -53,7 +59,24 @@
 					class="class-icon"
 					src="@streamer.PlayerClass.ImageUrl" 
 					alt="Icon representation of the player class." />
-				</div>						
+				</div>
+
+				<!-- Link to delete streamer only available to admin -->
+				@if (User.IsInRole("Administrator"))
+				{
+					<div class="delete-container">
+						<a 
+						asp-controller="Streams" 
+						asp-action="Delete"
+						asp-route-id="@streamer.TwitchStreamerId"
+						class="delete-link">
+							<i 
+							class="fas fa-trash"
+							id="delete-icon">
+							</i>
+						</a>	
+					</div>					
+				}									
 			</div>
 
 			<div class="twitch-embed" id="@streamer.Channel"></div>

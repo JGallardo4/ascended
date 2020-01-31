@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AscendedGuild.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,7 @@ namespace AscendedGuild.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				//_specRepository.UpdateSpec(model);
+				//_appDbContext.Update();
 				return RedirectToAction("Index");
 			}
 

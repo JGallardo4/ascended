@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using AscendedGuild.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading.Tasks;
 
 namespace AscendedGuild.Controllers
 {
@@ -25,6 +27,20 @@ namespace AscendedGuild.Controllers
 				};
 
 			return View(model);
+		}
+
+		public async Task<IActionResult> Delete(int id)
+		{
+			var twitchStreamer = _appDbContext
+				.TwitchStreamers
+				.FindAsync(id).Result;
+				
+			_appDbContext.TwitchStreamers
+				.Remove(twitchStreamer);
+				
+			await _appDbContext.SaveChangesAsync();		
+			
+			return RedirectToAction("Index", "Streams");
 		}
 
 		[HttpGet]

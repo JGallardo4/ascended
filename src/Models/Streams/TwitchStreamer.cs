@@ -5,7 +5,7 @@ namespace AscendedGuild.Models
 	public class TwitchStreamer
 	{
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]		
-		public int Id { get; set; }
+		public int TwitchStreamerId { get; set; }
 		
 		public string Channel { get; set; }
 		
