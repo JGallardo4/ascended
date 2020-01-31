@@ -42,7 +42,7 @@
 }
 
 /* Submit style */
-.submit {
+.submit-button-container {
 	padding: 20px;
 	display: flex;
 	justify-content: center;
@@ -53,7 +53,7 @@
 }
 
 /* class-grid layout */
-	main {
+	.form-container {
 		display: grid;
 		grid-auto-rows: auto auto;
 		place-self: stretch;
@@ -74,6 +74,7 @@
 
 	.class-card {
 		padding: 20px;
+		border-radius: 10px;
 		display: grid;
 		grid-template-rows: auto auto;		
 	}

@@ -25,7 +25,9 @@ namespace AscendedGuild.Controllers
 			return View(allClasses);
 		}
 
-		public async Task<IActionResult> Update(IEnumerable<PlayerClass> allClasses)
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Index(IEnumerable<PlayerClass> allClasses)
 		{
 			if (ModelState.IsValid)
 			{

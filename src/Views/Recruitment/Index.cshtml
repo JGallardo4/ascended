@@ -26,69 +26,64 @@
 	</section>
 }
 
-<!-- The Administrator user can submit the changes made 
-@if (User.IsInRole("Administrator"))
-{
-	<form 
-		asp-controller="Recruitment" 
-		asp-action="Update" 
-		method="post" 
-		class="submit">
-			<button type="submit">Save</button>		
-	</form>
-}-->
+<form 
+	asp-controller="Recruitment" 
+	asp-action="Index" 
+	method="post"
+	class="form-container">
 
-<section id="class-grid">
-	@foreach (var playerClass in Model)
-	{
-		<article class="class-card">
-			<div class="card-title">
-				<h2 
-				class="class-name" 
-				id=@("class" + playerClass.PlayerClassId)>
-					@playerClass.Name
-				</h2>
-				
-				<img
-				class="class-icon"
-				src=@playerClass.ImageUrl 
-				alt="Icon representation of the player class." />			
-			</div>
+	<!-- The Administrator user can submit the changes made -->
+	@if (User.IsInRole("Administrator"))
+	{	
+		<div class="submit-button-container">
+			<button type="submit">Save</button>	
+		</div>
+	}
 
-			<div class="specs">
-				@foreach (var spec in playerClass.Specs)
-				{
-					<img
-					class="spec-icon"
-					src=@spec.ImageUrl 
-					alt="Icon representation of the specialization." />
-
-					<h2 class="spec-name">
-						@(spec.Name + ":")
+	<section id="class-grid">
+		@foreach (var playerClass in Model)
+		{
+			<article class="class-card">
+				<div class="card-title">
+					<h2 
+					class="class-name" 
+					id=@("class" + playerClass.PlayerClassId)>
+						@playerClass.Name
 					</h2>
+					
+					<img
+					class="class-icon"
+					src=@playerClass.ImageUrl 
+					alt="Icon representation of the player class." />			
+				</div>
 
-					<h2 class="demand" id=@("demand--" + spec.Demand.ToString("F"))>
-						@spec.Demand.ToString("F")
-					</h2>								
-
-					<!-- The Administrator user can edit the demand for each specification -->
-					@if (User.IsInRole("Administrator"))
+				<div class="specs">
+					@foreach (var spec in playerClass.Specs)
 					{
-						<form 
-						asp-controller="Recruitment" 
-						asp-action="Update" 
-						method="post" 
-						class="demand">
+						<img
+						class="spec-icon"
+						src=@spec.ImageUrl 
+						alt="Icon representation of the specialization." />
+
+						<h2 class="spec-name">
+							@(spec.Name + ":")
+						</h2>
+
+						<h2 class="demand" id=@("demand--" + spec.Demand.ToString("F"))>
+							@spec.Demand.ToString("F")
+						</h2>								
+
+						<!-- The Administrator user can edit the demand for each specification -->
+						@if (User.IsInRole("Administrator"))
+						{
 							<select
-							asp-for="@spec.Demand"
+							asp-for="@playerClass.Specs.FirstOrDefault(s => s.SpecId == spec.SpecId).Demand"
 							asp-items="Html.GetEnumSelectList<DemandEnum>()">
 							</select>	
-
-							<button type="submit">Save</button>
-						</form>
-					}			
-				}
-			</div>
-		</article>
-	}
-</section>
+						}			
+					}
+				</div>
+			</article>
+		}
+	</section>
+</form>
