@@ -19,7 +19,6 @@ namespace AscendedGuild.Controllers
 		}
 
 		[HttpGet]
-		[ValidateAntiForgeryToken]
 		public IActionResult Login()
 		{
 			return View();

@@ -98,7 +98,7 @@
 	#class-grid {
 		grid-row: 2;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
 		grid-template-rows: auto;
 		grid-gap: 20px;
 		place-items: stretch;
@@ -131,8 +131,9 @@
 
 	.spec {
 		display: grid;
-		grid-template-columns: auto 1f auto;
-		grid-template-rows: auto auto;
+		grid-template-columns: 50px 1fr 95px;
+		grid-template-rows: 50px auto;
+		grid-gap: 10px;
 		place-items: center;
 	}
 
@@ -167,7 +168,7 @@
 
 /* Demand colors */
 	#demand--HIGH {
-		color: green;
+		color: greenyellow;
 	}
 
 	#demand--LOW {
