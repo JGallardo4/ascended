@@ -19,7 +19,7 @@ namespace AscendedGuild
 				var serviceProvider = services.GetRequiredService<IServiceProvider>();
 				var configuration = services.GetRequiredService<IConfiguration>();
 
-				Seed.CreateRoles(serviceProvider, configuration).Wait();					
+				AdminInitializer.CreateRoles(serviceProvider, configuration).Wait();					
 			}
       
 			host.Run();

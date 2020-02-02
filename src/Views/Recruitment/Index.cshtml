@@ -1,6 +1,6 @@
 @using Microsoft.AspNetCore.Identity
 
-@model IEnumerable<PlayerClass>
+@model RecruitmentViewModel
 
 @inject SignInManager<IdentityUser> SignInManager
 
@@ -28,7 +28,7 @@
 
 <form 
 	asp-controller="Recruitment" 
-	asp-action="Index" 
+	asp-action="Edit" 
 	method="post"
 	class="form-container">
 
@@ -41,7 +41,7 @@
 	}
 
 	<section id="class-grid">
-		@foreach (var playerClass in Model)
+		@foreach (var playerClass in Model.PlayerClasses)
 		{
 			<article class="class-card">
 				<div class="card-title">
@@ -77,11 +77,12 @@
 						@if (User.IsInRole("Administrator"))
 						{
 							<select
-							asp-for="@playerClass.Specs.FirstOrDefault(s => s.SpecId == spec.SpecId).Demand"
+							name="IncomingSpecs[@spec.SpecId]"
+							asp-for="@spec.Demand"
 							asp-items="Html.GetEnumSelectList<DemandEnum>()">
 							</select>	
-						}			
-					}
+						}					
+					}					
 				</div>
 			</article>
 		}

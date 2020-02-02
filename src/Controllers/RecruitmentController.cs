@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AscendedGuild.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -17,26 +16,42 @@ namespace AscendedGuild.Controllers
 		}
 
 		public IActionResult Index()
-		{		
+		{	
 			var allClasses = _appDbContext
 				.PlayerClasses
 				.Include(p => p.Specs);
 
-			return View(allClasses);
+			var model =
+				new RecruitmentViewModel
+				{
+					PlayerClasses = allClasses
+				};
+
+			return View(model);
 		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Index(IEnumerable<PlayerClass> allClasses)
+		public async Task<IActionResult> Edit(IDictionary<int, DemandEnum> IncomingSpecs)
 		{
 			if (ModelState.IsValid)
-			{
-				var allSpecs = allClasses.SelectMany(p => p.Specs);
+			{					
+				foreach (KeyValuePair<int, DemandEnum> updateSpec in IncomingSpecs)
+				{
+					var oldSpec = await _appDbContext.Specs.FindAsync(updateSpec.Key);
 
-				_appDbContext.UpdateRange(allSpecs);
+					oldSpec.Demand = updateSpec.Value;
 
-				await _appDbContext.SaveChangesAsync();		
+					await TryUpdateModelAsync<Spec>(oldSpec,	"",	s => s.Demand);					
+				}	
+				
+				await _appDbContext.SaveChangesAsync();
 			}
+			else
+			{
+				return NotFound();
+			}
+
 			return RedirectToAction("Index", "Recruitment");
 		}
 	}

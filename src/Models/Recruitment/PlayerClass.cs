@@ -5,13 +5,17 @@ namespace AscendedGuild.Models
 {
 	public class PlayerClass
 	{
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int PlayerClassId { get; set; }
 
 		public string ImageUrl { get; set; }
 		public string Name { get; set; }
 
 		public List<Spec> Specs { get; set; }
+
+		public PlayerClass()
+		{				
+		}
 
 		// Returns true if any of the class'
 		// specs are in any demand.
@@ -20,9 +24,9 @@ namespace AscendedGuild.Models
 			get
 			{
 				return Specs.Exists(s => 
-					s.Demand == DemandEnum.Low 
+					s.Demand == DemandEnum.LOW 
 					|| 
-					s.Demand == DemandEnum.High);
+					s.Demand == DemandEnum.HIGH);
 			}
 		}
 	}

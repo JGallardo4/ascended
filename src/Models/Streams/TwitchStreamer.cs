@@ -18,5 +18,9 @@ namespace AscendedGuild.Models
 
 		public int SpecId { get; set; }
 		public Spec Spec { get; set; }
+
+		public TwitchStreamer()
+		{				
+		}
 	}
 }

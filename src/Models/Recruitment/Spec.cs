@@ -2,9 +2,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AscendedGuild.Models
 {
+	public enum DemandEnum
+	{
+		CLOSED, LOW, HIGH
+	}
+
 	public class Spec
 	{
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int SpecId { get; set; }
 
 		public string ImageUrl { get; set; }
@@ -15,5 +20,9 @@ namespace AscendedGuild.Models
 
 		public int PlayerClassId { get; set; }
 		public PlayerClass PlayerClass { get; set; }		
+
+		public Spec()
+		{				
+		}
 	}
 }

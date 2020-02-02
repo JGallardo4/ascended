@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AscendedGuild.Models
 {
-	public static class Seed
+	public static class AdminInitializer
 	{
 		// This method ensures there is one and only one admin account at all times
 		public static async Task CreateRoles(
