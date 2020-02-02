@@ -1,25 +1,57 @@
-/* class-grid style */
+/* class-grid style */	
 	#class-grid {
 		text-transform: uppercase;
-	}
-
-	.class-card {
-		border: solid;
-		border-width: 2px;
-		border-color: var(--purple);
-	}
+	}	
 
 	.class-name {
 		font-size: 2rem;
 	}
 
-	.spec-name {
-		color: white;
-	}
-
 	.class-icon {
 		transform: scale(1.2);
 	}
+
+	/* class-card */
+		.class-card {
+			border: solid;
+			border-width: 2px;		
+		}
+
+	/* class-card--in-demand */
+		.class-card--in-demand {
+			border-color: var(--purple);
+		}
+		
+		.class-card--in-demand .spec-name {
+			color: white;			
+		}		
+
+	/* class-card--not-in-demand */
+		.class-card--not-in-demand {
+			border-color: gray;
+		}
+		
+		.class-card--not-in-demand .spec-name {
+			color: gray;			
+		}
+
+		.class-card--not-in-demand .class-name {
+			color: gray !important;			
+		}
+
+		.class-card--not-in-demand .class-icon, 
+		.class-card--not-in-demand .spec-icon {
+			filter: grayscale(1);	
+		}
+	
+	/* spec--not-in-demand */
+		.spec--not-in-demand  .spec-name{
+			color: gray;			
+		}
+
+		.spec--not-in-demand .spec-icon {
+			filter: grayscale(1);		
+		}
 /* End class-grid style */
 
 /* apply style */
@@ -86,18 +118,27 @@
 		place-items: center;
 	}
 
+	.class-name {
+		display: inline-block;
+		justify-self: start;
+	}
+
 	.specs {
 		grid-row: 2;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.spec {
 		display: grid;
-		grid-template-columns: 60px 1fr 96px;
-		grid-template-rows: 60px;
-		grid-auto-rows: 60px;
-		grid-auto-flow: row;
+		grid-template-columns: auto 1f auto;
+		grid-template-rows: auto auto;
 		place-items: center;
 	}
 
 	.spec-icon {
 		grid-column: 1;
+		grid-row: 1;
 		justify-self: start;
 		border-radius: 5px;
 		width: 50px;
@@ -106,16 +147,21 @@
 
 	.spec-name {
 		grid-column: 2;
+		grid-row: 1;
 		justify-self: start;
-	}
-
-	.class-name {
-		display: inline-block;
-		justify-self: start;
-	}
+	}	
 
 	.demand {
 		grid-column: 3;
+		grid-row: 1;
+	}
+
+	.select-demand {
+		grid-column: 3;
+		grid-row: 2;
+		width: 100%;
+		display: flex;
+		justify-content: center;
 	}
 /* End of class-grid layout */
 

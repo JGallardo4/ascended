@@ -12,9 +12,10 @@
 		href="/css/pages/recruitment.css" />
 }
 
-<!-- Show apply link to regular visitors -->
+
 @if (!User.IsInRole("Administrator"))
 {
+	<!-- Show apply link to regular visitors -->
 	<section class="apply">
 		<a
 		target="_blank" 
@@ -32,9 +33,10 @@
 	method="post"
 	class="form-container">
 
-	<!-- The Administrator user can submit the changes made -->
+	
 	@if (User.IsInRole("Administrator"))
 	{	
+		<!-- The Administrator user can submit the changes made -->
 		<div class="submit-button-container">
 			<button type="submit">Save</button>	
 		</div>
@@ -43,7 +45,12 @@
 	<section id="class-grid">
 		@foreach (var playerClass in Model.PlayerClasses)
 		{
-			<article class="class-card">
+			string classCardClass = 
+				"class-card--"
+				+	(playerClass.IsInDemand ? "in-demand" : "not-in-demand")
+				+ " class-card";
+
+			<article class="@classCardClass">
 				<div class="card-title">
 					<h2 
 					class="class-name" 
@@ -60,28 +67,34 @@
 				<div class="specs">
 					@foreach (var spec in playerClass.Specs)
 					{
-						<img
-						class="spec-icon"
-						src=@spec.ImageUrl 
-						alt="Icon representation of the specialization." />
+						string specClass = 
+							"spec spec--" 
+							+ (spec.Demand == DemandEnum.CLOSED ? "not-in-demand" : "in-demand");
 
-						<h2 class="spec-name">
-							@(spec.Name + ":")
-						</h2>
+						<div class="@specClass">
+							<img
+							class="spec-icon"
+							src=@spec.ImageUrl 
+							alt="Icon representation of the specialization." />
 
-						<h2 class="demand" id=@("demand--" + spec.Demand.ToString("F"))>
-							@spec.Demand.ToString("F")
-						</h2>								
+							<h2 class="spec-name">
+								@(spec.Name + ":")
+							</h2>
 
-						<!-- The Administrator user can edit the demand for each specification -->
-						@if (User.IsInRole("Administrator"))
-						{
-							<select
-							name="IncomingSpecs[@spec.SpecId]"
-							asp-for="@spec.Demand"
-							asp-items="Html.GetEnumSelectList<DemandEnum>()">
-							</select>	
-						}					
+							<h2 class="demand" id=@("demand--" + spec.Demand.ToString("F"))>
+								@spec.Demand.ToString("F")
+							</h2>								
+
+							<!-- The Administrator user can edit the demand for each specification -->
+							@if (User.IsInRole("Administrator"))
+							{								
+								<select class="select-demand"
+								name="IncomingSpecs[@spec.SpecId]"
+								asp-for="@spec.Demand"
+								asp-items="Html.GetEnumSelectList<DemandEnum>()">
+								</select>									
+							}
+						</div>					
 					}					
 				</div>
 			</article>
