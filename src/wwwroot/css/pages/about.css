@@ -1,30 +1,65 @@
-.about-us {
-  font-size: 18pt;  
-}
+/* Layout */
+	main {
+		display: grid;
+		grid-template-rows: auto auto;
+		grid-gap: 20px;
+	}
 
-.about-us p, ul {
-  padding-bottom: 20px;
-}
+	.about-us {
+		padding: 20px;
+		border: solid;
+		border-width: 2px;
+		border-color: var(--orange);
+		border-radius: 10px;
+	}
 
-.about-us li {
-	text-indent: 8em;
-}
+	.edit-about-us {
+	padding: 20px;
+	border: solid;
+	border-width: 2px;
+	border-color: var(--yellow);
+	border-radius: 10px;
+	}
 
-.about-us p {
-  text-indent: 4em;
-}
-
-.about-us h2 {
-  font-size: 20pt;
-}
-
-.about-us__logo {
+	.about-us__logo {
   float: right;
   padding-right: 20px;
   padding-bottom: 20px;
-}
+	}
 
-.edit-about-us textarea {
-	width: 100%;
-	height: 300px;
-}
+	.edit-about-us textarea {
+		width: 100%;
+		height: 300px;
+	}
+
+	.button-container {
+		display: flex;
+		justify-content: center;
+	}
+
+/* Help link style */
+	.editing-help-link:hover {
+		text-decoration: underline;		
+	}
+
+/* Text style */
+	.about-us {
+		font-size: 18pt;  
+	}
+
+	.about-us p, ul {
+		padding-bottom: 20px;
+	}
+
+	.about-us li {
+		text-indent: 8em;
+	}
+
+	.about-us p {
+		text-indent: 4em;
+	}
+
+	.about-us h2 {
+		font-size: 20pt;
+	}
+/* End of text style */

@@ -30,9 +30,9 @@ namespace AscendedGuild.Controllers
 							MarkdownContent = "# Please write an about-us blurb and hit save #"							
 						}
 					);
-			}
-
-			await TryUpdateModelAsync<TextBlock>(currentContent, "", c => c.MarkdownContent);
+					
+				await TryUpdateModelAsync<TextBlock>(currentContent, "", c => c.MarkdownContent);
+			}			
 
 			currentContent = await _appDbContext
 				.TextBlocks
@@ -50,22 +50,15 @@ namespace AscendedGuild.Controllers
 				.TextBlocks
 				.FirstOrDefaultAsync(t => t.Name == "About");
 
-			if (currentContent == null)
-			{
-				_appDbContext.TextBlocks
-					.Add(
-						new TextBlock()
-						{
-							Name = "About",
-							MarkdownContent = incomingContent							
-						}
-					);
-			}
-			else
+			if (currentContent != null)
 			{
 				currentContent.MarkdownContent = incomingContent;
 
 				await TryUpdateModelAsync<TextBlock>(currentContent, "", c => c.MarkdownContent);
+			}
+			else
+			{
+				// Throw exception
 			}
 
 			await _appDbContext.SaveChangesAsync();
