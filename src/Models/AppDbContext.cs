@@ -12,10 +12,11 @@ namespace AscendedGuild.Models
 		public DbSet<PlayerClass> PlayerClasses { get; set; }
 		public DbSet<Spec> Specs { get; set; }
 		public DbSet<TwitchStreamer> TwitchStreamers { get; set; }
+		public DbSet<TextBlock> TextBlocks { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			base.OnModelCreating(modelBuilder);
+			base.OnModelCreating(modelBuilder);			
 
 			// Seed Player Classes
 			modelBuilder.Entity<PlayerClass>().HasData(

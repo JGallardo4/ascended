@@ -32,11 +32,11 @@ namespace AscendedGuild.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(IDictionary<int, DemandEnum> IncomingSpecs)
+		public async Task<IActionResult> Edit(IDictionary<int, DemandEnum> incomingSpecs)
 		{
 			if (ModelState.IsValid)
 			{					
-				foreach (KeyValuePair<int, DemandEnum> updateSpec in IncomingSpecs)
+				foreach (KeyValuePair<int, DemandEnum> updateSpec in incomingSpecs)
 				{
 					var oldSpec = await _appDbContext.Specs.FindAsync(updateSpec.Key);
 
