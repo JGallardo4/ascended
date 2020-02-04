@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AscendedGuild.Models
+namespace AscendedGuild.Models.Recruitement
 {
 	public class PlayerClass
 	{

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using AscendedGuild.Models.Recruitement;
 
-namespace AscendedGuild.Models
+namespace AscendedGuild.ViewModels
 {
 	public class RecruitmentViewModel
 	{

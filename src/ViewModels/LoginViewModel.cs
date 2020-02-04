@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace AscendedGuild.Models
+namespace AscendedGuild.ViewModels
 {
 	public class LoginViewModel
 	{

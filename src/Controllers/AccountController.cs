@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using AscendedGuild.Models;
+using AscendedGuild.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 

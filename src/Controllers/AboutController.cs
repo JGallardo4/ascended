@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using AscendedGuild.Models;
+using AscendedGuild.Models.About;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

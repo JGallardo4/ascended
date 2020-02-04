@@ -1,3 +1,6 @@
+using AscendedGuild.Models.About;
+using AscendedGuild.Models.Recruitement;
+using AscendedGuild.Models.Streams;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using AscendedGuild.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using AscendedGuild.ViewModels;
+using AscendedGuild.Models.Streams;
 
 namespace AscendedGuild.Controllers
 {

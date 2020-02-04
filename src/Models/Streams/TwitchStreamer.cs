@@ -1,7 +1,7 @@
-using AscendedGuild.Models.Recrutement;
 using System.ComponentModel.DataAnnotations.Schema;
+using AscendedGuild.Models.Recruitement;
 
-namespace AscendedGuild.Models
+namespace AscendedGuild.Models.Streams
 {
 	public class TwitchStreamer
 	{
