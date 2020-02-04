@@ -8,6 +8,7 @@ namespace AscendedGuild.Models
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int PlayerClassId { get; set; }
 
+        // REVIEW: Add attriutes here as well
 		public string ImageUrl { get; set; }
 		public string Name { get; set; }
 
@@ -23,10 +24,7 @@ namespace AscendedGuild.Models
 		{
 			get
 			{
-				return Specs.Exists(s => 
-					s.Demand == DemandEnum.LOW 
-					|| 
-					s.Demand == DemandEnum.HIGH);
+				return Specs.Exists(s => s.Demand != DemandEnum.CLOSED);
 			}
 		}
 	}

@@ -1,3 +1,4 @@
+using AscendedGuild.Models.Recrutement;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AscendedGuild.Models

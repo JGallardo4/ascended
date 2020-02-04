@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AscendedGuild.Models
+namespace AscendedGuild.Models.Recrutement
 {
 	public enum DemandEnum
 	{
