@@ -19,9 +19,9 @@ namespace AscendedGuild.Controllers
 		///	Displays a blurb about the guild. 		
 		/// </summary>
 		/// <remarks>
-		/// For the administrator, it also displays
-		/// a text area to update the About blurb
-		/// using Markup
+		/// For the administrator, it also displays a text area to 
+		/// update the About blurb using Markup.
+		/// The database object containing the blurb data is created if not found.
 		/// </remarks>
 		public async Task<IActionResult> Index()
 		{
@@ -31,14 +31,13 @@ namespace AscendedGuild.Controllers
 			
 			if (currentContent == null)
 			{
-				_appDbContext.TextBlocks
-					.Add(
-						new TextBlock()
-						{
-							Name = "About",
-							MarkdownContent = "# Please write an about-us blurb and hit save #"							
-						}
-					);
+				_appDbContext.TextBlocks.Add(
+					new TextBlock()
+					{
+						Name = "About",
+						MarkdownContent = "# Please write an about-us blurb and hit save #"							
+					}
+				);
 					
 				await TryUpdateModelAsync<TextBlock>(currentContent, "", c => c.MarkdownContent);
 			}			
@@ -51,14 +50,15 @@ namespace AscendedGuild.Controllers
 		}
 
 		/// <summary>
-		///	Updates the About blurb with the contents of the text area. 		
+		///	Updates the About blurb with the contents of the text area.
 		/// </summary>
 		/// <remarks>
-		/// This is only available to the administrator account.
+		/// This action is only available to the administrator account.
+		/// The database object containing the blurb data is created if not found.
 		/// </remarks>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(string incomingContent)
+		public async Task<IActionResult> EditOrCreate(string incomingContent)
 		{
 			// Check if page content exists in the database
 			var currentContent = await _appDbContext
@@ -73,8 +73,16 @@ namespace AscendedGuild.Controllers
 			}
 			else
 			{
-				// Throw exception
-			}
+				_appDbContext.TextBlocks.Add(
+					new TextBlock()
+					{
+						Name = "About",
+						MarkdownContent = incomingContent							
+					}
+				);
+					
+				await TryUpdateModelAsync<TextBlock>(currentContent, "", c => c.MarkdownContent);
+			}			
 
 			await _appDbContext.SaveChangesAsync();
 
