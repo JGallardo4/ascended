@@ -15,6 +15,14 @@ namespace AscendedGuild.Controllers
 			_appDbContext = appDbContext;
 		}
 
+		/// <summary>
+		///	Displays a blurb about the guild. 		
+		/// </summary>
+		/// <remarks>
+		/// For the administrator, it also displays
+		/// a text area to update the About blurb
+		/// using Markup
+		/// </remarks>
 		public async Task<IActionResult> Index()
 		{
 			var currentContent = await _appDbContext
@@ -42,6 +50,12 @@ namespace AscendedGuild.Controllers
 			return View(currentContent);
 		}
 
+		/// <summary>
+		///	Updates the About blurb with the contents of the text area. 		
+		/// </summary>
+		/// <remarks>
+		/// This is only available to the administrator account.
+		/// </remarks>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Edit(string incomingContent)
