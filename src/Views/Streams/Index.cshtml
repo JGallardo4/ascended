@@ -38,56 +38,71 @@ crossorigin="anonymous">
 	@foreach (var streamer in Model)
 	{
 		<article class="twitch-card">
-			<div class="twitch-card__title">
-				<h2 class="character-and-guildrank">
-					<b>@streamer.CharacterName</b>, <span><i>@streamer.GuildRank of</i> &lt;Ascended&gt;</span>						
-				</h2>
+			<!-- Control to toggle twitch embed visibility -->
+			@{
+				string toggleId = "toggle__" + streamer.TwitchStreamerId;
+			}
 
-				<h2 class="class-and-spec">
-					@(streamer.Spec.Name + " " + streamer.PlayerClass.Name)
-				</h2>
+			<input 
+			class="toggle"
+			id="@toggleId"
+			type="checkbox" />
 
-				<div class="spec-icon-container">
-					<img
-					class="spec-icon"
-					src="@streamer.Spec.ImageUrl"
-					alt="Icon representation of the specialization." />
-				</div>
+			<label for="@toggleId" class="toggle-label">					
+			</label>				
 
-				<div class="class-icon-container">
-					<img
-					class="class-icon"
-					src="@streamer.PlayerClass.ImageUrl" 
-					alt="Icon representation of the player class." />
-				</div>
+			<h2 class="character-and-guildrank">
+				<b>@streamer.CharacterName</b>, <span><i>@streamer.GuildRank of</i> &lt;Ascended&gt;</span>						
+			</h2>
 
-				<!-- Link to delete streamer only available to admin -->
-				@if (User.IsInRole("Administrator"))
-				{
-					<div class="delete-container">
-						<a 
-						asp-controller="Streams" 
-						asp-action="Delete"
-						asp-route-id="@streamer.TwitchStreamerId"
-						class="delete-link">
-							<i 
-							class="fas fa-trash"
-							id="delete-icon">
-							</i>
-						</a>	
-					</div>					
-				}									
+			<p class="class-and-spec">
+				@(streamer.Spec.Name + " " + streamer.PlayerClass.Name)
+			</p>
+
+			<div class="spec-icon-container">
+				<img
+				class="spec-icon"
+				src="@streamer.Spec.ImageUrl"
+				alt="Icon representation of the specialization." />
 			</div>
 
-			<div class="twitch-embed" id="@streamer.Channel"></div>
-		</article>
+			<div class="class-icon-container">
+				<img
+				class="class-icon"
+				src="@streamer.PlayerClass.ImageUrl" 
+				alt="Icon representation of the player class." />
+			</div>
+			
+			@if (User.IsInRole("Administrator"))
+			{
+				<!-- Link to delete streamer only available to admin -->
+				<div class="delete-container">
+					<a 
+					asp-controller="Streams" 
+					asp-action="Delete"
+					asp-route-id="@streamer.TwitchStreamerId"
+					class="delete-link">
+						<i 
+						class="fas fa-trash"
+						id="delete-icon">
+						</i>
+					</a>	
+				</div>					
+			}	
+
+			@{				
+				string embedId = "embed__" + streamer.TwitchStreamerId;
+			}
+			
+			<div class="twitch-embed" id=@embedId></div>		
 		
-		<!-- Create a Twitch.Embed object that will render 
-			within the "twitch-embed" root element. -->
-		<script type="text/javascript">
-			new Twitch.Embed("@streamer.Channel", {
-				channel: "@streamer.Channel"
-			});
-		</script>
+			<!-- Create a Twitch.Embed object that will render 
+				within the "twitch-embed" root element. -->
+			<script type="text/javascript">
+				new Twitch.Embed("@embedId", {
+					channel: "@streamer.Channel"
+				});
+			</script>
+		</article>
 	}
 </section>
