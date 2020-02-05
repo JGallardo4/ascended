@@ -76,18 +76,16 @@ crossorigin="anonymous">
 			@if (User.IsInRole("Administrator"))
 			{
 				<!-- Link to delete streamer only available to admin -->
-				<div class="delete-container">
-					<a 
-					asp-controller="Streams" 
-					asp-action="Delete"
-					asp-route-id="@streamer.TwitchStreamerId"
-					class="delete-link">
-						<i 
-						class="fas fa-trash"
-						id="delete-icon">
-						</i>
-					</a>	
-				</div>					
+				<a 
+				asp-controller="Streams" 
+				asp-action="Delete"
+				asp-route-id="@streamer.TwitchStreamerId"
+				class="delete-link">
+					<i 
+					class="fas fa-trash"
+					id="delete-icon">
+					</i>
+				</a>				
 			}	
 
 			@{				
