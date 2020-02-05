@@ -99,23 +99,37 @@ main {
  * on the right of the page
  */
 @media (max-width: 1032px) {
-	body {
-		padding: 0 5vw;
-	}
-
-	.icon-container {
+	.navbar--logged-out .icon-container {
 		grid-column: 1 / 3;
 		width: inherit;
 		height: inherit;
 	}
 
-	.navbar {
+	.navbar--logged-out  {
 		flex-direction: column;
 		align-items: stretch;
 	}
 
-	.navbar li {
-		padding: 1rem;
+	.navbar--logged-out  li {
+		padding: 5px;
+		text-align: right;    
+	}	
+}
+
+@media (max-width: 1250px) {
+	.navbar--logged-in .icon-container {
+		grid-column: 1 / 3;
+		width: inherit;
+		height: inherit;
+	}
+
+	.navbar--logged-in {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.navbar--logged-in  li {
+		padding: 5px;
 		text-align: right;    
 	}	
 }
@@ -125,11 +139,22 @@ main {
  * at the far right edge
  */
 @media (min-width: 1033px) {
-	.navbar li {
+	.navbar--logged-out li {
 		padding: 1rem 0 1rem 1rem;
 	}
 
-	.navbar li:not(:last-child) {
+	.navbar--logged-out li:not(:last-child) {
+		border-right: 1px solid var(--purple);
+		padding-right: 1rem;
+	}
+}
+
+@media (min-width: 1251px) {
+	.navbar--logged-in li {
+		padding: 1rem 0 1rem 1rem;
+	}
+
+	.navbar--logged-in li:not(:last-child) {
 		border-right: 1px solid var(--purple);
 		padding-right: 1rem;
 	}

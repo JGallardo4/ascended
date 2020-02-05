@@ -18,8 +18,24 @@
 			<img src="~/images/icon.svg"
 				class="icon" alt="Ascended Guild icon" />
 		</a>
-		
-		<ul class="navbar" role="navigation">
+
+		<!-- The log in information is applied to the navbar class
+			in order to control the width at which the navbar changes to
+			vertical orientation -->
+		@{
+			string navbarClass = "navbar";
+		}
+
+		@if (User.IsInRole("Administrator"))		
+		{
+			navbarClass += " navbar--logged-in";
+		}
+		else
+		{
+			navbarClass += " navbar--logged-out";
+		}
+
+		<ul class="@navbarClass" role="navigation">
 			<li class="nav-item">
 				<a 
 				class="nav-link" 
