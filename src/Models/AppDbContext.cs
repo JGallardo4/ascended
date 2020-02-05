@@ -21,16 +21,6 @@ namespace AscendedGuild.Models
 		{
 			base.OnModelCreating(modelBuilder);
 
-			// Seed About content
-			modelBuilder.Entity<TextBlock>().HasData(
-				new TextBlock()
-				{
-					TextBlockId = 1,
-					Name = "About",
-					MarkdownContent = "# Please write an about-us blurb and hit save #"	
-				}
-			);
-
 			// Seed Player Classes
 			modelBuilder.Entity<PlayerClass>().HasData(
 				new PlayerClass

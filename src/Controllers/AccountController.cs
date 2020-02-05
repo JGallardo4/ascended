@@ -18,12 +18,22 @@ namespace AscendedGuild.Controllers
 			_userManager = userManager;
 		}
 
+		/// <summary>
+		///	Allows the admin user to log in.		
+		/// </summary>
+		/// <remarks>
+		/// This page is only accessible by url.
+		/// There are no links to it since it is only for administration.
+		/// </remarks>
 		[HttpGet]
 		public IActionResult Login()
 		{
 			return View();
 		}
 
+		/// <remarks>
+		/// The sign-in is never browser cookie persisted.
+		/// </remarks>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Login(LoginViewModel model)
