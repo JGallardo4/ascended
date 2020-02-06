@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using AscendedGuild.ViewModels;
 using AscendedGuild.Models.Streams;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace AscendedGuild.Controllers
 {
@@ -58,7 +61,50 @@ namespace AscendedGuild.Controllers
 		/// </remarks>
 		public IActionResult Create()
 		{
-			var model = new AddStreamerViewModel();
+			// Populate dropdown menus
+			var playerClasses = new List<SelectListItem>();
+			
+			playerClasses.Add(new SelectListItem()
+					{
+						Value = string.Empty,
+						Text = "Select",
+						Selected = true
+					});
+			
+			playerClasses.AddRange(_appDbContext.PlayerClasses
+				.Select(p => new SelectListItem()
+					{
+						Value = p.Name,
+						Text = p.Name
+					}
+				)
+			);
+
+			var specs = new List<SelectListItem>();
+
+			specs.Add(new SelectListItem()
+					{
+						Value = string.Empty,
+						Text = "Select",
+						Selected = true
+					});
+
+			specs.AddRange(_appDbContext.Specs
+				.Select(s => new SelectListItem()
+					{
+						Value = s.Name,
+						Text = s.Name
+					}
+				)
+			);
+			
+			var model = 
+				new AddStreamerViewModel()
+				{
+					NewStreamer = new NewStreamer(),
+					PlayerClasses = playerClasses,
+					Specs = specs
+				};
 
 			return View(model);
 		}
@@ -77,23 +123,18 @@ namespace AscendedGuild.Controllers
 			{
 				var playerClass = await
 					_appDbContext.PlayerClasses.SingleOrDefaultAsync(c => 
-						c.Name == model.PlayerClass);
+						c.Name == model.NewStreamer.PlayerClass);
 												
 				var spec = await
 					_appDbContext.Specs.SingleOrDefaultAsync(s => 
-						s.Name == model.Spec);
-
-				if (playerClass == null || spec == null)
-				{
-					return NotFound();
-				}
+						s.Name == model.NewStreamer.Spec);
 
 				var newStreamer = 
 					new TwitchStreamer()
 					{
-						Channel = model.Channel,
-						GuildRank = model.GuildRank,
-						CharacterName = model.CharacterName,						
+						Channel = model.NewStreamer.Channel,
+						GuildRank = model.NewStreamer.GuildRank,
+						CharacterName = model.NewStreamer.CharacterName,						
 						PlayerClass = playerClass,
 						Spec = spec						
 					};

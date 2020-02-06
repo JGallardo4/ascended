@@ -18,48 +18,54 @@
 			<div asp-validation-summary="All"></div>
 
 			<div class="form-group">
-				<label asp-for="Channel">
+				<label asp-for="NewStreamer.Channel">
 					Channel name
 				</label>
 
 				<input 
-					asp-for="Channel" class="form-control" />
+					asp-for="NewStreamer.Channel" class="form-control" />
 			</div>
 
 			<div class="form-group">
-				<label asp-for="CharacterName">
+				<label asp-for="NewStreamer.CharacterName">
 					Character name
 				</label>
 
 				<input 
-					asp-for="CharacterName" class="form-control" />
+					asp-for="NewStreamer.CharacterName" class="form-control" />
 			</div>
 
 			<div class="form-group">
-				<label asp-for="GuildRank">
+				<label asp-for="NewStreamer.GuildRank">
 					Guild rank
 				</label>
 
 				<input 
-					asp-for="GuildRank" class="form-control" />
+					asp-for="NewStreamer.GuildRank" class="form-control" />
 			</div>
 
 			<div class="form-group">
-				<label asp-for="PlayerClass">
+				<label asp-for="NewStreamer.PlayerClass">
 					Class
 				</label>
 
-				<input 
-					asp-for="PlayerClass" class="form-control" />
+				<select 
+				class="form-control"
+				asp-for="NewStreamer.PlayerClass"
+				asp-items="Model.PlayerClasses">
+				</select>
 			</div>
 
 			<div class="form-group">
-				<label asp-for="Spec">
+				<label asp-for="NewStreamer.Spec">
 					Specialization
 				</label>
 
-				<input 
-					asp-for="Spec" class="form-control" />
+				<select 
+				class="form-control"
+				asp-for="NewStreamer.Spec"
+				asp-items="Model.Specs">
+				</select>
 			</div>
 
 			<div class="form-group" id="submit">
