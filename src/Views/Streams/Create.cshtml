@@ -8,58 +8,58 @@
 		href="/css/pages/create-streamer.css" />
 }
 
-<!-- The Administrator user can add and remove streamers -->
+<!-- The Administrator user can add a new streamer -->
 @if (User.IsInRole("Administrator"))
 {
 	<section class="admin">
 		<h2>Add a new streamer</h2>
 
-		<form 
-			id="new-streamer-form" 
-			method="post">
+		<form id="new-streamer-form" method="post">
+			<div asp-validation-summary="All"></div>
+
 			<div class="form-group">
 				<label asp-for="Channel">
 					Channel name
 				</label>
+
 				<input 
-					asp-for="Channel" 
-					class="form-control" />
+					asp-for="Channel" class="form-control" />
 			</div>
 
 			<div class="form-group">
 				<label asp-for="CharacterName">
 					Character name
 				</label>
+
 				<input 
-					asp-for="CharacterName" 
-					class="form-control" />
+					asp-for="CharacterName" class="form-control" />
 			</div>
 
 			<div class="form-group">
 				<label asp-for="GuildRank">
 					Guild rank
 				</label>
+
 				<input 
-					asp-for="GuildRank" 
-					class="form-control" />
+					asp-for="GuildRank" class="form-control" />
 			</div>
 
 			<div class="form-group">
 				<label asp-for="PlayerClass">
 					Class
 				</label>
+
 				<input 
-					asp-for="PlayerClass" 
-					class="form-control" />
+					asp-for="PlayerClass" class="form-control" />
 			</div>
 
 			<div class="form-group">
 				<label asp-for="Spec">
 					Specialization
 				</label>
+
 				<input 
-					asp-for="Spec" 
-					class="form-control" />
+					asp-for="Spec" class="form-control" />
 			</div>
 
 			<div class="form-group" id="submit">
