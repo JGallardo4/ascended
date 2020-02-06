@@ -17,6 +17,13 @@ namespace AscendedGuild.Controllers
 			_appDbContext = appDbContext;
 		}
 
+		/// <summary>
+		///	Shows a grid with all player classes where the ones in demand
+		/// are highlighted
+		/// </summary>
+		/// <remarks>
+		/// The administrator account can update the chart
+		/// </remarks>
 		public IActionResult Index()
 		{	
 			var allClasses = _appDbContext
@@ -32,6 +39,9 @@ namespace AscendedGuild.Controllers
 			return View(model);
 		}
 
+		/// <summary>
+		///	Saves the changes made to the chart
+		/// </summary>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Edit(IDictionary<int, DemandEnum> incomingSpecs)
