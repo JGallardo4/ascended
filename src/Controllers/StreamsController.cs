@@ -16,6 +16,10 @@ namespace AscendedGuild.Controllers
 			_appDbContext = appDbContext;
 		}
 		
+		/// <summary>
+		///	Shows a list of streamers in the guild each with a Twitch embed
+		/// </summary>
+		/// <remarks>
 		public IActionResult Index()
 		{		
 			var model = _appDbContext
@@ -26,6 +30,12 @@ namespace AscendedGuild.Controllers
 			return View(model);
 		}
 
+		/// <summary>
+		///	Removes the streamer from the database
+		/// </summary>
+		/// <remarks>
+		/// This action is only available to the administrator account.
+		/// </remarks>
 		public async Task<IActionResult> Delete(int id)
 		{
 			var twitchStreamer = _appDbContext
@@ -40,6 +50,12 @@ namespace AscendedGuild.Controllers
 			return RedirectToAction("Index", "Streams");
 		}
 
+		/// <summary>
+		///	Shows a form to add a new streamer to the database.
+		/// </summary>
+		/// <remarks>
+		/// This action is only available to the administrator account.
+		/// </remarks>
 		public IActionResult Create()
 		{
 			var model = new AddStreamerViewModel();
@@ -47,6 +63,12 @@ namespace AscendedGuild.Controllers
 			return View(model);
 		}
 
+		/// <summary>
+		///	Adds a new streamer to the database.
+		/// </summary>
+		/// <remarks>
+		/// This action is only available to the administrator account.
+		/// </remarks>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Create(AddStreamerViewModel model)
@@ -60,7 +82,12 @@ namespace AscendedGuild.Controllers
 				var spec = await
 					_appDbContext.Specs.SingleOrDefaultAsync(s => 
 						s.Name == model.Spec);
-				
+
+				if (playerClass == null || spec == null)
+				{
+					return NotFound();
+				}
+
 				var newStreamer = 
 					new TwitchStreamer()
 					{
@@ -73,6 +100,10 @@ namespace AscendedGuild.Controllers
 				
 				_appDbContext.TwitchStreamers.Add(newStreamer);
 				await _appDbContext.SaveChangesAsync();
+			}
+			else
+			{
+				// Throw exception
 			}
 
 			return RedirectToAction("Index", "Streams");
