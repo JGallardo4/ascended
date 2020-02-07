@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using AscendedGuild.Models.Streams;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AscendedGuild.ViewModels
@@ -11,8 +12,7 @@ namespace AscendedGuild.ViewModels
 		public string CharacterName { get; set; }
 
 		[Required]
-		[StringLength(100)]
-		public string GuildRank { get; set; }
+		public GuildRank GuildRank { get; set; }
 
 		[Required]
 		public string PlayerClass { get; set; }
