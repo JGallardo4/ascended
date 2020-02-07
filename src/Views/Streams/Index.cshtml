@@ -1,4 +1,6 @@
 @using AscendedGuild.Models.Streams
+@using System.Reflection
+@using System.ComponentModel
 
 @model IEnumerable<TwitchStreamer>
 
@@ -49,10 +51,23 @@ crossorigin="anonymous">
 			type="checkbox" />
 
 			<label for="@toggleId" class="toggle-label">					
-			</label>				
+			</label>
+
+			<!-- Get GuildRank enum's display friendly name -->
+			@{
+				var guildRankEnum = streamer.GuildRank;
+
+				FieldInfo field = guildRankEnum.GetType().GetField(guildRankEnum.ToString());
+
+				DescriptionAttribute attribute = Attribute
+					.GetCustomAttribute(field, typeof(DescriptionAttribute))
+						as DescriptionAttribute;
+
+				var guildRank = attribute.Description;
+			}		
 
 			<h2 class="character-and-guildrank">
-				<b>@streamer.CharacterName</b>, <span><i>@streamer.GuildRank of</i> &lt;Ascended&gt;</span>						
+				<b>@streamer.CharacterName</b>, <span><i>@guildRank of</i> &lt;Ascended&gt;</span>						
 			</h2>
 
 			<p class="class-and-spec">

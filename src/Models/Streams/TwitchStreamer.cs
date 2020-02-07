@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using AscendedGuild.Models.Recruitement;
@@ -7,19 +8,24 @@ namespace AscendedGuild.Models.Streams
 
 	public enum GuildRank
 	{
-		[Display(Name="Guild Master")]
+		[Display(Name = "Guild Master")]
+		[Description("Guild Master")]
 		GUILD_MASTER, 
 
-		[Display(Name="Grand Master")]
+		[Display(Name = "Grand Master")]
+		[Description("Grand Master")]
 		CO_GUILD_MASTER, 
 
-		[Display(Name="Officer")]
+		[Display(Name = "Officer")]
+		[Description("Officer")]
 		OFFICER, 
 
-		[Display(Name="Paragon")]
+		[Display(Name = "Paragon")]
+		[Description("Paragon")]
 		PARAGON, 
 
-		[Display(Name="Raider")]
+		[Display(Name = "Raider")]
+		[Description("Raider")]
 		RAIDER
 	}
 

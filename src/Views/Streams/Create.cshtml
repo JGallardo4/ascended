@@ -1,5 +1,7 @@
 @model AddStreamerViewModel
 
+@using AscendedGuild.Models.Streams
+
 @section Style {
 	<link rel="stylesheet"
 		href="/css/shared.css" />
@@ -40,8 +42,11 @@
 					Guild rank
 				</label>
 
-				<input 
-					asp-for="NewStreamer.GuildRank" class="form-control" />
+				<select
+				class="form-control"
+				asp-for="NewStreamer.GuildRank"
+				asp-items="Html.GetEnumSelectList<GuildRank>()">
+				</select>			
 			</div>
 
 			<div class="form-group">
