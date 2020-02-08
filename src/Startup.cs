@@ -24,7 +24,7 @@ namespace AscendedGuild
 		public void ConfigureServices(IServiceCollection services)
 		{			
 			services.AddDbContextPool<AppDbContext>(x => x
-        .UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+        .UseMySql(Configuration["ConnectionStrings:DefaultConnection"],
           mySqlOptions => 
           {
             mySqlOptions
