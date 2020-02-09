@@ -65,11 +65,11 @@ namespace AscendedGuild.Controllers
 			var playerClasses = new List<SelectListItem>();
 			
 			playerClasses.Add(new SelectListItem()
-					{
-						Value = string.Empty,
-						Text = "Select",
-						Selected = true
-					});
+				{
+					Value = string.Empty,
+					Text = "Select",
+					Selected = true
+				});
 			
 			playerClasses.AddRange(_appDbContext.PlayerClasses
 				.Select(p => new SelectListItem()
@@ -83,11 +83,11 @@ namespace AscendedGuild.Controllers
 			var specs = new List<SelectListItem>();
 
 			specs.Add(new SelectListItem()
-					{
-						Value = string.Empty,
-						Text = "Select",
-						Selected = true
-					});
+				{
+					Value = string.Empty,
+					Text = "Select",
+					Selected = true
+				});
 
 			specs.AddRange(_appDbContext.Specs
 				.Select(s => new SelectListItem()
