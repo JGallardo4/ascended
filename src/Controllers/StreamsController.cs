@@ -149,5 +149,19 @@ namespace AscendedGuild.Controllers
 
 			return RedirectToAction("Index", "Streams");
 		}
+
+        // TODO: Update this to pull specs from the database; remove test information
+		[HttpPost]
+		public JsonResult GetSpecs(string playerClass)
+		{
+			var specs = new List<string>();
+			if (!string.IsNullOrWhiteSpace(playerClass))
+			{
+				specs.Add("spec1");
+				specs.Add("spec2");
+				specs.Add("spec3");
+			}
+			return Json(specs);
+		}
 	}
 }
