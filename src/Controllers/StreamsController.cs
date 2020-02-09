@@ -89,7 +89,7 @@ namespace AscendedGuild.Controllers
 					Selected = true
 				});
 
-			specs.AddRange(_appDbContext.Specs
+			/*specs.AddRange(_appDbContext.Specs
 				.Select(s => new SelectListItem()
 					{
 						Value = s.Name,
@@ -97,7 +97,7 @@ namespace AscendedGuild.Controllers
 					}
 				)
 			);
-			
+			*/
 			var model = 
 				new AddStreamerViewModel()
 				{
@@ -152,15 +152,23 @@ namespace AscendedGuild.Controllers
 
         // TODO: Update this to pull specs from the database; remove test information
 		[HttpPost]
-		public JsonResult GetSpecs(string playerClass)
+		public JsonResult GetSpecs([FromBody]string playerClass)
 		{
 			var specs = new List<string>();
-			if (!string.IsNullOrWhiteSpace(playerClass))
+
+			if (!string.IsNullOrEmpty(playerClass))
 			{
-				specs.Add("spec1");
-				specs.Add("spec2");
-				specs.Add("spec3");
+				specs.AddRange(_appDbContext.PlayerClasses
+					.FirstOrDefault(p => p.Name == playerClass)
+					.Specs
+					.Select( s => s.Name	)
+				);
 			}
+			else
+			{
+				specs.Add("Select");
+			}
+
 			return Json(specs);
 		}
 	}
