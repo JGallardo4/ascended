@@ -3,126 +3,107 @@
 @using AscendedGuild.Models.Streams
 
 @section Style {
-    <link rel="stylesheet"
-          href="/css/shared.css" />
+	<link rel="stylesheet"
+				href="/css/shared.css" />
 
-    <link rel="stylesheet"
-          href="/css/pages/create-streamer.css" />
+	<link rel="stylesheet"
+				href="/css/pages/create-streamer.css" />
 }
 
 <!-- The Administrator user can add a new streamer -->
 @if (User.IsInRole("Administrator"))
 {
-    <section class="admin">
-        <h2>Add a new streamer</h2>
+	<section class="admin">
+		<h2>Add a new streamer</h2>
 
-        <form id="new-streamer-form" method="post">
-            <div asp-validation-summary="All"></div>
+		<form id="new-streamer-form" method="post">
+			<div asp-validation-summary="All"></div>
 
-            <div class="form-group">
-                <label asp-for="NewStreamer.Channel">
-                    Channel name
-                </label>
+			<div class="form-group">
+				<label asp-for="NewStreamer.Channel">
+					Channel name
+				</label>
 
-                <input asp-for="NewStreamer.Channel" class="form-control" />
-            </div>
+				<input asp-for="NewStreamer.Channel" class="form-control" />
+			</div>
 
-            <div class="form-group">
-                <label asp-for="NewStreamer.CharacterName">
-                    Character name
-                </label>
+			<div class="form-group">
+				<label asp-for="NewStreamer.CharacterName">
+					Character name
+				</label>
 
-                <input asp-for="NewStreamer.CharacterName" class="form-control" />
-            </div>
+				<input asp-for="NewStreamer.CharacterName" class="form-control" />
+			</div>
 
-            <div class="form-group">
-                <label asp-for="NewStreamer.GuildRank">
-                    Guild rank
-                </label>
+			<div class="form-group">
+				<label asp-for="NewStreamer.GuildRank">
+					Guild rank
+				</label>
 
-                <select class="form-control"
-                        asp-for="NewStreamer.GuildRank"
-                        asp-items="Html.GetEnumSelectList<GuildRank>()">
-                </select>
-            </div>
+				<select class="form-control"
+								asp-for="NewStreamer.GuildRank"
+								asp-items="Html.GetEnumSelectList<GuildRank>()">
+				</select>
+			</div>
 
-            <div class="form-group">
-                <label asp-for="NewStreamer.PlayerClass">
-                    Class
-                </label>
+			<div class="form-group">
+				<label asp-for="NewStreamer.PlayerClass">
+					Class
+				</label>
 
-                <select id="classDropDownList" class="form-control"
-                        asp-for="NewStreamer.PlayerClass"
-                        asp-items="Model.PlayerClasses">
-                </select>
-            </div>
+				<select id="classDropDownList" class="form-control"
+								asp-for="NewStreamer.PlayerClass"
+								asp-items="Model.PlayerClasses"
+								onchange="updateSpecs()">
+					<option value="" selected="true">Select</option>
+				</select>
+			</div>
 
-            <div class="form-group">
-                <label asp-for="NewStreamer.Spec">
-                    Specialization
-                </label>
+			<div class="form-group">
+				<label asp-for="NewStreamer.Spec">
+					Specialization
+				</label>
 
-                <select id="specsDropDownList" class="form-control"
-                        asp-for="NewStreamer.Spec"
-                        asp-items="Model.Specs">
-                </select>
-            </div>
+				<select id="specsDropDownList" class="form-control"
+								asp-for="NewStreamer.Spec">
+					<option value="Various" selected="true">Various</option>
+				</select>
+			</div>
 
-            <div class="form-group" id="submit">
-                <button type="submit">Save</button>
-            </div>
-        </form>
-    </section>
+			<div class="form-group" id="submit">
+				<button type="submit">Save</button>
+			</div>
+		</form>
+	</section>
 }
 else
 {
-    <h2>You are not authorized to view this page</h2>
+	<h2>You are not authorized to view this page</h2>
 }
 
-<script>
+<script type="text/javascript">	
+	function updateSpecs() {
+		var specsDropdown = $('#classDropDownList');		
+		var playerClass = specsDropdown.val();
 
-    $(function () {
-        AjaxCall('/Streams/GetSpecs', null, 'POST').done(function (response) {
-            if (response.length > 0) {
-                $('#specsDropDownList').html('');
-                var options = '';
-                options += '<option value="Select">Select</option>';
-                for (var i = 0; i < response.length; i++) {
-                  options += '<option value="' + response[i] + '">' + response[i] + '</option>';
-                }
-                $('#specsDropDownList').append(options);
+		ajaxCall('/Streams/GetSpecs', playerClass).done(function (response) {
+			if (response.length > 0) {
+				$.each(response, function(item))					
+    			specsDropdown.append(
+						$("<option />").val(item).text(item)
+					);
+				}					
+		}).fail(function (error) {
+			alert(error.StatusText);
+		});
+	}	
 
-            }
-        }).fail(function (error) {
-            alert(error.StatusText);
-        });
-
-        $('#classDropDownList').on("change", function () {
-            var playerClass = $('#classDropDownList').val();
-            var obj = { 'playerClass' : playerClass };
-            AjaxCall('/Streams/GetSpecs', JSON.stringify(obj), 'POST').done(function (response) {
-                if (response.length > 0) {
-                    $('#specsDropDownList').html('');
-                    var options = '';
-                    options += '<option value="Select">Select</option>';
-                    for (var i = 0; i < response.length; i++) {
-                      options += '<option value="' + response[i] + '">' + response[i] + '</option>';
-                    }
-                    $('#specsDropDownList').append(options);
-
-                }
-            }).fail(function (error) {
-                alert(error.StatusText);
-            });
-        });
-
-    });
-
-    function AjaxCall(url, data, type) {
-        return $.ajax({
-            url: url,
-            type: type ? type : 'GET',
-            data: data ? data : 'playerClass:Mage',
-            contentType: 'application/json'
-        });
-    }</script> 
+	function ajaxCall(url, data) {
+		return $.ajax({
+			url: url + "?playerClass=" + data,
+			data: '',
+			type: 'GET',			
+			contentType: 'application/json; charset=utf-8'
+		});
+	}
+</script>

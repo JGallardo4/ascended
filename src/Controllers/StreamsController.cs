@@ -7,6 +7,7 @@ using AscendedGuild.Models.Streams;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System;
 
 namespace AscendedGuild.Controllers
 {
@@ -64,13 +65,6 @@ namespace AscendedGuild.Controllers
 			// Populate dropdown menus
 			var playerClasses = new List<SelectListItem>();
 			
-			playerClasses.Add(new SelectListItem()
-				{
-					Value = string.Empty,
-					Text = "Select",
-					Selected = true
-				});
-			
 			playerClasses.AddRange(_appDbContext.PlayerClasses
 				.Select(p => new SelectListItem()
 					{
@@ -82,22 +76,6 @@ namespace AscendedGuild.Controllers
 
 			var specs = new List<SelectListItem>();
 
-			specs.Add(new SelectListItem()
-				{
-					Value = string.Empty,
-					Text = "Select",
-					Selected = true
-				});
-
-			/*specs.AddRange(_appDbContext.Specs
-				.Select(s => new SelectListItem()
-					{
-						Value = s.Name,
-						Text = s.Name
-					}
-				)
-			);
-			*/
 			var model = 
 				new AddStreamerViewModel()
 				{
@@ -150,24 +128,26 @@ namespace AscendedGuild.Controllers
 			return RedirectToAction("Index", "Streams");
 		}
 
-        // TODO: Update this to pull specs from the database; remove test information
-		[HttpPost]
-		public JsonResult GetSpecs([FromBody]string playerClass)
+    /// <summary>
+		///	Returns a list of strings corresponding to the
+		/// specs available for the given player class.
+		/// </summary>
+		[HttpGet]
+		public JsonResult GetSpecs(string playerClass)
 		{
-			var specs = new List<string>();
+			var specs = new List<string>();	
+			specs.Add("Various");
 
 			if (!string.IsNullOrEmpty(playerClass))
-			{
-				specs.AddRange(_appDbContext.PlayerClasses
-					.FirstOrDefault(p => p.Name == playerClass)
-					.Specs
-					.Select( s => s.Name	)
-				);
-			}
-			else
-			{
-				specs.Add("Select");
-			}
+			{	
+				var availableSpecs = _appDbContext.Specs
+					.Where(s => s.PlayerClass.Name == playerClass);
+				
+				foreach (var spec in availableSpecs)
+				{
+					specs.Add(spec.Name);	
+				}
+			}		
 
 			return Json(specs);
 		}

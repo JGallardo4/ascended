@@ -1,0 +1,54 @@
+﻿<script>
+	$(function () {
+		ajaxCall('/Streams/GetSpecs', null, 'POST').done(function (response) {
+			if (response.length > 0) {
+				$('#specsDropDownList').html('');
+
+				var options = '';
+
+				options += '<option value="Select">Select</option>';
+
+				for (var i = 0; i < response.length; i++) {
+					options += '<option value="' + response[i] + '">' + response[i] + '</option>';
+				}
+
+				$('#specsDropDownList').append(options);
+			}
+		}).fail(function (error) {
+			alert(error.StatusText);
+		});
+
+		$('#classDropDownList').on("change", function () {
+			var playerClass = $('#classDropDownList').val();
+
+			var obj = { 'playerClass' : playerClass };
+
+			AjaxCall('/Streams/GetSpecs', JSON.stringify(obj), 'POST').done(function (response) {
+				if (response.length > 0) {
+					$('#specsDropDownList').html('');
+
+					var options = '';
+
+					options += '<option value="Select">Select</option>';
+
+					for (var i = 0; i < response.length; i++) {
+						options += '<option value="' + response[i] + '">' + response[i] + '</option>';
+					}
+
+					$('#specsDropDownList').append(options);
+				}
+			}).fail(function (error) {
+				alert(error.StatusText);
+			});
+		});
+	});
+
+	function ajaxCall(url, data, type) {
+		return $.ajax({
+			url: url,
+			data: data ? data : 'playerClass:Mage',
+			type: type ? type : 'GET',			
+			contentType: 'application/json'
+		});
+	}
+</script> 
