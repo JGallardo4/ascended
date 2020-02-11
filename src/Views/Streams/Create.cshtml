@@ -90,7 +90,7 @@ var playerClass = specsDropdown.val();
 
 ajaxCall('/Streams/GetSpecs', playerClass).done(function (response) {
 	if (response.length > 0) {
-
+$('#specsDropDownList').empty();
 			var options = '';
 
 
