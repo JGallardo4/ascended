@@ -26,7 +26,11 @@ namespace AscendedGuild.Models.Streams
 
 		[Display(Name = "Raider")]
 		[Description("Raider")]
-		RAIDER
+		RAIDER,
+
+		[Display(Name = "Council Member")]
+		[Description("Council Member")]
+		COUNCIL_MEMBER		
 	}
 
 	/// <summary>
