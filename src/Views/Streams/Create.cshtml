@@ -51,7 +51,7 @@
 					Class
 				</label>
 
-				<select id="classDropDownList" class="form-control"
+				<select id="classDropDown" class="form-control"
 								asp-for="NewStreamer.PlayerClass"
 								asp-items="Model.PlayerClasses"
 								onchange="updateSpecs()">
@@ -82,41 +82,30 @@ else
 }
 
 <script type="text/javascript">
+	function updateSpecs() {  
+		var playerClass = $('#classDropDown').val();
 
-function updateSpecs() {
+		ajaxCall('/Streams/GetSpecs?playerClass=', playerClass).done(function (response) {
+			$('#specsDropDownList').empty();
 
-var specsDropdown = $('#classDropDownList');       
-var playerClass = specsDropdown.val();
-
-ajaxCall('/Streams/GetSpecs', playerClass).done(function (response) {
-	if (response.length > 0) {
-$('#specsDropDownList').empty();
-			var options = '';
-
+			if (response.length > 0) {
+				var options = '';
 
 				for (var i = 0; i < response.length; i++) {
 					options += '<option value="' + response[i] + '">' + response[i] + '</option>';
 				}
 
 				$('#specsDropDownList').append(options);
-
-
-
-//	$.each(response, function (item) {
-	//specsDropdown.append($("<option />").val(item).text(item));
-	//}
-	//).fail(function (error) {
-	//alert(error.StatusText);
-//	});
+			}
+		});
 	}
-});}
 
 	function ajaxCall(url, data) {
 		return $.ajax({
-		url: url + "?playerClass=" + data,
-		data: '',
-		type: 'GET',
-		contentType: 'application/json; charset=utf-8'
+			url: url + data,
+			data: '',
+			type: 'GET',
+			contentType: 'application/json; charset=utf-8'
 		});
 	}
 </script>
