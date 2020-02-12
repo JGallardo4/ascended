@@ -3,7 +3,6 @@ using AscendedGuild.Models;
 using AscendedGuild.Models.About;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AscendedGuild.Controllers
 {
@@ -27,30 +26,25 @@ namespace AscendedGuild.Controllers
 		/// update the About blurb using Markup.
 		/// The database object containing the blurb data is created if not found.
 		/// </remarks>
-		public async Task<IActionResult> Index()
+		public async Task<IActionResult> IndexAsync()
 		{
-			var currentContent = await _appDbContext
-				.TextBlocks
-				.FirstOrDefaultAsync(t => t.Name == "About");
-			
+			// Retrieve about content
+			var currentContent = _appDbContext.TextBlocks.Find(1);
+
+			// Create content if none if found
 			if (currentContent == null)
 			{
-				_appDbContext.TextBlocks.Add(
-					new TextBlock()
-					{
-						Name = "About",
-						MarkdownContent = "# Please write an about-us blurb and hit save #"							
-					}
-				);
-					
-				await TryUpdateModelAsync<TextBlock>(currentContent, "", c => c.MarkdownContent);
+				_appDbContext.TextBlocks.Add(new TextBlock(){
+					TextBlockId = 1,
+					Name = "About",
+					MarkdownContent = "# Please write an about-us blurb and hit save #"
+				});
+				
+				// Save changes to db
+				await _appDbContext.SaveChangesAsync();
 			}			
 
-			currentContent = await _appDbContext
-				.TextBlocks
-				.FirstOrDefaultAsync(t => t.Name == "About");		
-
-			return View(currentContent);
+			return View(_appDbContext.TextBlocks.Find(1));
 		}
 
 		/// <summary>
@@ -65,30 +59,26 @@ namespace AscendedGuild.Controllers
 		[Authorize(Roles = "Administrator")]
 		public async Task<IActionResult> EditOrCreate(string incomingContent)
 		{
-			// Check if page content exists in the database
-			var currentContent = await _appDbContext
-				.TextBlocks
-				.FirstOrDefaultAsync(t => t.Name == "About");
+			// Retrieve about content
+			var currentContent = _appDbContext.TextBlocks.Find(1);
 
-			if (currentContent != null)
+			// Create content if none if found
+			if (currentContent == null)
 			{
-				currentContent.MarkdownContent = incomingContent;
-
-				await TryUpdateModelAsync<TextBlock>(currentContent, "", c => c.MarkdownContent);
+				_appDbContext.TextBlocks.Add(new TextBlock(){
+					TextBlockId = 1,
+					Name = "About",
+					MarkdownContent = incomingContent
+				});				
 			}
 			else
 			{
-				_appDbContext.TextBlocks.Add(
-					new TextBlock()
-					{
-						Name = "About",
-						MarkdownContent = incomingContent							
-					}
-				);
-					
-				await TryUpdateModelAsync<TextBlock>(currentContent, "", c => c.MarkdownContent);
-			}			
+				currentContent.MarkdownContent = incomingContent;
 
+				_appDbContext.Update(currentContent);
+			}
+			
+			// Save changes to db
 			await _appDbContext.SaveChangesAsync();
 
 			return RedirectToAction("Index", "About");

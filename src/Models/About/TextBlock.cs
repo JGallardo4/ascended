@@ -12,7 +12,7 @@ namespace AscendedGuild.Models.About
 	/// </remarks>
 	public class TextBlock
 	{		
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int TextBlockId { get; set; }
 		
 		[Required]

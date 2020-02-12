@@ -7,6 +7,7 @@ using AscendedGuild.Models.Streams;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AscendedGuild.Controllers
 {
@@ -42,6 +43,8 @@ namespace AscendedGuild.Controllers
 		/// <remarks>
 		/// This action is only available to the administrator account.
 		/// </remarks>
+		[ValidateAntiForgeryToken]
+		[Authorize(Roles = "Administrator")]
 		public async Task<IActionResult> Delete(int id)
 		{
 			var twitchStreamer = _appDbContext
@@ -61,7 +64,9 @@ namespace AscendedGuild.Controllers
 		/// </summary>
 		/// <remarks>
 		/// This action is only available to the administrator account.
-		/// </remarks>
+		/// </remarks>		
+		[HttpGet]
+		[Authorize(Roles = "Administrator")]
 		public IActionResult Create()
 		{
 			// Populate dropdown menus
@@ -97,6 +102,7 @@ namespace AscendedGuild.Controllers
 		/// </remarks>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[Authorize(Roles = "Administrator")]
 		public async Task<IActionResult> Create(AddStreamerViewModel model)
 		{
 			if (ModelState.IsValid)
@@ -133,8 +139,10 @@ namespace AscendedGuild.Controllers
     /// <summary>
 		///	Returns a list of strings corresponding to the
 		/// specs available for the given player class.
+		/// This information is used to update the specs dropdown input.
 		/// </summary>
 		[HttpGet]
+		[Authorize(Roles = "Administrator")]
 		public JsonResult GetSpecs(string playerClass)
 		{
 			var specs = new List<string>();	
