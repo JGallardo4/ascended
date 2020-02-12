@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AscendedGuild.Models;
 using AscendedGuild.Models.Recruitement;
 using AscendedGuild.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -48,6 +49,7 @@ namespace AscendedGuild.Controllers
 		/// </summary>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[Authorize(Roles = "Administrator")]
 		public async Task<IActionResult> Edit(IDictionary<int, DemandEnum> incomingSpecs)
 		{
 			if (ModelState.IsValid)
