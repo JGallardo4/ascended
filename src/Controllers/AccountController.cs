@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AscendedGuild.Controllers
 {
+	/// <summary>
+	///	Contains all actions for logging in or out.
+	/// </summary>
 	public class AccountController : Controller
 	{
 		private readonly UserManager<IdentityUser> _userManager;

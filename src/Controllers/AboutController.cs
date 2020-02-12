@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AscendedGuild.Controllers
 {
+	/// <summary>
+	///	Contains all actions for displaying, and updating the about-us blurb.
+	/// </summary>
 	public class AboutController : Controller
 	{
 		private readonly AppDbContext _appDbContext;

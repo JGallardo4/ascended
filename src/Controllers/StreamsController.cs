@@ -7,10 +7,12 @@ using AscendedGuild.Models.Streams;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
-using System;
 
 namespace AscendedGuild.Controllers
 {
+	/// <summary>
+	///	Contains all actions for displaying, creating, and deleting the Twitch streamers in the database.
+	/// </summary>
 	public class StreamsController : Controller
 	{
 		private readonly AppDbContext _appDbContext;

@@ -8,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AscendedGuild.Controllers
 {
+	/// <summary>
+	///	Contains all actions for displaying, and updating the player classes that the guild needs.
+	/// This is similar to a job board.
+	/// </summary>
 	public class RecruitmentController : Controller
 	{
 		private readonly AppDbContext _appDbContext;

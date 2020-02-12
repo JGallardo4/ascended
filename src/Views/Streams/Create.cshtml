@@ -85,19 +85,21 @@ else
 	function updateSpecs() {  
 		var playerClass = $('#classDropDown').val();
 
-		ajaxCall('/Streams/GetSpecs?playerClass=', playerClass).done(function (response) {
-			$('#specsDropDownList').empty();
+		ajaxCall('/Streams/GetSpecs?playerClass=', playerClass).done(
+			function (response) {
+				$('#specsDropDownList').empty();
 
-			if (response.length > 0) {
-				var options = '';
+				if (response.length > 0) {
+					var options = '';
 
-				for (var i = 0; i < response.length; i++) {
-					options += '<option value="' + response[i] + '">' + response[i] + '</option>';
+					for (var i = 0; i < response.length; i++) {
+						options += '<option value="' + response[i] + '">' + response[i] + '</option>';
+					}
+
+					$('#specsDropDownList').append(options);
 				}
-
-				$('#specsDropDownList').append(options);
 			}
-		});
+		);
 	}
 
 	function ajaxCall(url, data) {
