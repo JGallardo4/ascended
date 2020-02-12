@@ -43,7 +43,6 @@ namespace AscendedGuild.Controllers
 		/// <remarks>
 		/// This action is only available to the administrator account.
 		/// </remarks>
-		[ValidateAntiForgeryToken]
 		[Authorize(Roles = "Administrator")]
 		public async Task<IActionResult> Delete(int id)
 		{
