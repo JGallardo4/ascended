@@ -22,7 +22,7 @@ namespace AscendedGuild.Controllers
 		}
 
 		/// <summary>
-		///	Allows the admin user to log in.		
+		///	Displays the log in page.		
 		/// </summary>
 		/// <remarks>
 		/// This page is only accessible by url.
@@ -34,6 +34,9 @@ namespace AscendedGuild.Controllers
 			return View();
 		}
 
+		/// <summary>
+		///	Allows only the admin user to log in.		
+		/// </summary>
 		/// <remarks>
 		/// The sign-in is never browser cookie persisted.
 		/// </remarks>
@@ -63,6 +66,9 @@ namespace AscendedGuild.Controllers
 			return View();
 		}
 
+		/// <summary>
+		///	Allows the user to log out.
+		/// </summary>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Logout()

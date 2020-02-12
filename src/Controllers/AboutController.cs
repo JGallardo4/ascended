@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using AscendedGuild.Models;
 using AscendedGuild.Models.About;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -61,6 +62,7 @@ namespace AscendedGuild.Controllers
 		/// </remarks>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[Authorize(Roles = "Administrator")]
 		public async Task<IActionResult> EditOrCreate(string incomingContent)
 		{
 			// Check if page content exists in the database
