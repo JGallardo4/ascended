@@ -68,7 +68,6 @@ namespace AscendedGuild.Controllers
 		[Authorize(Roles = "Administrator")]
 		public IActionResult Create()
 		{
-			// Populate dropdown menus
 			var playerClasses = new List<SelectListItem>();
 			
 			playerClasses.AddRange(_appDbContext.PlayerClasses

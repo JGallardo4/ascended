@@ -358,3 +358,5 @@ project-planning/
 
 # Migrations
 src/Migrations/
+
+html/
