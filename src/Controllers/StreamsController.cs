@@ -79,14 +79,11 @@ namespace AscendedGuild.Controllers
 				)
 			);
 
-			var specs = new List<SelectListItem>();
-
 			var model = 
 				new AddStreamerViewModel()
 				{
 					NewStreamer = new NewStreamer(),
-					PlayerClasses = playerClasses,
-					Specs = specs
+					PlayerClasses = playerClasses
 				};
 
 			return View(model);

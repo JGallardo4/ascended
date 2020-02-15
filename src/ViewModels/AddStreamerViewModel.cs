@@ -30,7 +30,5 @@ namespace AscendedGuild.ViewModels
 		public NewStreamer NewStreamer { get; set; }
 
 		public IEnumerable<SelectListItem> PlayerClasses { get; set; }
-
-		public IEnumerable<SelectListItem> Specs { get; set; }
 	}
 }

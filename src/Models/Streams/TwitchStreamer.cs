@@ -5,7 +5,6 @@ using AscendedGuild.Models.Recruitement;
 
 namespace AscendedGuild.Models.Streams
 {
-
 	public enum GuildRank
 	{
 		[Display(Name = "Guild Master")]
