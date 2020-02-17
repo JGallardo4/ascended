@@ -2,6 +2,7 @@ using System;
 using AscendedGuild.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -57,7 +58,13 @@ namespace AscendedGuild
 				app.UseDeveloperExceptionPage();
 			}
 			
-			app.UseAuthentication();	
+			app.UseAuthentication();
+
+			app.UseForwardedHeaders(new ForwardedHeadersOptions				
+			{
+				ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+			});
+
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseRouting();
