@@ -29,7 +29,7 @@ namespace AscendedGuild.Models
 			}
 
 			// Find the user with the admin email
-			var adminEmail = configuration["UserSettings:UserEmail"];
+			var adminEmail = "ascended.admin@gmail.com";
       var _user = await userManager.FindByEmailAsync(adminEmail);
 
 			if (_user == null)
@@ -40,7 +40,7 @@ namespace AscendedGuild.Models
 					UserName = adminEmail,
 					Email = adminEmail
 				};
-				string adminPassword = configuration["UserSettings:UserPassword"];
+				string adminPassword = "rFPin @n4val";
 
 				var createAdmin = await userManager.CreateAsync(adminUser, adminPassword);
 
