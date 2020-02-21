@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using AscendedGuild.Data;
 using AscendedGuild.Models;
 using AscendedGuild.Models.About;
 using Microsoft.AspNetCore.Authorization;

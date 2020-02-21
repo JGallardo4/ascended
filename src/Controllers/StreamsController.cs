@@ -8,6 +8,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using AscendedGuild.Data;
 
 namespace AscendedGuild.Controllers
 {

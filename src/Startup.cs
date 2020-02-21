@@ -1,4 +1,5 @@
 using System;
+using AscendedGuild.Data;
 using AscendedGuild.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

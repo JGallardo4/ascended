@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AscendedGuild.Data;
 using AscendedGuild.Models;
 using AscendedGuild.Models.Recruitement;
 using AscendedGuild.ViewModels;

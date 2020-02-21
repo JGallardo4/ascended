@@ -4,7 +4,7 @@ using AscendedGuild.Models.Streams;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AscendedGuild.Models
+namespace AscendedGuild.Data
 {
 	public class AppDbContext : IdentityDbContext
 	{
@@ -21,7 +21,7 @@ namespace AscendedGuild.Models
 		{
 			base.OnModelCreating(modelBuilder);
 
-			// Seed Player Classes
+			// Seed player classes
 			modelBuilder.Entity<PlayerClass>().HasData(
 				new PlayerClass
 				{
