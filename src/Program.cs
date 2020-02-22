@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using AscendedGuild.Models;
 using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Azure.KeyVault;
+using Microsoft.Extensions.Configuration.AzureKeyVault;
 
 namespace AscendedGuild
 {
