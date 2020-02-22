@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using Microsoft.Extensions.Configuration;
 using AscendedGuild.Models;
+using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Azure.KeyVault;
 
 namespace AscendedGuild
 {
@@ -27,9 +29,28 @@ namespace AscendedGuild
 
 		public static IHostBuilder CreateHostBuilder(string[] args) =>
 			Host.CreateDefaultBuilder(args)
+				.ConfigureAppConfiguration((context, config) =>
+				{
+					var keyVaultEndpoint = GetKeyVaultEndpoint();
+
+					if (!string.IsNullOrEmpty(keyVaultEndpoint))
+					{
+						var azureServiceTokenProvider = new AzureServiceTokenProvider();
+
+						var keyVaultClient = new KeyVaultClient(
+							new KeyVaultClient.AuthenticationCallback(
+								azureServiceTokenProvider.KeyVaultTokenCallback
+							)
+						);
+
+						config.AddAzureKeyVault(keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+					}
+				})
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
 				});
+
+		private static string GetKeyVaultEndpoint() => "https://AscendedGuild-0-kv.vault.azure.net";				
 	}
 }
