@@ -32,7 +32,12 @@ namespace AscendedGuild
 			connectionStringBuilder.Add("Server", "localhost");
 			connectionStringBuilder.Add("Database", "Ascended");
 			connectionStringBuilder.Add("Uid", Configuration["Ascended--DatabaseUser"]);
+
+			Console.WriteLine(Configuration["Ascended--DatabaseUser"]);
+
 			connectionStringBuilder.Add("Pwd", Configuration["Ascended--DatabasePassword"]);
+
+			Console.WriteLine(Configuration["Ascended--DatabasePassword"]);
 
 			Console.WriteLine(connectionStringBuilder.ConnectionString);
 
