@@ -1,4 +1,5 @@
 using System;
+using System.Data.Common;
 using AscendedGuild.Data;
 using AscendedGuild.Models;
 using Microsoft.AspNetCore.Builder;
@@ -25,6 +26,16 @@ namespace AscendedGuild
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			// Initialize database connection string builder and build connection string.
+			var connectionStringBuilder = new DbConnectionStringBuilder();
+
+			connectionStringBuilder.Add("Server", "localhost");
+			connectionStringBuilder.Add("Database", "Ascended");
+			connectionStringBuilder.Add("Uid", Configuration["Ascended--DatabaseUser"]);
+			connectionStringBuilder.Add("Pwd", Configuration["Ascended--DatabasePassword"]);
+
+			Console.WriteLine(connectionStringBuilder.ConnectionString);
+
 			services.AddDbContextPool<AppDbContext>(x => x
         .UseMySql("Server=localhost;Database=AscendedTemp;Uid=ascended-temp;Pwd=q4z8EUq#%rs;",
           mySqlOptions => 
