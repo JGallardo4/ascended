@@ -26,7 +26,8 @@ namespace AscendedGuild
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContextPool<AppDbContext>(x => x
-        .UseMySql("Server=localhost;Database=AscendedTemp;Uid=ascended-temp;Pwd=q4z8EUq#%rs;",
+        //.UseMySql("Server=localhost;User Id=ascended;Password=4444;Database=AscendedGuild;",
+				.UseMySql("Server=tcp:ascendedguild20200222064141dbserver.database.windows.net,1433;Initial Catalog=Ascended;Persist Security Info=False;User ID=ascended-admin;Password=Giant isopod4;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
           mySqlOptions => 
           {
             mySqlOptions
