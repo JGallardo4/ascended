@@ -44,6 +44,9 @@ namespace AscendedGuild
 						}));
 			}
 			
+			// Automatically perform database migration
+			services.BuildServiceProvider().GetService<AppDbContext>().Database.Migrate();
+
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppDbContext>();
 
