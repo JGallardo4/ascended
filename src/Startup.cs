@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging.AzureAppServices;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace AscendedGuild
@@ -26,30 +27,38 @@ namespace AscendedGuild
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			/*
 			// Initialize database connection string builder and build connection string.
 			var connectionStringBuilder = new DbConnectionStringBuilder();
-
 			connectionStringBuilder.Add("Server", "localhost");
 			connectionStringBuilder.Add("Database", "Ascended");
 			connectionStringBuilder.Add("Uid", Configuration["Ascended--DatabaseUser"]);
-
-			Console.WriteLine(Configuration["Ascended--DatabaseUser"]);
-
 			connectionStringBuilder.Add("Pwd", Configuration["Ascended--DatabasePassword"]);
-
-			Console.WriteLine(Configuration["Ascended--DatabasePassword"]);
-
 			Console.WriteLine(connectionStringBuilder.ConnectionString);
+			*/
 
-			services.AddDbContextPool<AppDbContext>(x => x
-        //.UseMySql("Server=localhost;User Id=ascended;Password=4444;Database=AscendedGuild;",
-				.UseMySql("Server=tcp:ascendedguild20200222064141dbserver.database.windows.net,1433;Initial Catalog=Ascended;Persist Security Info=False;User ID=ascended-admin;Password=Giant isopod4;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
-          mySqlOptions => 
-          {
-            mySqlOptions
-              .ServerVersion(new Version(10, 4, 11), ServerType.MariaDb);
-          })
-      );
+			// Use SQL Database if in Azure, otherwise, use SQLite
+			if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+			{
+				services.AddDbContext<AppDbContext>(options =>
+					options.UseSqlServer(Configuration.GetConnectionString("AscendedDbConnection")));
+			}
+			else
+			{
+				services.AddDbContext<AppDbContext>(options =>
+					options.UseMySql("Server=localhost;User Id=ascended;Password=4444;Database=AscendedGuild;",
+						mySqlOptions => 
+						{
+							mySqlOptions
+								.ServerVersion(new Version(10, 4, 11), ServerType.MariaDb);
+						}));
+			}
+			
+			// Automatically perform database migration
+			services.BuildServiceProvider().GetService<AppDbContext>().Database.Migrate();
+
+			//.UseMySql("Server=localhost;User Id=ascended;Password=4444;Database=AscendedGuild;",
+			//.UseMySql("Server=tcp:ascendedguild20200222064141dbserver.database.windows.net,1433;Initial Catalog=Ascended;Persist Security Info=False;User ID=ascended-admin;Password=Giant isopod4;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
 
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppDbContext>();
@@ -63,6 +72,8 @@ namespace AscendedGuild
 				options.AddPolicy("RequireAdministratorRole",
 					policy => policy.RequireRole("Administrator"));
 			});
+
+			services.Configure<AzureFileLoggerOptions>(Configuration.GetSection("AzureLogging"));
 		}
 
 		// This method gets called by the runtime. 
