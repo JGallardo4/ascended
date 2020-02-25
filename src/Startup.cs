@@ -27,17 +27,7 @@ namespace AscendedGuild
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			/*
-			// Initialize database connection string builder and build connection string.
-			var connectionStringBuilder = new DbConnectionStringBuilder();
-			connectionStringBuilder.Add("Server", "localhost");
-			connectionStringBuilder.Add("Database", "Ascended");
-			connectionStringBuilder.Add("Uid", Configuration["Ascended--DatabaseUser"]);
-			connectionStringBuilder.Add("Pwd", Configuration["Ascended--DatabasePassword"]);
-			Console.WriteLine(connectionStringBuilder.ConnectionString);
-			*/
-
-			// Use SQL Database if in Azure, otherwise, use SQLite
+			// Use SQL Database if in Azure, otherwise, use mySQL
 			if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
 			{
 				services.AddDbContext<AppDbContext>(options =>
@@ -54,12 +44,6 @@ namespace AscendedGuild
 						}));
 			}
 			
-			// Automatically perform database migration
-			services.BuildServiceProvider().GetService<AppDbContext>().Database.Migrate();
-
-			//.UseMySql("Server=localhost;User Id=ascended;Password=4444;Database=AscendedGuild;",
-			//.UseMySql("Server=tcp:ascendedguild20200222064141dbserver.database.windows.net,1433;Initial Catalog=Ascended;Persist Security Info=False;User ID=ascended-admin;Password=Giant isopod4;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
-
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppDbContext>();
 

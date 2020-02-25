@@ -12,11 +12,12 @@ namespace AscendedGuild.Models
 		public static async Task CreateRoles(
 			IServiceProvider serviceProvider, IConfiguration configuration)
 		{
-			// Initialize custom roles
+			// Initialize custom role
 			var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 			var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 			string[] roles = {"Administrator"};
 
+			// Create role if necessary
 			foreach (var roleName in roles)
 			{
 				var roleExists = 
@@ -28,19 +29,19 @@ namespace AscendedGuild.Models
 				}
 			}
 
-			// Find the user with the admin email
-			var adminEmail = "ascended.admin@gmail.com";
-      var _user = await userManager.FindByEmailAsync(adminEmail);
+			// Create admin user if necessary		
+			string adminEmail = configuration["AdminEmail"];
+			string adminPassword = configuration["AdminPassword"];
+
+			var _user = await userManager.FindByEmailAsync(adminEmail);
 
 			if (_user == null)
-			{
-				// Create admin user
+			{				
 				var adminUser = new IdentityUser()
 				{
 					UserName = adminEmail,
 					Email = adminEmail
 				};
-				string adminPassword = "rFPin @n4val";
 
 				var createAdmin = await userManager.CreateAsync(adminUser, adminPassword);
 
@@ -48,6 +49,10 @@ namespace AscendedGuild.Models
 				{
 					// Assign admin user to admin role
 					await userManager.AddToRoleAsync(adminUser, "Administrator");
+				}
+				else				
+				{
+					// Throw exception
 				}
 			}
 		}

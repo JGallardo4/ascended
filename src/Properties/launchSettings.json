@@ -12,9 +12,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED": "true",
-        "ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT": "https://AscendedGuild-0-kv.vault.azure.net"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "AscendedGuild": {
