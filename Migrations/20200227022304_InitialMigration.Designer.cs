@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AscendedGuild.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200225044311_InitialMigration")]
+    [Migration("20200227022304_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
