@@ -30,7 +30,12 @@ namespace AscendedGuild
 				var connectionString = Environment.GetEnvironmentVariable("ASCENDED_DBCONNECTION");				
 
 				services.AddDbContext<AppDbContext>(options =>
-					options.UseSqlServer(connectionString));
+					options.UseMySql(connectionString,
+						mySqlOptions => 
+						{
+							mySqlOptions
+								.ServerVersion(new Version(10, 4, 11), ServerType.MariaDb);
+						}));
 			}
 			else
 			{
