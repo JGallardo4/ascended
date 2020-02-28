@@ -27,7 +27,7 @@ namespace AscendedGuild
 			// Use SQL Database if in Azure, otherwise, use mySQL
 			if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
 			{
-				var connectionString = Environment.GetEnvironmentVariable("ASCENDED_DBCONNECTION");
+				var connectionString = Environment.GetEnvironmentVariable("ASCENDED_DBCONNECTION");				
 
 				services.AddDbContext<AppDbContext>(options =>
 					options.UseSqlServer(connectionString));
@@ -42,9 +42,6 @@ namespace AscendedGuild
 								.ServerVersion(new Version(10, 4, 11), ServerType.MariaDb);
 						}));
 			}
-			
-			// Automatically perform database migration
-			services.BuildServiceProvider().GetService<AppDbContext>().Database.Migrate();
 
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppDbContext>();
