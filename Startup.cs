@@ -1,7 +1,5 @@
 using System;
-using System.Data.Common;
 using AscendedGuild.Data;
-using AscendedGuild.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -10,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging.AzureAppServices;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace AscendedGuild
@@ -30,8 +27,10 @@ namespace AscendedGuild
 			// Use SQL Database if in Azure, otherwise, use mySQL
 			if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
 			{
+				var connectionString = Environment.GetEnvironmentVariable("ASCENDED_DBCONNECTION");
+
 				services.AddDbContext<AppDbContext>(options =>
-					options.UseSqlServer(Configuration.GetConnectionString("AscendedDbConnection")));
+					options.UseSqlServer(connectionString));
 			}
 			else
 			{
@@ -59,8 +58,6 @@ namespace AscendedGuild
 				options.AddPolicy("RequireAdministratorRole",
 					policy => policy.RequireRole("Administrator"));
 			});
-
-			services.Configure<AzureFileLoggerOptions>(Configuration.GetSection("AzureLogging"));
 		}
 
 		// This method gets called by the runtime. 

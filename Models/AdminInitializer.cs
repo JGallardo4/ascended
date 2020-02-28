@@ -30,8 +30,19 @@ namespace AscendedGuild.Models
 			}
 
 			// Create admin user if necessary		
-			string adminEmail = configuration["AdminEmail"];
-			string adminPassword = configuration["AdminPassword"];
+			string adminEmail;
+			string adminPassword;
+
+			if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+			{
+				adminEmail = Environment.GetEnvironmentVariable("ASCENDED_ADMIN_EMAIL");
+				adminPassword = Environment.GetEnvironmentVariable("ASCENDED_ADMIN_PWD");	
+			}
+			else
+			{
+				adminEmail = configuration["AdminEmail"];
+				adminPassword = configuration["AdminPassword"];
+			}
 
 			var _user = await userManager.FindByEmailAsync(adminEmail);
 
