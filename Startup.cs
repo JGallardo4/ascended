@@ -34,7 +34,7 @@ namespace AscendedGuild
 						mySqlOptions => 
 						{
 							mySqlOptions
-								.ServerVersion(new Version(10, 4, 11), ServerType.MariaDb);
+								.ServerVersion(new Version(10, 4, 12), ServerType.MariaDb);
 						}));
 			}
 			else
