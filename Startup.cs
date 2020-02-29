@@ -32,8 +32,7 @@ namespace AscendedGuild
 				options.UseMySql(connectionString,
 					mySqlOptions => 
 					{
-						mySqlOptions
-							.ServerVersion(new Version(10, 4, 12), ServerType.MariaDb);
+						mySqlOptions.ServerVersion(new Version(10, 4, 12), ServerType.MariaDb);
 					}));			
 
 			services.AddIdentity<IdentityUser, IdentityRole>()
