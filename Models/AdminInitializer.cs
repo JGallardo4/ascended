@@ -30,8 +30,8 @@ namespace AscendedGuild.Models
 			}
 
 			// Create admin user if necessary		
-			string adminEmail= Environment.GetEnvironmentVariable("ASCENDED_ADMIN_EMAIL");
-			string adminPassword= Environment.GetEnvironmentVariable("ASCENDED_ADMIN_PWD");
+			string adminEmail= configuration["ASCENDED_ADMIN_EMAIL"];
+			string adminPassword= configuration["ASCENDED_ADMIN_PWD"];
 			
 			var _user = await userManager.FindByEmailAsync(adminEmail);
 
