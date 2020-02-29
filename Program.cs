@@ -33,8 +33,7 @@ namespace AscendedGuild
 				})
 				.ConfigureAppConfiguration((hostingContext, config) =>
 				{
-					config.AddIniFile(
-        	"config.ini", optional: true, reloadOnChange: true);
+					config.AddIniFile("config.ini", optional: true, reloadOnChange: true);
 				});				
 	}
 }
