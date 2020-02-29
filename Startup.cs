@@ -25,29 +25,16 @@ namespace AscendedGuild
 		public void ConfigureServices(IServiceCollection services)
 		{
 			Console.WriteLine(Environment.GetEnvironmentVariable("TEST"));
-			// Use SQL Database if in Azure, otherwise, use mySQL
-			if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-			{
-				var connectionString = Environment.GetEnvironmentVariable("ASCENDED_DBCONNECTION");				
 
-				services.AddDbContext<AppDbContext>(options =>
-					options.UseMySql(connectionString,
-						mySqlOptions => 
-						{
-							mySqlOptions
-								.ServerVersion(new Version(10, 4, 12), ServerType.MariaDb);
-						}));
-			}
-			else
-			{
-				services.AddDbContext<AppDbContext>(options =>
-					options.UseMySql("Server=localhost;User Id=ascended;Password=4444;Database=AscendedGuild;",
-						mySqlOptions => 
-						{
-							mySqlOptions
-								.ServerVersion(new Version(10, 4, 12), ServerType.MariaDb);
-						}));
-			}
+			var connectionString = Environment.GetEnvironmentVariable("ASCENDED_DBCONNECTION");				
+
+			services.AddDbContext<AppDbContext>(options =>
+				options.UseMySql(connectionString,
+					mySqlOptions => 
+					{
+						mySqlOptions
+							.ServerVersion(new Version(10, 4, 12), ServerType.MariaDb);
+					}));			
 
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppDbContext>();
