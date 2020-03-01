@@ -21,6 +21,50 @@ namespace AscendedGuild.Data
 		{
 			base.OnModelCreating(modelBuilder);
 
+			// Seed About sections
+			modelBuilder.Entity<TextBlock>().HasData(
+				new TextBlock
+				{
+					TextBlockId = 1,
+					Name = "Main Section",
+					SimpleId = "about__main",
+					MarkdownContent = "# Please write an about-us blurb and hit save #"
+				},
+
+				new TextBlock
+				{
+					TextBlockId = 2,
+					Name = "Raid History",
+					SimpleId = "about__raid-history",
+					MarkdownContent = "# Please enter the raid history and hit save #"
+				},
+
+				new TextBlock
+				{
+					TextBlockId = 3,
+					Name = "Raid Schedule",
+					SimpleId = "about__raid-schedule",
+					MarkdownContent = "# Please enter the raid schedule and hit save #"
+				},
+
+				new TextBlock
+				{
+					TextBlockId = 4,
+					Name = "Contact Us",
+					SimpleId = "about__contact",
+					MarkdownContent = "# Please enter the contact information and hit save #"
+				},
+
+				new TextBlock
+				{
+					TextBlockId = 5,
+					Name = "Officer Info",
+					SimpleId = "about__officers",
+					MarkdownContent = "# Please enter the officers information and hit save #"
+				}
+			);
+			// End of seed about sections
+
 			// Seed player classes
 			modelBuilder.Entity<PlayerClass>().HasData(
 				new PlayerClass
@@ -107,6 +151,7 @@ namespace AscendedGuild.Data
 					Name = "Warrior"			
 				}
 			);
+			// End of seed player classes
 
 			// Seed Specializations
 			modelBuilder.Entity<Spec>().HasData(

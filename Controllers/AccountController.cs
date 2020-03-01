@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using AscendedGuild.ViewModels;
+using AscendedGuild.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 

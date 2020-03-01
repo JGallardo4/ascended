@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AscendedGuild.Data;
-using AscendedGuild.Models;
 using AscendedGuild.Models.Recruitement;
 using AscendedGuild.ViewModels;
+using AscendedGuild.ViewModels.Recruitement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

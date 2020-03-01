@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using AscendedGuild.Models.Streams;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AscendedGuild.ViewModels
+namespace AscendedGuild.ViewModels.Streams
 {
 	public class NewStreamer
 	{

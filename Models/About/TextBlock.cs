@@ -20,6 +20,10 @@ namespace AscendedGuild.Models.About
 		public string Name { get; set; }
 
 		[Required]
+		[StringLength(100)]		
+		public string SimpleId { get; set; }
+
+		[Required]
 		[StringLength(3_000)]
 		public string MarkdownContent { get; set; }
 

@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using AscendedGuild.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using AscendedGuild.ViewModels;
 using AscendedGuild.Models.Streams;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using AscendedGuild.Data;
+using AscendedGuild.ViewModels.Streams;
 
 namespace AscendedGuild.Controllers
 {

@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using AscendedGuild.Data;
-using AscendedGuild.Models;
-using AscendedGuild.Models.About;
+using AscendedGuild.ViewModels.About;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,25 +26,15 @@ namespace AscendedGuild.Controllers
 		/// update the About blurb using Markup.
 		/// The database object containing the blurb data is created if not found.
 		/// </remarks>
-		public async Task<IActionResult> IndexAsync()
+		public IActionResult Index()
 		{
-			// Retrieve about content
-			var currentContent = _appDbContext.TextBlocks.Find(1);
-
-			// Create content if none if found
-			if (currentContent == null)
+			var viewModel = new AboutViewModel()
 			{
-				_appDbContext.TextBlocks.Add(new TextBlock(){
-					TextBlockId = 1,
-					Name = "About",
-					MarkdownContent = "# Please write an about-us blurb and hit save #"
-				});
-				
-				// Save changes to db
-				await _appDbContext.SaveChangesAsync();
-			}			
-
-			return View(_appDbContext.TextBlocks.Find(1));
+				AboutContent = _appDbContext.TextBlocks,
+				EditSectionDetails = new EditSectionDetails()
+			};
+			
+			return View(viewModel);
 		}
 
 		/// <summary>
@@ -58,26 +47,14 @@ namespace AscendedGuild.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[Authorize(Roles = "Administrator")]
-		public async Task<IActionResult> EditOrCreate(string incomingContent)
+		public async Task<IActionResult> EditOrCreate(AboutViewModel model)
 		{
-			// Retrieve about content
-			var currentContent = _appDbContext.TextBlocks.Find(1);
+			// Retrieve target section
+			var targetSection = _appDbContext.TextBlocks.Find(model.EditSectionDetails.TargetAboutSection);
+			
+			targetSection.MarkdownContent = model.EditSectionDetails.NewSectionContent;
 
-			// Create content if none if found
-			if (currentContent == null)
-			{
-				_appDbContext.TextBlocks.Add(new TextBlock(){
-					TextBlockId = 1,
-					Name = "About",
-					MarkdownContent = incomingContent
-				});				
-			}
-			else
-			{
-				currentContent.MarkdownContent = incomingContent;
-
-				_appDbContext.Update(currentContent);
-			}
+			_appDbContext.Update(targetSection);
 			
 			// Save changes to db
 			await _appDbContext.SaveChangesAsync();
