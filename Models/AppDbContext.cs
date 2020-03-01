@@ -26,7 +26,7 @@ namespace AscendedGuild.Data
 				new TextBlock
 				{
 					TextBlockId = 1,
-					Name = "Main Section",
+					Name = "About Us",
 					SimpleId = "about__main",
 					MarkdownContent = "# Please write an about-us blurb and hit save #"
 				},

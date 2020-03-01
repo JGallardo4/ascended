@@ -20,8 +20,7 @@ namespace AscendedGuild.ViewModels.About
 		[Required]
 		public int TargetAboutSection { get; set; }
 
-		[Required]
-		[MaxLength(300)]
+		[MaxLength(1000)]
 		public string NewSectionContent { get; set; }
 	}
 }

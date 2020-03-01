@@ -1,6 +1,6 @@
 @using AscendedGuild.ViewModels.About
 
-@model AboutViewModel
+@model NewAboutViewModel
 
 @section Style {
 	<link rel="stylesheet"
@@ -10,66 +10,71 @@
 		href="/css/pages/about.css" />
 }
 
-<!-- Display each about-section along with a (admin-only) text-area for editing --> 
-@foreach(var aboutSection in Model.AboutContent)
-{
-	string aboutSectionId = aboutSection.SimpleId;	
+<form 
+	asp-controller="About"
+	asp-action="EditOrCreate"
+	method="post">
 
-	<article class="about-section" id="@aboutSectionId">
-		@Html.Raw(aboutSection.HtmlContent)
+	@if (User.IsInRole("Administrator"))
+	{	
+		<!-- The Administrator user can submit the changes made -->
+		<div class="submit-button-container">
+			<button type="submit">
+				Save
+			</button>	
+		</div>
+	}
 
-		<!-- Show a text area to edit section when logged in as administrator -->
-		@if (User.IsInRole("Administrator"))
-		{
-			string toggleId = aboutSectionId + "__toggle";
+	<!-- Display each about-section along with a (admin-only) text-area for editing --> 
+	@foreach(var aboutSection in Model.AboutContent)
+	{
+		string aboutSectionId = aboutSection.SimpleId;	
 
-			<input 
-			class="toggle"
-			id="@toggleId"
-			type="checkbox" />
+		<article class="about-section" id="@aboutSectionId">
+			<h1 id="about-section__name">@aboutSection.Name</h1>
 
-			<label for="@toggleId" class="toggle-label">					
-			</label>
+			@Html.Raw(aboutSection.HtmlContent)
 
-			string editSectionId = aboutSectionId + "__edit";
+			<!-- Show a text area to edit section when logged in as administrator -->
+			@if (User.IsInRole("Administrator"))
+			{
+				string toggleId = aboutSectionId + "__toggle";
 
-			<section class="edit-section" id="@editSectionId">
-				<div class="edit-instructions">
-					<p>Use markdown to format your text.</p>
+				<input 
+				class="toggle"
+				id="@toggleId"
+				type="checkbox" />
 
-					<p>See this link for more information:
-						<a
-						class="editing-help-link"
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://stackoverflow.com/editing-help">
-							Stackoverflow markdown formatting
-						</a>
-					</p>
-				</div><!-- End of edit-instructions -->
+				<label for="@toggleId" class="toggle-label">					
+				</label>
 
-				<form
-				asp-asp-controller="About"
-				asp-action="EditOrCreate"
-				method="post">
-					<input asp-for="EditSectionDetails.TargetAboutSection"
-						value="@aboutSection.TextBlockId" />
+				string editSectionId = aboutSectionId + "__edit";
+
+				<section class="edit-section" id="@editSectionId">
+					<div class="edit-instructions">
+						<p>Use markdown to format your text.</p>
+
+						<p>See this link for more information:
+							<a
+							class="editing-help-link"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://stackoverflow.com/editing-help">
+								Stackoverflow markdown formatting
+							</a>
+						</p>
+					</div><!-- End of edit-instructions -->					
 
 					<textarea
-					id="about-us-input"
-					asp-for="EditSectionDetails.NewSectionContent">
-					</textarea>
-
-					<div class="button-container">
-						<button	type="submit">
-							Save
-						</button>
-					</div>
-				</form>	
-			</section>
-		}
-	</article>
-}
+					name="IncomingChanges[@aboutSection.TextBlockId]"					
+					asp-for="@aboutSection.MarkdownContent"
+					id="about-us-input">
+					</textarea>						
+				</section>
+			}
+		</article>
+	}
+</form>
 
 <img
 	class="about-us__logo"

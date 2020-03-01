@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AscendedGuild.Data;
+using AscendedGuild.Models.About;
 using AscendedGuild.ViewModels.About;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AscendedGuild.Controllers
 {
@@ -28,10 +31,9 @@ namespace AscendedGuild.Controllers
 		/// </remarks>
 		public IActionResult Index()
 		{
-			var viewModel = new AboutViewModel()
+			var viewModel = new NewAboutViewModel()
 			{
-				AboutContent = _appDbContext.TextBlocks,
-				EditSectionDetails = new EditSectionDetails()
+				AboutContent = _appDbContext.TextBlocks
 			};
 			
 			return View(viewModel);
@@ -47,17 +49,30 @@ namespace AscendedGuild.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[Authorize(Roles = "Administrator")]
-		public async Task<IActionResult> EditOrCreate(AboutViewModel model)
+		public async Task<IActionResult> EditOrCreate(IDictionary<int, string> incomingChanges)
 		{
-			// Retrieve target section
-			var targetSection = _appDbContext.TextBlocks.Find(model.EditSectionDetails.TargetAboutSection);
-			
-			targetSection.MarkdownContent = model.EditSectionDetails.NewSectionContent;
+			if (ModelState.IsValid)
+			{	
+				foreach(KeyValuePair<int, string> newSectionInfo in incomingChanges)
+				{				
+					var oldSection = _appDbContext.TextBlocks.Find(newSectionInfo.Key);
 
-			_appDbContext.Update(targetSection);
-			
-			// Save changes to db
-			await _appDbContext.SaveChangesAsync();
+					string newContent = 
+						string.IsNullOrEmpty(newSectionInfo.Value) 
+						? "Please add some content for this section and hit Save"
+						: newSectionInfo.Value;
+
+					oldSection.MarkdownContent = newContent;
+
+					await TryUpdateModelAsync<TextBlock>(oldSection, "", o => o.MarkdownContent);
+				}
+
+				await _appDbContext.SaveChangesAsync();
+			}
+			else
+			{
+				return NotFound();
+			}
 
 			return RedirectToAction("Index", "About");
 		}

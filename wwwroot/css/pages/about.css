@@ -57,6 +57,10 @@
 		text-indent: 2em;
 	}
 
+	#about-section__name {
+		text-transform: uppercase;
+	}
+
 	.about-section h2 {
 		font-size: 20pt;
 	}
