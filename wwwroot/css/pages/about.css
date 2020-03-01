@@ -36,6 +36,7 @@
 		display: flex;
 		justify-content: center;
 	}
+/* End of layout */
 
 /* Help link style */
 	.editing-help-link:hover {
@@ -44,22 +45,40 @@
 
 /* Text style */
 	.about-us {
-		font-size: 18pt;  
+		font-size: 15pt;  
 	}
 
 	.about-us p, ul {
 		padding-bottom: 20px;
 	}
 
-	.about-us li {
-		text-indent: 8em;
-	}
-
-	.about-us p {
-		text-indent: 4em;
+	.about-us li, p {
+		text-indent: 2em;
 	}
 
 	.about-us h2 {
 		font-size: 20pt;
 	}
 /* End of text style */
+
+/* Show/Hide edit section */
+	.toggle + .toggle-label::before {
+		content: "》 Edit";
+	}
+
+	.toggle:checked + .toggle-label::before {
+		content: "︾ Hide";
+	}
+
+	.toggle ~ .edit-about-us { display: none; }
+	.toggle:checked ~ .edit-about-us { display: block; }	
+
+	.toggle-label {
+		cursor: pointer;
+		display: grid;
+		place-items: center;
+		color: var(--yellow);
+	}
+
+	.toggle { display: none; }
+/* End of Show/Hide edit section */

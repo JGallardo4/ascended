@@ -143,6 +143,7 @@ body {
 	}
 	
 	.toggle { display: none; }
+/* Show/Hide stream */
 
 /* Reactive Iframe. Aspect ratio is 427 : 240 */
 	.twitch-embed {

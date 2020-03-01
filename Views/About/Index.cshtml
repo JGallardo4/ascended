@@ -9,46 +9,55 @@
 }
 
 <article class="about-us">
-	<img
+	@Html.Raw(Model.HtmlContent)
+
+	<!-- Show a text area to edit section when logged in as administrator -->
+	@if (User.IsInRole("Administrator"))
+	{
+		<input 
+		class="toggle"
+		id="toggle-edit-about-us"
+		type="checkbox" />
+
+		<label for="toggle-edit-about-us" class="toggle-label">					
+		</label>
+
+		<section class="edit-about-us" id="edit-about-us">
+			<div class="edit-instructions">
+				<p>Use markdown to format the About blurb.</p>
+
+				<p>See this link for more information:
+					<a
+					class="editing-help-link"
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://stackoverflow.com/editing-help">
+						Stackoverflow markdown formatting
+					</a>
+				</p>
+			</div><!-- End of edit-instructions -->
+
+			<form
+			asp-asp-controller="About"
+			asp-action="EditOrCreate"
+			method="post">
+				<textarea
+				asp-for="@Model.MarkdownContent"
+				name="incomingContent" 
+				id="about-us-input">
+				</textarea>
+
+				<div class="button-container">
+					<button	type="submit">
+						Save
+					</button>
+				</div>
+			</form>	
+		</section>
+	}
+</article>
+
+<img
 	class="about-us__logo"
 	src="/images/About/full-animated-logo.gif" 
 	alt="Ascended animated logo" />
-
-	@Html.Raw(Model.HtmlContent)
-</article>
-
-@if (User.IsInRole("Administrator"))
-{
-	<section class="edit-about-us">
-		<div class="edit-instructions">
-			<p>Use markdown to format the About blurb.</p>
-
-			<p>See this link for more information:
-				<a
-				class="editing-help-link"
-				target="_blank"
-				rel="noopener noreferrer"
-				href="https://stackoverflow.com/editing-help">
-					Stackoverflow markdown formatting
-				</a>
-			</p>
-		</div>
-
-		<form
-		asp-asp-controller="About"
-		asp-action="EditOrCreate"
-		method="post">
-			<textarea
-			asp-for="@Model.MarkdownContent"
-			name="incomingContent" 
-			id="about-us-input">
-			</textarea>
-
-			<div class="button-container">
-				<button	type="submit">
-					Save
-				</button>
-			</div>
-		</form>	
-	</section>	
-}
