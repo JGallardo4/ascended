@@ -6,10 +6,17 @@
 	}
 
 	#about-grid {
+		width: 100%;
 		place-self: stretch;
-		grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+		grid-template-columns: 1fr 1fr;
 		display: grid;
 		gap: 20px;
+	}
+
+	@media (max-width: 974px) {
+		#about-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	#about__main {
