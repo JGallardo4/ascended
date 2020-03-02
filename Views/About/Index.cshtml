@@ -10,7 +10,7 @@
 		href="/css/pages/about.css" />
 }
 
-<form 
+<form id="about-grid"
 	asp-controller="About"
 	asp-action="EditOrCreate"
 	method="post">
@@ -18,7 +18,7 @@
 	@if (User.IsInRole("Administrator"))
 	{	
 		<!-- The Administrator user can submit the changes made -->
-		<div class="submit-button-container">
+		<div class="button-container">
 			<button type="submit">
 				Save
 			</button>	

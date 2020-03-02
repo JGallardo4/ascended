@@ -5,6 +5,18 @@
 		grid-gap: 20px;
 	}
 
+	#about-grid {
+		place-self: stretch;
+		grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+		display: grid;
+		gap: 20px;
+	}
+
+	#about__main {
+		grid-column-start: 1;
+		grid-column-end: -1;
+	}
+
 	.about-section {
 		padding: 20px;
 		border: solid;
@@ -38,6 +50,28 @@
 		justify-content: center;
 	}
 /* End of layout */
+
+/* About section grid style */
+	#about__main {
+		border-color: var(--dark-purple);
+	}
+
+	#about__raid-history {
+		border-color: var(--purple);
+	}
+
+	#about__raid-schedule {
+		border-color: var(--pink);
+	}
+
+	#about__contact {
+		border-color: var(--orange);
+	}
+
+	#about__officers {
+		border-color: var(--yellow);
+	}
+/* End of about section grid style */
 
 /* Help link style */
 	.editing-help-link:hover {
