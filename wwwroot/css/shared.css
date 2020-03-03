@@ -144,7 +144,7 @@ main {
 	}
 
 	.navbar--logged-out li:not(:last-child) {
-		border-right: 1px solid var(--purple);
+		border-right: 2px solid var(--purple);
 		padding-right: 1rem;
 	}
 }
@@ -155,7 +155,7 @@ main {
 	}
 
 	.navbar--logged-in li:not(:last-child) {
-		border-right: 1px solid var(--purple);
+		border-right: 2px solid var(--purple);
 		padding-right: 1rem;
 	}
 }

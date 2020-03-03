@@ -5,6 +5,11 @@ body {
 .splash {
 	height: 100%;
 
+	border: solid;
+	border-width: 2px;
+	border-color: var(--yellow);
+	border-radius: 10px;
+
 	background-image: 
 		url(/images/Home/splash-full-logo.png),
 		url(/images/Home/splash-bg.jpg);		

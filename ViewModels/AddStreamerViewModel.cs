@@ -27,8 +27,9 @@ namespace AscendedGuild.ViewModels.Streams
 	
 	public class AddStreamerViewModel
 	{
+		[Required]		
 		public NewStreamer NewStreamer { get; set; }
-
+		
 		public IEnumerable<SelectListItem> PlayerClasses { get; set; }
 	}
 }

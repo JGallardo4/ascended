@@ -47,7 +47,7 @@
 	}
 
 	.about-us__logo {
-  float: right;
+  place-self: center;
   padding-right: 20px;
   padding-bottom: 20px;
 	}	
@@ -100,6 +100,7 @@
 
 	#about-section__name {
 		text-transform: uppercase;
+		font-weight: bold;
 	}
 
 	.about-section h2 {
