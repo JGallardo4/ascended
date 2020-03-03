@@ -91,7 +91,11 @@
 								@(spec.Name + ":")
 							</h2>
 
-							<h2 class="demand" id=@("demand--" + spec.Demand.ToString("F"))>
+							@{
+								string demandClass = "demand demand--" + spec.Demand.ToString("F");
+							}
+
+							<h2 class="@demandClass">
 								@spec.Demand.ToString("F")
 							</h2>								
 
