@@ -100,7 +100,7 @@
 		text-indent: 2em;
 	}
 
-	#about-section__name {
+	.about-section__name {
 		text-transform: uppercase;
 		font-weight: bold;
 	}
