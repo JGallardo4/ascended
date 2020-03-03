@@ -6,8 +6,6 @@
 	}
 
 	#about-grid {
-		width: 100%;
-		place-self: stretch;
 		grid-template-columns: 1fr 1fr;
 		display: grid;
 		gap: 20px;
@@ -46,10 +44,10 @@
 		height: 300px;
 	}
 
-	.about-us__logo {
-  place-self: center;
-  padding-right: 20px;
-  padding-bottom: 20px;
+	.about-us__logo {	
+		width: 300px;
+		height: auto;
+  	place-self: center;
 	}	
 
 	.button-container {
