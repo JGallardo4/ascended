@@ -4,8 +4,11 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+	@{
+		string description = ViewData["Description"].ToString();
+	}
 	<meta name="description" 
-		content=@ViewData["Description"] />
+		content="@description" />
 
 	<title>@ViewData["Title"] - AscendedGuild</title>
 
@@ -23,7 +26,7 @@
 <body>
 	<header>
 		<a class="icon-container" asp-controller="Home" asp-action="Index">
-			<img src="~/images/Navbar/a-logo.png"
+			<img src="~/images/Navbar/a-logo.png" title="Home"
 				class="icon" alt="Ascended Guild icon" 
 				height="2135" width="2135"/>
 		</a>
