@@ -11,6 +11,10 @@
 				href="/css/pages/create-streamer.css" />
 }
 
+@{
+  ViewData["Title"] = "Add a Streamer";
+}
+
 <!-- The Administrator user can add a new streamer -->
 @if (User.IsInRole("Administrator"))
 {

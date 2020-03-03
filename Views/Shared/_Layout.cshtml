@@ -1,21 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>AscendedGuild</title>
+	<title>@ViewData["Title"] - AscendedGuild</title>
 
-		<environment include="Development">
-			@RenderSection("Style", required: true)
-		</environment>
+	<environment include="Development">
+		@RenderSection("Style", required: true)
+	</environment>
 
-		<script
-		src="http://code.jquery.com/jquery-3.4.1.min.js"
-		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-		crossorigin="anonymous"></script>
+	<script
+	src="http://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
 
-		<link rel="icon" type="img/svg+xml" href="~/images/favicon.svg">
+	<link rel="icon" type="img/svg+xml" href="~/images/favicon.jpg">
 </head>
 <body>
 	<header>
@@ -40,7 +40,7 @@
 			navbarClass += " navbar--logged-out";
 		}
 
-		<ul class="@navbarClass" role="navigation">
+		<ul class="@navbarClass" role="navigation" aria-label="Main">
 			<li class="nav-item">
 				<a 
 				class="nav-link" 
