@@ -23,7 +23,7 @@ body {
 
 /* Layout */
 body {
-	padding: 0 9vw;
+	padding: 0 6vw;
 	display: grid;
 	grid-template-rows: auto 1fr 100px;
 }
@@ -49,14 +49,13 @@ main {
 
 /* Logo size */
 .icon-container {
-	width: 167px;
+	width: 140px;
 	height: auto;
 }
 
 .icon {
 	width: inherit;
 	height: inherit;
-	padding: 20px;
 }
 
 /* For desktop:
