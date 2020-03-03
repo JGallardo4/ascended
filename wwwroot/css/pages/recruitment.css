@@ -167,15 +167,15 @@
 /* End of class-grid layout */
 
 /* Demand colors */
-	#demand--HIGH {
+	.demand--HIGH {
 		color: greenyellow;
 	}
 
-	#demand--LOW {
+	.demand--LOW {
 		color: yellow;
 	}
 
-	#demand--CLOSED {
+	.demand--CLOSED {
 		color: gray;
 	}
 
