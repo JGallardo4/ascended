@@ -39,7 +39,6 @@ body {
 	padding: 20px;
 	display: grid;
 	grid-template-columns: 80px repeat(2, auto) repeat(2, 70px) min-content;
-	grid-template-rows: 70px repeat(auto-fit, auto);
 	grid-gap: 20px;
 	place-items: center;
 }
@@ -53,11 +52,10 @@ body {
 .class-and-spec {
 	grid-column: 3;
 	grid-row: 1;
-	display: flex;
-	justify-content: right;
 	width: 100%;
 	text-transform: uppercase;
 	word-spacing: 3px;
+	text-align: right;
 }
 
 .spec-icon-container {
