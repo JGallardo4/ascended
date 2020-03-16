@@ -24,6 +24,31 @@
 	<link rel="icon" type="img/svg+xml" href="~/images/favicon.jpg">
 </head>
 <body>
+	<div id="demo-notice">
+		<p>
+			NOTE: You are on the demo version of this site.
+			To log in and check out the admin features, use the following:<br>
+			user: admin.demo@ascendedguild.com<br>
+			password: p4ss1234!%$<br>
+		
+
+			<a asp-controller="Account" asp-action="Login">
+				Log in
+			</a>
+			<br>
+
+			To see the official AscendedGuild site go to: 
+
+			<a
+			target="_blank" 
+			rel="noopener noreferrer"
+			class="nav-link" 
+			href="https://ascendedguild.com">
+				ascendedguild.com
+			</a>
+		</p>
+	</div>
+
 	<header>
 		<a class="icon-container" asp-controller="Home" asp-action="Index">
 			<img src="~/images/Navbar/a-logo.png" title="Home"

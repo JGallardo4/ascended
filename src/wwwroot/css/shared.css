@@ -9,6 +9,18 @@ body {
 	color: white;
 }
 
+#demo-notice {
+	border: solid;
+	border-width: 5px;
+	border-color: yellow;
+	padding: 20px
+}
+
+#demo-notice a {
+	color: var(--orange);
+	text-decoration: underline;
+}
+
 /* Fonts */
 body {
 	font-family: Myriad;
@@ -25,18 +37,22 @@ body {
 body {
 	padding: 0 6vw;
 	display: grid;
-	grid-template-rows: auto 1fr 100px;
+	grid-template-rows: auto auto 1fr 100px;
+}
+
+#demo-notice {
+	grid-row: 1;
 }
 
 header {
 	padding: 20px 0;
-	grid-row: 1;
+	grid-row: 2;
 	display: grid;
 	grid-template-columns: auto 1fr minmax(max-content, 1fr);
 }
 
 main {
-	grid-row: 2;	
+	grid-row: 3;	
 }
 
 .icon-container {
