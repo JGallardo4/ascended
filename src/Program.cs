@@ -30,10 +30,10 @@ namespace AscendedGuild
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
+					webBuilder.UseUrls("http://localhost:5001/");
 				})
 				.ConfigureAppConfiguration((hostingContext, config) =>
 				{
-					//config.AddIniFile("config.ini", optional: false, reloadOnChange: true);
 					config.AddJsonFile("secrets.json");
 				});							
 	}
