@@ -4,7 +4,7 @@ On the US-Sargeras server in World of Warcraft there is a plucky band of players
 
 ## See it in action!
 
-Visit demo.ascendedguild.com to log in as the administrator to the dummy version of the site. See all the cool admin-features. Visit ascendedguild.com for the official website.
+Visit [demo.ascendedguild.com](https://demo.ascendedguild.com) to log in as the administrator to the dummy version of the site. See all the cool admin-features. Visit [ascendedguild.com](https://ascendedguild.com) for the official website.
 
 ### Technologies
 
