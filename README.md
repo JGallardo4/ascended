@@ -1,20 +1,30 @@
-# Ascended Guild
+# Official website for the World of Warcraft guild <Ascended>
 
-On the US-Sargeras server in World of Warcraft there is a plucky band of players on a guild called Ascended. This is their website, on which you can find their livestreams, history, and all about how to join them.
+A stylish, fully custom, and practical first point of contact for prospective new members.
 
-## See it in action!
+**Url**: <https://ascendedguild.com/>
 
-Visit [demo.ascendedguild.com](https://demo.ascendedguild.com) to log in as the administrator to the dummy version of the site. See all the cool admin-features. Visit [ascendedguild.com](https://ascendedguild.com) for the official website.
+**Live demo**: <https://demo.ascendedguild.com/>  
+Username: *admin.demo@ascendedguild.com*  
+Password: *p4sS1234!%$*
 
-### Technologies
+![Front Page](readme-main.png)
 
-* The site is hosted on an Nginx server on a linux machine.
-* The server side of the project is written in C# using ASP.NET Core.
-* The project features a MySQL database managed with Entity Framework Core.
-* The front end features a minimal-javascript approach using CSS Grid and CSS Flexbox.
+## Features
+- Simple login and edit-in-place interface for the end users
+- Intuitive board showing all positions currently available
+- Fully responsive
+- Showcases the guild's Twitch.io streamers
 
-### Features
+![Recruitment Page](readme-recruitment.png)
 
-* Responsive UI.
-* The client can edit all content-areas of the site live. No need to edit code or contact the web admin.
-* Clean, colorful, minimalistic design.
+## Technologies used
+- ASP.NET Core MVC
+- Entity Framework Core
+- C#
+- HTML
+- CSS
+- Javascript
+
+## Credits
+- Icons from [Font Awesome](https://fontawesome.com/)
