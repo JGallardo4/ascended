@@ -1,14 +1,8 @@
+![Front Page](readme-main.png)
+
 # Official website for the World of Warcraft guild <Ascended>
 
 A stylish, fully custom, and practical first point of contact for prospective new members.
-
-**Url**: <https://ascendedguild.com/>
-
-**Live demo**: <https://demo.ascendedguild.com/>  
-Username: *admin.demo@ascendedguild.com*  
-Password: *p4sS1234!%$*
-
-![Front Page](readme-main.png)
 
 ## Features
 - Simple login and edit-in-place interface for the end users
@@ -28,3 +22,15 @@ Password: *p4sS1234!%$*
 
 ## Credits
 - Icons from [Font Awesome](https://fontawesome.com/)
+
+## Deploy
+1. Set the following environment variables:
+- `ASCENDED__DB`
+- `ASCENDED__ADMIN_EMAIL`
+- `ASCENDED__ADMIN_PWD`
+
+2. Create Docker image  
+`docker build -t ascended-image .`
+
+3. Start Docker container  
+`docker run -e ASCENDED__DB -e ASCENDED__ADMIN_PWD -e ASCENDED__ADMIN_EMAIL -it --rm -p 5089:80 --name ascended-container ascended-image`

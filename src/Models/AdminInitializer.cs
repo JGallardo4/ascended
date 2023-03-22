@@ -29,9 +29,9 @@ namespace AscendedGuild.Models
 				}
 			}
 
-			// Create admin user if necessary		
-			string adminEmail= configuration["ASCENDED_ADMIN_EMAIL"];
-			string adminPassword= configuration["ASCENDED_ADMIN_PWD"];
+			// Create admin user if necessary
+			string adminEmail= configuration["ADMIN_EMAIL"];
+			string adminPassword= configuration["ADMIN_PWD"];
 			
 			var _user = await userManager.FindByEmailAsync(adminEmail);
 
@@ -47,6 +47,8 @@ namespace AscendedGuild.Models
 
 				if (createAdmin.Succeeded)
 				{
+					System.Console.WriteLine(adminEmail);
+					System.Console.WriteLine(adminPassword);
 					// Assign admin user to admin role
 					await userManager.AddToRoleAsync(adminUser, "Administrator");
 				}

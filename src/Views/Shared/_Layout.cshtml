@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -12,9 +16,7 @@
 
 	<title>@ViewData["Title"] - AscendedGuild</title>
 
-	<environment include="Development">
-		@RenderSection("Style", required: true)
-	</environment>
+	@RenderSection("Style", required: true)
 
 	<script
 	src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -28,8 +30,8 @@
 		<p>
 			NOTE: You are on the demo version of this site.
 			To log in and check out the admin features, use the following:<br>
-			user: admin.demo@ascendedguild.com<br>
-			password: p4sS1234!%$<br>
+			user: @Configuration["ADMIN_EMAIL"]<br>
+			password: @Configuration["ADMIN_PWD"]<br>
 		
 
 			<a asp-controller="Account" asp-action="Login">
