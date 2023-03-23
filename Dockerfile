@@ -4,7 +4,7 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY src/*.csproj ./Ascended/
-RUN cd src && dotnet restore
+RUN cd Ascended && dotnet restore
 
 # copy everything else and build app
 COPY src/. ./Ascended/
