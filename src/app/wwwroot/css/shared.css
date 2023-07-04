@@ -1,0 +1,192 @@
+﻿@import "base/_reset.css";
+@import "base/_colors.css";
+@import "base/_hyperlinks.css";
+@import "base/_fonts.css";
+
+/* Colors */
+body {
+	background-color: var(--charcoal);
+	color: white;
+}
+
+#demo-notice-container {
+	padding: 4px;
+	width: fit-content;
+	height: fit-content;
+	background-color: var(--yellow);
+	color: black;
+	position: absolute;
+	top: 0;
+	left: 15vw;
+	z-index: 10;
+}
+
+#demo-notice-container summary {
+	background-color: var(--yellow);
+	color: black;
+	cursor: pointer;
+}
+
+#demo-notice {
+	width: 20rem;
+	background-color: var(--yellow);
+	border: solid;
+	border-width: 5px;
+	border-color: var(--yellow);
+	padding: 20px
+}
+
+#demo-notice a {
+	color: var(--orange);
+	text-decoration: underline;
+}
+
+/* Fonts */
+body {
+	font-family: Myriad;
+	letter-spacing: 0.15em;
+	line-height: 180%;
+}
+
+.navbar {
+	text-transform: uppercase;
+	font-size: 1rem;
+}
+
+/* Layout */
+body {
+	padding: 0 6vw;
+	display: grid;
+	grid-template-rows: auto auto 1fr 100px;
+}
+
+header {
+	padding: 20px 0;
+	grid-row: 2;
+	display: grid;
+	grid-template-columns: auto 1fr minmax(max-content, 1fr);
+}
+
+main {
+	grid-row: 3;
+}
+
+.icon-container {
+	grid-column: 1;
+}
+
+.navbar {
+	grid-column: 3;
+}
+
+/* Logo size */
+.icon-container {
+	width: 140px;
+	height: auto;
+}
+
+.icon {
+	width: inherit;
+	height: inherit;
+}
+
+/* For desktop:
+ * Draw menu horizontally
+ */
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+/* Animated underline for navbar */
+.navbar a {
+	display: inline-block;
+	position: relative;
+	padding: 0.5rem 0;
+}
+
+.navbar a:after {
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	background: var(--yellow);
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	width: 0;
+}
+
+.navbar a:hover:after {
+	width: 100%;
+	left: 0;
+}
+
+/* For mobile:
+ * Make icon bigger
+ * and draw menu vertically
+ * on the right of the page
+ */
+@media (max-width: 1032px) {
+	.navbar--logged-out .icon-container {
+		grid-column: 1 / 3;
+		width: inherit;
+		height: inherit;
+	}
+
+	.navbar--logged-out {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.navbar--logged-out li {
+		padding: 5px;
+		text-align: right;
+	}
+}
+
+@media (max-width: 1250px) {
+	.navbar--logged-in .icon-container {
+		grid-column: 1 / 3;
+		width: inherit;
+		height: inherit;
+	}
+
+	.navbar--logged-in {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.navbar--logged-in li {
+		padding: 5px;
+		text-align: right;
+	}
+}
+
+/* Draw a vertical line only between nav elements.
+ * Add padding all around each element except
+ * at the far right edge
+ */
+@media (min-width: 1033px) {
+	.navbar--logged-out li {
+		padding: 1rem 0 1rem 1rem;
+	}
+
+	.navbar--logged-out li:not(:last-child) {
+		border-right: 2px solid var(--purple);
+		padding-right: 1rem;
+	}
+}
+
+@media (min-width: 1251px) {
+	.navbar--logged-in li {
+		padding: 1rem 0 1rem 1rem;
+	}
+
+	.navbar--logged-in li:not(:last-child) {
+		border-right: 2px solid var(--purple);
+		padding-right: 1rem;
+	}
+}

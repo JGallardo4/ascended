@@ -1,0 +1,23 @@
+body {
+	height: 100vh;
+}
+
+.splash {
+	height: 100%;
+
+	border: solid;
+	border-width: 2px;
+	border-color: var(--yellow);
+	border-radius: 10px;
+
+	background-image: 
+		url(/images/Home/splash-full-logo.png),
+		url(/images/Home/splash-bg.jpg);		
+	background-size:
+		55vw,
+		cover;
+	background-position: 
+		center,
+		68% 50%;		
+	background-repeat: no-repeat;
+}

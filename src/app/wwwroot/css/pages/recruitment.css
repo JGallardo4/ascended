@@ -1,0 +1,242 @@
+/* class-grid style */	
+	#class-grid {
+		text-transform: uppercase;
+	}	
+
+	.class-name {
+		font-size: 2rem;
+	}
+
+	.class-icon {
+		transform: scale(1.2);
+	}
+
+	/* class-card */
+		.class-card {
+			border: solid;
+			border-width: 2px;		
+		}
+
+	/* class-card--in-demand */
+		.class-card--in-demand {
+			border-color: var(--purple);
+		}
+		
+		.class-card--in-demand .spec-name {
+			color: white;			
+		}		
+
+	/* class-card--not-in-demand */
+		.class-card--not-in-demand {
+			border-color: gray;
+		}
+		
+		.class-card--not-in-demand .spec-name {
+			color: gray;			
+		}
+
+		.class-card--not-in-demand .class-name {
+			color: gray !important;			
+		}
+
+		.class-card--not-in-demand .class-icon, 
+		.class-card--not-in-demand .spec-icon {
+			filter: grayscale(1);	
+		}
+	
+	/* spec--not-in-demand */
+		.spec--not-in-demand  .spec-name{
+			color: gray;			
+		}
+
+		.spec--not-in-demand .spec-icon {
+			filter: grayscale(1);		
+		}
+/* End class-grid style */
+
+/* apply style */
+.apply {
+	padding-bottom: 30px;
+	font-size: 2rem;
+	text-align: center;
+}
+
+.apply a {
+	padding-bottom: 2px;
+}
+
+.apply a:hover {
+	/* Trick to add underline with custom offset */
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+
+	cursor: pointer;
+}
+
+/* Submit style */
+.submit-button-container {
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.submit button {
+	height: 2rem;	
+}
+
+/* class-grid layout */
+	.form-container {
+		display: grid;
+		grid-auto-rows: auto auto;
+		place-self: stretch;
+	}
+	
+	.apply {
+		grid-row: 1;
+	}
+
+	#class-grid {
+		grid-row: 2;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+		grid-template-rows: auto;
+		grid-gap: 20px;
+		place-items: stretch;
+	}	
+
+	.class-card {
+		padding: 20px;
+		border-radius: 10px;
+		display: grid;
+		grid-template-rows: auto auto;		
+	}
+
+	.card-title {
+		grid-row: 1;
+		display: grid;
+		grid-template-columns: 1fr 96px;		
+		place-items: center;
+	}
+
+	.class-name {
+		display: inline-block;
+		justify-self: start;
+	}
+
+	.specs {
+		grid-row: 2;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.spec {
+		display: grid;
+		grid-template-columns: 50px 1fr 95px;
+		grid-template-rows: 50px auto;
+		grid-gap: 10px;
+		place-items: center;
+	}
+
+	.spec-icon {
+		grid-column: 1;
+		grid-row: 1;
+		justify-self: start;
+		border-radius: 5px;
+		width: 50px;
+		height: auto;
+	}
+
+	.spec-name {
+		grid-column: 2;
+		grid-row: 1;
+		justify-self: start;
+	}	
+
+	.demand {
+		grid-column: 3;
+		grid-row: 1;
+	}
+
+	.select-demand {
+		grid-column: 3;
+		grid-row: 2;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+/* End of class-grid layout */
+
+/* Demand colors */
+	.demand--HIGH {
+		color: greenyellow;
+	}
+
+	.demand--LOW {
+		color: yellow;
+	}
+
+	.demand--CLOSED {
+		color: gray;
+	}
+
+/* Player class colors */
+	/* Death Knight */
+	#class1 {
+		color: #C41F3B;
+	}
+
+	/* Mage */
+	#class2 {
+		color: #40C7EB;
+	}
+
+	/* Rogue */
+	#class3 {
+		color: #FFF569;
+	}
+
+	/* Demon Hunter */
+	#class4 {
+		color: #A330C9;
+	}
+
+	/* Monk */
+	#class5 {
+		color: #00FF96;
+	}
+
+	/* Shaman */
+	#class6 {
+		color: #0070DE;
+	}
+
+	/* Druid */
+	#class7 {
+		color: #FF7D0A;
+	}
+
+	/* Paladin */
+	#class8 {
+		color: #F58CBA;
+	}
+
+	/* Warlock */
+	#class9 {
+		color: #8787ED;
+	}
+
+	/* Hunter */
+	#class10 {
+		color: #A9D271;
+	}
+
+	/* Priest */
+	#class11 {
+		color: #FFFFFF;
+	}
+
+	/* Warrior */
+	#class12 {
+		color: #C79C6E;
+	}
+/* End Player class colors */

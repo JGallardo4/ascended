@@ -1,0 +1,12 @@
+/* Color palette for use
+ * throughout the site
+ */
+ 
+:root {
+	--pink: #BF0449;
+	--purple: #8C0D48; 
+	--dark-purple: #571845;
+	--yellow: #F2B705;
+	--orange: #F24130;
+	--charcoal: #1B1B1B;
+} 

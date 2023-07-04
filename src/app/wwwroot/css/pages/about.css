@@ -1,0 +1,132 @@
+/* Layout */
+	main {
+		display: grid;
+		grid-template-rows: auto auto;
+		grid-gap: 20px;
+	}
+
+	#about-grid {
+		grid-template-columns: 1fr 1fr;
+		display: grid;
+		gap: 20px;
+	}
+
+	@media (max-width: 974px) {
+		#about-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	#about__main {
+		grid-column-start: 1;
+		grid-column-end: -1;
+	}
+
+	.about-section {
+		padding: 20px;
+		border: solid;
+		border-width: 2px;
+		border-color: var(--orange);
+		border-radius: 10px;
+	}
+
+	/* Contains the textarea */
+	.edit-section {
+	padding: 20px;
+	border: solid;
+	border-width: 2px;
+	border-color: var(--yellow);
+	border-radius: 10px;
+	}
+
+	.edit-section textarea {
+		width: 100%;
+		height: 300px;
+	}
+
+	.about-us__logo {	
+		width: 300px;
+		height: auto;
+  	place-self: center;
+	}	
+
+	.button-container {
+		grid-column-start: 1;
+		grid-column-end: -1;
+		display: flex;
+		justify-content: center;
+	}
+/* End of layout */
+
+/* About section grid style */
+	#about__main {
+		border-color: var(--dark-purple);
+	}
+
+	#about__raid-history {
+		border-color: var(--purple);
+	}
+
+	#about__raid-schedule {
+		border-color: var(--pink);
+	}
+
+	#about__contact {
+		border-color: var(--orange);
+	}
+
+	#about__officers {
+		border-color: var(--yellow);
+	}
+/* End of about section grid style */
+
+/* Help link style */
+	.editing-help-link:hover {
+		text-decoration: underline;		
+	}
+
+/* Text style */
+	.about-section {
+		font-size: 15pt;  
+	}
+
+	.about-section li, p {
+		text-indent: 2em;
+	}
+
+	.about-section__name {
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+
+	.about-section h2 {
+		font-size: 20pt;
+	}
+/* End of text style */
+
+/* Show/Hide edit section */
+	/* Set content of any label immediately following a toggle that is unchecked (default) */
+	.toggle + .toggle-label::before {
+		content: "》 Edit";
+	}
+
+	/* Set content of any label immediately following a toggle that is checked */
+	.toggle:checked + .toggle-label::before {
+		content: "︾ Hide";
+	}
+
+	/* Hide edit section by default */
+	.toggle ~ .edit-section { display: none; }
+
+	/* Show edit section when toggle is checked */
+	.toggle:checked ~ .edit-section { display: block; }	
+
+	.toggle-label {
+		cursor: pointer;
+		display: grid;
+		place-items: center;
+		color: var(--yellow);
+	}
+
+	.toggle { display: none; }
+/* End of Show/Hide edit section */
