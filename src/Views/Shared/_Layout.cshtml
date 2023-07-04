@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,51 +12,23 @@
 	@{
 		string description = ViewData["Description"].ToString();
 	}
-	<meta name="description" 
-		content="@description" />
+	<meta name="description" content="@description" />
 
 	<title>@ViewData["Title"] - AscendedGuild</title>
 
 	@RenderSection("Style", required: true)
 
-	<script
-	src="https://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 	<link rel="icon" type="img/svg+xml" href="~/images/favicon.jpg">
 </head>
+
 <body>
-	<div id="demo-notice">
-		<p>
-			NOTE: You are on the demo version of this site.
-			To log in and check out the admin features, use the following:<br>
-			user: @Configuration["ADMIN_EMAIL"]<br>
-			password: @Configuration["ADMIN_PWD"]<br>
-		
-
-			<a asp-controller="Account" asp-action="Login">
-				Log in
-			</a>
-			<br>
-
-			To see the official AscendedGuild site go to: 
-
-			<a
-			target="_blank" 
-			rel="noopener noreferrer"
-			class="nav-link" 
-			href="https://ascendedguild.com">
-				ascendedguild.com
-			</a>
-		</p>
-	</div>
-
 	<header>
 		<a class="icon-container" asp-controller="Home" asp-action="Index">
-			<img src="~/images/Navbar/a-logo.png" title="Home"
-				class="icon" alt="Ascended Guild icon" 
-				height="2135" width="2135"/>
+			<img src="~/images/Navbar/a-logo.png" title="Home" class="icon" alt="Ascended Guild icon" height="2135"
+				width="2135" />
 		</a>
 
 		<!-- The log in information is applied to the navbar class
@@ -65,7 +38,7 @@
 			string navbarClass = "navbar";
 		}
 
-		@if (User.IsInRole("Administrator"))		
+		@if (User.IsInRole("Administrator"))
 		{
 			navbarClass += " navbar--logged-in";
 		}
@@ -74,52 +47,37 @@
 			navbarClass += " navbar--logged-out";
 		}
 
+		<partial name="_DemoInfoBox.cshtml" />
+
 		<ul class="@navbarClass" role="navigation" aria-label="Main">
 			<li class="nav-item">
-				<a 
-				class="nav-link" 
-				asp-controller="About" 
-				asp-action="Index">
+				<a class="nav-link" asp-controller="About" asp-action="Index">
 					About us
 				</a>
 			</li>
 
 			<li class="nav-item">
-				<a
-				target="_blank" 
-				rel="noopener noreferrer"
-				class="nav-link" 
-				href="https://www.wowprogress.com/guild/us/sargeras/Ascended">
+				<a target="_blank" rel="noopener noreferrer" class="nav-link"
+					href="https://www.wowprogress.com/guild/us/sargeras/Ascended">
 					WoW Progress
 				</a>
 			</li>
 
 			<li class="nav-item">
-				<a 
-				class="nav-link" 
-				asp-area="" 
-				asp-controller="Streams" 
-				asp-action="Index">
+				<a class="nav-link" asp-area="" asp-controller="Streams" asp-action="Index">
 					Streams
 				</a>
 			</li>
 
 			<li class="nav-item">
-				<a
-				target="_blank" 
-				rel="noopener noreferrer"
-				class="nav-link" 
-				href="https://www.youtube.com/user/Absolutioncb/featured">
+				<a target="_blank" rel="noopener noreferrer" class="nav-link"
+					href="https://www.youtube.com/user/Absolutioncb/featured">
 					YouTube
 				</a>
 			</li>
 
 			<li class="nav-item">
-				<a 
-				class="nav-link" 
-				asp-area="" 
-				asp-controller="Recruitment" 
-				asp-action="Index">
+				<a class="nav-link" asp-area="" asp-controller="Recruitment" asp-action="Index">
 					Recruitment
 				</a>
 			</li>
@@ -127,13 +85,10 @@
 			@if (User.IsInRole("Administrator"))
 			{
 				<li class="nav-item">
-					<p>Admin mode: on<p>
-				
-					<form 
-					asp-area=""
-					asp-controller="Account"
-					asp-action="Logout"
-					method="post">
+					<p>Admin mode: on
+					<p>
+
+					<form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
 						<button id="logout" type="submit">
 							Logout
 						</button>
@@ -143,7 +98,8 @@
 		</ul>
 	</header>
 	<main>
-		@RenderBody()		
+		@RenderBody()
 	</main>
 </body>
+
 </html>

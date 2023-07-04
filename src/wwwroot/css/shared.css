@@ -9,10 +9,30 @@ body {
 	color: white;
 }
 
+#demo-notice-container {
+	padding: 4px;
+	width: fit-content;
+	height: fit-content;
+	background-color: var(--yellow);
+	color: black;
+	position: absolute;
+	top: 0;
+	left: 15vw;
+	z-index: 10;
+}
+
+#demo-notice-container summary {
+	background-color: var(--yellow);
+	color: black;
+	cursor: pointer;
+}
+
 #demo-notice {
+	width: 20rem;
+	background-color: var(--yellow);
 	border: solid;
 	border-width: 5px;
-	border-color: yellow;
+	border-color: var(--yellow);
 	padding: 20px
 }
 
@@ -40,10 +60,6 @@ body {
 	grid-template-rows: auto auto 1fr 100px;
 }
 
-#demo-notice {
-	grid-row: 1;
-}
-
 header {
 	padding: 20px 0;
 	grid-row: 2;
@@ -52,7 +68,7 @@ header {
 }
 
 main {
-	grid-row: 3;	
+	grid-row: 3;
 }
 
 .icon-container {
@@ -60,7 +76,7 @@ main {
 }
 
 .navbar {
-	grid-column: 3;	
+	grid-column: 3;
 }
 
 /* Logo size */
@@ -78,34 +94,34 @@ main {
  * Draw menu horizontally
  */
 .navbar {
-	display: flex;	
+	display: flex;
 	align-items: center;
 	justify-content: flex-end;
 }
 
 /* Animated underline for navbar */
-.navbar a { 
-  display: inline-block;
+.navbar a {
+	display: inline-block;
 	position: relative;
 	padding: 0.5rem 0;
 }
 
-.navbar a:after {    
-  background: none repeat scroll 0 0 transparent;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  background: var(--yellow);
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 0;
+.navbar a:after {
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	background: var(--yellow);
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	width: 0;
 }
 
-.navbar a:hover:after { 
-  width: 100%; 
-  left: 0; 
+.navbar a:hover:after {
+	width: 100%;
+	left: 0;
 }
 
 /* For mobile:
@@ -120,15 +136,15 @@ main {
 		height: inherit;
 	}
 
-	.navbar--logged-out  {
+	.navbar--logged-out {
 		flex-direction: column;
 		align-items: stretch;
 	}
 
-	.navbar--logged-out  li {
+	.navbar--logged-out li {
 		padding: 5px;
-		text-align: right;    
-	}	
+		text-align: right;
+	}
 }
 
 @media (max-width: 1250px) {
@@ -143,10 +159,10 @@ main {
 		align-items: stretch;
 	}
 
-	.navbar--logged-in  li {
+	.navbar--logged-in li {
 		padding: 5px;
-		text-align: right;    
-	}	
+		text-align: right;
+	}
 }
 
 /* Draw a vertical line only between nav elements.

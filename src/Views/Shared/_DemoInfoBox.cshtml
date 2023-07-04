@@ -1,0 +1,26 @@
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<details id="demo-notice-container">
+    <summary>
+        &#8505;
+    </summary>
+    <p id="demo-notice">
+        NOTE: You are on the demo version of this site.
+        To log in and check out the admin features, use the following:<br>
+        user: @Configuration["ADMIN_EMAIL"]<br>
+        password: @Configuration["ADMIN_PWD"]<br>
+
+
+        <a asp-controller="Account" asp-action="Login">
+            Log in
+        </a>
+        <br>
+
+        To see the official AscendedGuild site go to:
+
+        <a target="_blank" rel="noopener noreferrer" class="nav-link" href="https://ascendedguild.com">
+            ascendedguild.com
+        </a>
+    </p>
+</details>
