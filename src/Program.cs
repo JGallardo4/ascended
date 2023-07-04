@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AscendedGuild.Data;
 using AscendedGuild.Models;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +27,7 @@ using (var scope = app.Services.CreateScope())
     var serviceProvider = services.GetRequiredService<IServiceProvider>();
     var configuration = services.GetRequiredService<IConfiguration>();
 
-	AdminInitializer.CreateRoles(serviceProvider, configuration).Wait();
+    AdminInitializer.CreateRoles(serviceProvider, configuration).Wait();
     SeedData.Initialize(services);
 }
 
